@@ -332,11 +332,31 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }
 
-/* Home: "Events we cater" grid, three cards per row on desktop, plus a dark "Something else?" card. */
-.events-grid { --min: 340px; }
-.events-grid .event-card { height: clamp(360px, 32vw, 500px); }
-.events-other { display: flex; flex-direction: column; text-decoration: none; align-self: stretch; }
-.events-other .hcard-end-title { font-size: clamp(34px, 3.2vw, 48px); }
+/* Home: "Events we cater" row. About four cards show on desktop, the rest scroll sideways. */
+.evc { display: flex; flex-direction: column; gap: 18px; }
+.evc-track { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 0; overscroll-behavior-x: contain; scrollbar-width: none; cursor: grab; padding-bottom: 4px; }
+.evc-track::-webkit-scrollbar { display: none; }
+.evc-track.dragging { cursor: grabbing; scroll-snap-type: none; }
+.evc-track.dragging a { pointer-events: none; }
+.evc-item { flex: 0 0 clamp(220px, 21vw, 290px); scroll-snap-align: start; display: flex; flex-direction: column; gap: 12px; }
+.evc-photo { aspect-ratio: 4 / 5; width: 100%; border-radius: var(--r); }
+.evc-photo .img { transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.evc-photo:hover .img { transform: scale(1.04); }
+.evc-n { position: absolute; left: 14px; top: 12px; z-index: 2; color: #fff; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45); }
+.evc-cap { display: flex; flex-direction: column; gap: 3px; text-decoration: none; color: var(--ink); }
+.evc-cap b { font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: -0.005em; }
+.evc-cap span { font-size: 14px; color: var(--stone); }
+.evc-more { aspect-ratio: 4 / 5; width: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; border-radius: var(--r); background: var(--ink); color: #fff; text-decoration: none; }
+.evc-more:hover { color: #fff; }
+.evc-more:hover .hcard-end-go { transform: rotate(-45deg); }
+.evc-more-title { font-size: clamp(30px, 2.6vw, 40px); line-height: 0.98; font-weight: 500; text-transform: uppercase; letter-spacing: -0.02em; }
+.evc-foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.evc-foot .hs-bar span { transition: transform 0.2s; }
+.evc-arrows { display: flex; gap: 8px; margin-left: auto; }
+.evc-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: #fff; color: var(--ink); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s, color 0.2s, opacity 0.2s; }
+.evc-btn:hover:not(:disabled) { background: var(--ink); color: #fff; }
+.evc-btn:disabled { opacity: 0.35; cursor: default; }
+@media (max-width: 700px) { .evc-item { flex-basis: 74vw; } }
 
 /* Services page: "Jump to" links, and room under the fixed header when jumping to a section. */
 .jump { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; padding-block: 8px 20px; }

@@ -3,6 +3,7 @@ import Media from '@/components/Media';
 import Split from '@/components/Split';
 import HeroPause from '@/components/HeroPause';
 import TransitionLink from '@/components/TransitionLink';
+import EventsCarousel from '@/components/EventsCarousel';
 import { PillLabel, PillLink } from '@/components/Pill';
 import { FooterNav } from '@/components/Sections';
 import { ArrowRight } from '@/components/Icons';
@@ -55,29 +56,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. Events we cater */}
-      <section aria-labelledby="events" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-        <div className="in" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: 20, paddingBottom: 24 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            <span className="br">Events we cater</span>
-            <Split id="events" text="Any event, *big or small*" style={{ fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 1, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' }} />
+      {/* 3. Events we cater: a compact row that scrolls sideways */}
+      <section className="sec-sm" aria-labelledby="events">
+        <div className="in" style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: 20 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <span className="br">Events we cater</span>
+              <Split id="events" text="Any event, *big or small*" style={{ fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 1, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' }} />
+            </div>
+            <PillLink href={routes.services} variant="dk">See our services</PillLink>
           </div>
-          <PillLink href={routes.services} variant="dk">See our services</PillLink>
-        </div>
-        <div className="grid-auto events-grid">
-          {eventTypes.map((e) => (
-            <Media key={e.id} image={e.image} href={`${routes.services}#${e.id}`} clip cursor="View" sizes="(max-width: 900px) 100vw, 34vw" className="event-card">
-              <div className="tag-in">
-                <span className="extra"><span>{e.line}</span></span>
-                <PillLabel>{e.name}</PillLabel>
-              </div>
-            </Media>
-          ))}
-          <TransitionLink href={routes.quote} className="hcard-end event-card events-other" data-cursor="Ask">
-            <span className="cap" style={{ color: 'var(--smoke)' }}>Something else?</span>
-            <span className="hcard-end-title">Tell us <span className="s">your idea</span></span>
-            <span className="hcard-end-go" aria-hidden="true"><ArrowRight size={18} /></span>
-          </TransitionLink>
+          <EventsCarousel
+            items={eventTypes.map((e) => ({ id: e.id, name: e.name, line: e.line, image: e.image, href: `${routes.services}#${e.id}` }))}
+            more={{ href: routes.quote, label: 'Something else?', title: 'Tell us your idea' }}
+          />
         </div>
       </section>
 
