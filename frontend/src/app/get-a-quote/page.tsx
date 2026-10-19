@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 // ?event= values used by links on the Services page, mapped to the form's event types.
-const EVENTS: Record<string, string> = { weddings: 'wedding', wedding: 'wedding', parties: 'party', company: 'corporate', private: 'private-dinner', 'pop-ups': 'pop-up' };
+const EVENTS: Record<string, string> = { weddings: 'wedding', wedding: 'wedding', parties: 'party', company: 'corporate', private: 'private-dinner', 'pop-ups': 'pop-up', consulting: 'consulting' };
 
 const ASKS: Record<string, string> = {
   'sample-menu': 'Please send us a sample menu.',

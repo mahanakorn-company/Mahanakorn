@@ -76,7 +76,7 @@ cd frontend && npm run build    # also type-checks
 | Method | Path | Body | Result |
 |---|---|---|---|
 | GET | `/api/health` | | `{ ok: true }` |
-| POST | `/api/inquiries` | name, email, whatsapp, role, eventType (`wedding`, `party`, `corporate`, `private-dinner`, `pop-up`, `other`; defaults to `wedding`), date (`YYYY-MM`) or dateFlexible, destination, guests, functions[], need, diet[], hasPlanner, message | `201 { ok, id }` or `422 { ok:false, error, fields }` |
+| POST | `/api/inquiries` | name, email, whatsapp, role, eventType (`wedding`, `party`, `corporate`, `private-dinner`, `pop-up`, `consulting`, `other`; defaults to `wedding`), date (`YYYY-MM`) or dateFlexible, destination, guests, functions[], need, diet[], hasPlanner, message | `201 { ok, id }` or `422 { ok:false, error, fields }` |
 | POST | `/api/planner-pack` | name, company, email, whatsapp, upcoming | `201 { ok, id }` or `422` |
 | GET | `/api/leads` | (admin token) | latest inquiries and planner-pack requests |
 
@@ -93,7 +93,7 @@ Facts the client still has to confirm are marked in plain words on the page, for
 
 ## Pages
 
-`/` Home · `/services` Our Services (weddings, Indian weddings, parties, company events, private dinners, pop-ups, vegetarian food and prices, with `#weddings`, `#indian-weddings`, `#parties`, `#company`, `#private`, `#pop-ups`, `#diet` and `#prices` anchors) · `/menu` Our Menu · `/past-events` Past Events · `/past-events/bali` Bali wedding story · `/planners` For Planners · `/get-a-quote` Get a quote (accepts `?event=weddings|parties|company|private|pop-ups`, `?type=indian` and `?ask=veg-menu|sample-menu|station-menu|joint-menu` to pre-fill the form) · `/privacy` · a 404 page · `/sitemap.xml` · `/robots.txt`
+`/` Home · `/services` Our Services (weddings, Indian weddings, parties, company events, private dinners, pop-ups, vegetarian food and prices, with `#weddings`, `#indian-weddings`, `#parties`, `#company`, `#private`, `#pop-ups`, `#consulting`, `#diet` and `#prices` anchors) · `/menu` Our Menu · `/past-events` Past Events · `/past-events/bali` Bali wedding story · `/planners` For Planners · `/get-a-quote` Get a quote (accepts `?event=weddings|parties|company|private|pop-ups|consulting`, `?type=indian` and `?ask=veg-menu|sample-menu|station-menu|joint-menu` to pre-fill the form) · `/privacy` · a 404 page · `/sitemap.xml` · `/robots.txt`
 
 Old addresses redirect to the new ones: `/weddings`, `/indian-weddings` and `/events` → the matching part of `/services`, `/stations` → `/menu`, `/celebrations/bali` and `/past-weddings/bali` → `/past-events/bali`, `/celebrations` and `/past-weddings` → `/past-events`, `/plan-your-menu` → `/get-a-quote` (see `frontend/next.config.mjs`).
 

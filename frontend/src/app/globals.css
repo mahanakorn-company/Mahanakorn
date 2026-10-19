@@ -80,7 +80,11 @@ button { font: inherit; color: inherit; }
 .hdr { position: fixed; left: 0; right: 0; top: 0; z-index: 50; padding: var(--hdr-top) 32px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; pointer-events: none; transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), color 0.3s; color: var(--ink); }
 .hdr > * { pointer-events: auto; }
 .hdr[data-hidden='true'] { transform: translateY(-140%); }
-.brand { display: flex; flex-direction: column; line-height: 1; text-decoration: none; }
+.brand { display: flex; align-items: center; gap: 10px; line-height: 1; text-decoration: none; }
+.brand-text { display: flex; flex-direction: column; }
+/* The logo's linework is black, so it always sits on a cream badge (it would vanish on dark photos). */
+.brand-badge { flex: none; width: 44px; height: 44px; border-radius: 12px; background: #F4F1EC; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12); }
+.brand-badge img { width: auto; height: 40px; }
 .brand b { font-weight: 600; font-size: 20px; letter-spacing: -0.02em; }
 .brand span { font-family: var(--f-thai); font-size: 11px; margin-top: 4px; opacity: 0.85; white-space: nowrap; }
 .gnav { display: flex; gap: 2px; padding: 5px; border-radius: 999px; font-size: 13px; font-weight: 500; transition: background 0.35s, box-shadow 0.35s; background: rgba(255, 255, 255, 0.86); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
@@ -318,7 +322,10 @@ legend { padding: 0; margin-bottom: 10px; }
 .w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 0.06em 0.08em 0; margin: 0 -0.06em -0.08em 0; }
 .w > span { display: inline-block; }
 .curtain { position: fixed; inset: 0; z-index: 100; background: var(--night); color: #fff; display: none; align-items: center; justify-content: center; pointer-events: none; }
-.curtain b { font-size: clamp(40px, 7vw, 96px); font-weight: 600; letter-spacing: -0.045em; display: block; }
+.curtain-mark { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+.curtain-badge { width: clamp(96px, 12vw, 140px); aspect-ratio: 1; border-radius: 24px; background: #F4F1EC; display: flex; align-items: center; justify-content: center; }
+.curtain-badge img { width: auto; height: 86%; }
+.curtain b { font-size: clamp(40px, 7vw, 96px); font-weight: 600; letter-spacing: -0.045em; display: block; line-height: 1; }
 .cursor { position: fixed; left: 0; top: 0; z-index: 70; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; background: #fff; color: var(--ink); display: flex; align-items: center; justify-content: center; font: 600 11px var(--f-sans); letter-spacing: 0.07em; text-transform: uppercase; pointer-events: none; transform: scale(0); }
 .progress { position: fixed; left: 0; top: 0; height: 2px; width: 100%; background: var(--tamarind); transform-origin: 0 50%; transform: scaleX(0); z-index: 55; pointer-events: none; }
 @media (hover: none) { .cursor { display: none; } }
@@ -362,3 +369,8 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
 .jump { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; padding-block: 8px 20px; }
 .jump-links { display: flex; flex-wrap: wrap; gap: 8px; }
 .anchor { scroll-margin-top: 96px; }
+
+/* Narrow phones: logo + name only, so the Menu button keeps its room. */
+@media (max-width: 480px) {
+  .brand-text > span { display: none; }
+}

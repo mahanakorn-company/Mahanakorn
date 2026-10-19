@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import { gsap } from 'gsap';
 import TransitionLink from './TransitionLink';
 import { PillLink } from './Pill';
@@ -100,8 +101,11 @@ export default function SiteChrome() {
       <a className="skip" href="#main">Skip to content</a>
       <header id="site-header" className="hdr" data-tone={tone}>
         <TransitionLink className="brand" href="/" aria-label={`${site.name}, home`}>
-          <b>{site.shortName}</b>
-          <span>{site.thaiName} · {site.tagline}</span>
+          <span className="brand-badge" aria-hidden="true"><Image src={site.logoMark} alt="" width={140} height={256} priority sizes="40px" /></span>
+          <span className="brand-text">
+            <b>{site.shortName}</b>
+            <span>{site.thaiName} · {site.tagline}</span>
+          </span>
         </TransitionLink>
         <nav className="gnav" aria-label="Main">
           {nav.map((n) => (
@@ -133,7 +137,12 @@ export default function SiteChrome() {
         </div>
       </div>
 
-      <div id="curtain" className="curtain" aria-hidden="true"><b>{site.shortName}</b></div>
+      <div id="curtain" className="curtain" aria-hidden="true">
+        <div className="curtain-mark">
+          <span className="curtain-badge"><Image src={site.logo} alt="" width={394} height={640} priority sizes="120px" /></span>
+          <b>{site.shortName}</b>
+        </div>
+      </div>
       <div id="progress" className="progress" aria-hidden="true" />
       <div ref={cursorRef} className="cursor" aria-hidden="true" />
       {wa && pathname !== routes.quote && <PillLink href={wa} variant="wa" className="fab" ariaLabel="Chat with us on WhatsApp">WhatsApp</PillLink>}

@@ -3,6 +3,10 @@ export const site = {
   name: 'Mahanakorn Thai Catering',
   shortName: 'mahanakorn',
   thaiName: 'มหานคร',
+  /** The crocodile logo (transparent PNG; its black linework needs a light background, see .brand-badge). */
+  logo: '/img/logo.png',
+  /** Tighter crop of the crocodile for small sizes (header badge). */
+  logoMark: '/img/logo-mark.png',
   tagline: 'Thai catering for every event',
   description:
     'Thai catering for weddings, parties, company events and private dinners. Live food counters and sit-down Thai dinners, with vegetarian, vegan and egg-free options, in Thailand, Bali, India and beyond.',

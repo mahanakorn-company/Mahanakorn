@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { ReactNode } from 'react';
 import Split from './Split';
 import TransitionLink from './TransitionLink';
@@ -80,7 +81,10 @@ export function FooterNav() {
     <footer className="foot">
       <div className="cols">
         <div className="col">
-          <strong style={{ fontSize: 22, letterSpacing: '-.02em' }}>{site.shortName}</strong>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <Image src={site.logo} alt="" width={394} height={640} sizes="44px" style={{ width: 'auto', height: 72 }} />
+            <strong style={{ fontSize: 22, letterSpacing: '-.02em' }}>{site.shortName}</strong>
+          </span>
           <span className="mut" style={{ lineHeight: 1.5 }}>Thai catering for weddings, parties and every event, from Bangkok.</span>
           <span className="th mut">{site.thaiName}</span>
         </div>

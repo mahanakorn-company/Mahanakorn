@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 // 'couple' and 'family' are kept so older form versions still validate.
 export const ROLES = ['host', 'couple', 'family', 'planner', 'company', 'venue', 'other'];
-export const EVENT_TYPES = ['wedding', 'party', 'corporate', 'private-dinner', 'pop-up', 'other'];
+export const EVENT_TYPES = ['wedding', 'party', 'corporate', 'private-dinner', 'pop-up', 'consulting', 'other'];
 export const DESTINATIONS = ['bangkok', 'phuket', 'koh-samui', 'krabi', 'hua-hin', 'bali', 'jakarta', 'india', 'other'];
 export const GUEST_BANDS = ['under-50', '50-100', '100-200', '200-350', '350-plus'];
 export const FUNCTIONS = ['welcome-dinner', 'mehendi', 'haldi', 'sangeet', 'wedding-lunch', 'reception', 'after-party', 'brunch'];

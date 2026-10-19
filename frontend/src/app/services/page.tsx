@@ -11,7 +11,7 @@ import { cta, routes } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Our Services',
-  description: 'Thai catering for weddings, Indian weddings, parties, company events, private dinners and pop-ups. Live food counters, sit-down Thai dinners and small bites, with vegetarian options at every counter.',
+  description: 'Thai catering for weddings, Indian weddings, parties, company events, private dinners, pop-ups and cooking sessions. Live food counters, sit-down Thai dinners and small bites, with vegetarian options at every counter.',
   alternates: { canonical: routes.services }
 };
 
@@ -60,7 +60,7 @@ export default function ServicesPage() {
         sub="(Thai catering for every event)"
         meta={[
           { label: 'What we serve', value: 'Food counters · Dinners · Small bites' },
-          { label: 'Events', value: 'Weddings · Parties · Company events · Private dinners' },
+          { label: 'Events', value: 'Weddings · Parties · Company events · Private dinners · Cooking sessions' },
           { label: 'Where', value: 'Thailand · Bali · Jakarta · India', note: 'And wherever your event is' }
         ]}
       />
@@ -150,8 +150,8 @@ export default function ServicesPage() {
         <div className="in" style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(48px, 6vw, 88px)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 640 }}>
             <span className="br">Not a wedding?</span>
-            <Split as="h2" id="other-title" text="Parties *and other events*" style={h2} />
-            <p data-reveal className="lead-copy">We bring the same live Thai cooking to any event.</p>
+            <Split as="h2" id="other-title" text="Parties, dinners *and more*" style={h2} />
+            <p data-reveal className="lead-copy">We bring the same Thai cooking to any event, and we can teach it too.</p>
           </div>
           {others.map((e, i) => (
             <article key={e.id} id={e.id} className="grid-auto anchor" style={{ ['--gap' as string]: '40px', alignItems: 'center' }} aria-labelledby={`${e.id}-title`}>

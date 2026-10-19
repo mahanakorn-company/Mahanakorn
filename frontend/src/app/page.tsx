@@ -51,7 +51,7 @@ export default function HomePage() {
             <Split id="about" text="**real** Thai food,|cooked *fresh* for every|guest at your *event*" />
           </div>
           <p data-reveal className="lead-copy" style={{ textAlign: 'center', maxWidth: 480 }}>
-            We are a Thai cooking team from Bangkok. We cook at weddings, parties, company events and pop-ups, in Thailand and abroad, with a vegetarian version of almost every dish.
+            Born out of love for Thai food, Mahanakorn is a homegrown crew from Thailand. We cook at weddings, parties, company events and pop-ups around the world, with a vegetarian version of almost every dish.
           </p>
         </div>
       </section>
@@ -154,15 +154,15 @@ export default function HomePage() {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
             <h2 id="why" className="lit">
-              <span>Cooked fresh, in front of your guests.</span>
-              <span>Real Thai taste, from a Bangkok team.</span>
-              <span>A vegetarian option at every counter.</span>
-              <span>We work with your planner, venue or caterer.</span>
+              <span>Fresh ingredients, cooked in front of your guests.</span>
+              <span>Traditional Thai cooking, from a team from Thailand.</span>
+              <span>A menu made for your event, diet and culture.</span>
+              <span>Care and detail in every dish.</span>
             </h2>
             <div className="grid-auto" style={{ ['--min' as string]: '140px', marginTop: 12 }} data-stagger>
               <div className="stat"><span className="n" data-count="8">8</span><span className="br">live food counters</span></div>
-              <div className="stat"><span className="n" data-count="5">5</span><span className="br">kinds of events</span></div>
-              <div className="stat"><span className="n" data-count="4">4</span><span className="br">cities cooked in</span></div>
+              <div className="stat"><span className="n" data-count="6">6</span><span className="br">kinds of events</span></div>
+              <div className="stat"><span className="n">1,000+</span><span className="br">guests we can cater for</span></div>
             </div>
           </div>
         </div>
