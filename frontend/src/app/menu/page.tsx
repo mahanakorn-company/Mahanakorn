@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Split from '@/components/Split';
 import HeroPause from '@/components/HeroPause';
+import Media from '@/components/Media';
 import SwitchList from '@/components/SwitchList';
 import { PillLink } from '@/components/Pill';
 import { ClosingCta } from '@/components/Sections';
@@ -72,9 +73,9 @@ export default function MenuPage() {
       {/* 3. How it looks on the day */}
       <section className="panel sec" aria-labelledby="serve">
         <div className="in grid-auto" style={{ ['--gap' as string]: '48px', alignItems: 'start' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }} data-reveal>
-            <div style={{ position: 'relative', width: 72, height: 72, borderRadius: 6, overflow: 'hidden' }}><Image src={img.krapaoCard.src} alt="" fill sizes="72px" style={{ objectFit: 'cover' }} /></div>
-            <span className="cap mut">On the day</span>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+            <span className="br">On the day</span>
+            <Media image={img.krapaoCard} className="side-photo" sizes="(max-width: 700px) 90vw, 440px" />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
             <h2 id="serve" className="lit"><span>Served on banana leaf and clay plates.</span><span>A name card for every dish.</span><span>Vegan dishes clearly marked.</span><span>Enough chefs, so no long queues.</span></h2>

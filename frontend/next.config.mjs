@@ -14,8 +14,10 @@ const nextConfig = {
       { source: '/weddings', destination: '/services#weddings', permanent: true },
       { source: '/indian-weddings', destination: '/services#indian-weddings', permanent: true },
       { source: '/events', destination: '/services#parties', permanent: true },
-      { source: '/celebrations/bali', destination: '/past-events/bali', permanent: true },
-      { source: '/past-weddings/bali', destination: '/past-events/bali', permanent: true },
+      // The separate Bali story page was folded into Past Events.
+      { source: '/past-events/bali', destination: '/past-events', permanent: true },
+      { source: '/celebrations/bali', destination: '/past-events', permanent: true },
+      { source: '/past-weddings/bali', destination: '/past-events', permanent: true },
       { source: '/celebrations', destination: '/past-events', permanent: true },
       { source: '/past-weddings', destination: '/past-events', permanent: true },
       { source: '/plan-your-menu', destination: '/get-a-quote', permanent: true }

@@ -126,10 +126,8 @@ export default function PlannersPage() {
               </div>
               <div style={{ width: 170, height: 230, background: '#1C1B19', borderRadius: 8, padding: 16, display: 'flex', flexDirection: 'column', gap: 7, transform: 'rotate(2deg) translateY(14px)' }}>
                 <span className="cap" style={{ color: 'var(--smoke)' }}>Venue needs</span>
-                <span style={{ height: 7, background: '#2E2C29', borderRadius: 4 }} />
-                <span style={{ height: 7, width: '70%', background: '#2E2C29', borderRadius: 4 }} />
-                <span style={{ height: 7, width: '85%', background: '#2E2C29', borderRadius: 4 }} />
-                <span style={{ flex: 1, background: '#2E2C29', borderRadius: 5, marginTop: 6 }} />
+                <span style={{ fontSize: 10, lineHeight: 1.5, color: '#A8A29A' }}>Space per counter<br />Power and water<br />Setup time</span>
+                <div style={{ position: 'relative', flex: 1, borderRadius: 5, overflow: 'hidden', marginTop: 4 }}><Image src={img.marketSign.src} alt="" fill sizes="140px" style={{ objectFit: 'cover' }} /></div>
               </div>
             </div>
           </div>

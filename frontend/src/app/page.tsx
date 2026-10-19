@@ -119,7 +119,10 @@ export default function HomePage() {
       {/* 5. Why people choose us */}
       <section className="panel sec" aria-labelledby="why" style={{ marginTop: 'clamp(64px, 8vw, 120px)' }}>
         <div className="in grid-auto" style={{ ['--gap' as string]: '48px', alignItems: 'start' }}>
-          <span className="br">Why people choose us</span>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+            <span className="br">Why people choose us</span>
+            <Media image={img.guest} className="side-photo" sizes="(max-width: 700px) 90vw, 440px" />
+          </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
             <h2 id="why" className="lit">
               <span>Fresh ingredients, cooked in front of your guests.</span>
@@ -169,7 +172,7 @@ export default function HomePage() {
             <PillLink href={routes.pastEvents} variant="dk">See past events</PillLink>
           </div>
           <div className="grid-auto" style={{ ['--min' as string]: '280px', ['--gap' as string]: '24px', alignItems: 'start' }}>
-            <Media image={img.marketSign} href={routes.baliWedding} clip cursor="View" style={{ height: 460 }}>
+            <Media image={img.marketSign} href={routes.pastEvents} clip cursor="View" style={{ height: 460 }}>
               <div className="tag-in">
                 <span className="extra"><span>Thai food counters at the Mehendi, Sangeet and a fun fair</span></span>
                 <PillLabel>Bali · Indian wedding · 2025</PillLabel>
@@ -177,7 +180,7 @@ export default function HomePage() {
             </Media>
             <div className="rows">
               {pastEvents.map((e, i) => (
-                <TransitionLink key={e.name} className="row r4" href={i === 0 ? routes.baliWedding : routes.pastEvents}>
+                <TransitionLink key={e.name} className="row r4" href={routes.pastEvents}>
                   <span>{String(i + 1).padStart(2, '0')}</span>
                   <span style={{ display: 'flex', flexDirection: 'column' }}><span>{e.place} · {e.name}</span><span className="mut" style={{ fontSize: 13 }}>{e.kind}</span></span>
                   <span className="fmt">{e.year}</span>

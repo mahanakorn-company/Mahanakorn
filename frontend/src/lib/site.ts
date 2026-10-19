@@ -23,7 +23,6 @@ export const routes = {
   services: '/services',
   menu: '/menu',
   pastEvents: '/past-events',
-  baliWedding: '/past-events/bali',
   planners: '/planners',
   quote: '/get-a-quote',
   privacy: '/privacy'

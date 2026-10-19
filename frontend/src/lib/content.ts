@@ -23,7 +23,11 @@ export const img = {
   pineapple: { src: '/img/pineapple.jpg', alt: 'Pineapple fried rice with prawns served in a pineapple' },
   padthai: { src: '/img/padthai.jpg', alt: 'A plate of pad thai handed across a live station' },
   papaya: { src: '/img/papaya.jpg', alt: 'Shredded green papaya and carrot in a rattan basket' },
-  signGuest: { src: '/img/sign-guest.jpg', alt: 'A guest holding the Mahanakorn sign beside the food counters in Bali' }
+  signGuest: { src: '/img/sign-guest.jpg', alt: 'A guest holding the Mahanakorn sign beside the food counters in Bali' },
+  // Free-licence photos from Wikimedia Commons (credited on the Privacy page, see `photoCredits`).
+  thaiGrill: { src: '/img/thai-grill.jpg', alt: 'Glazed Thai pork skewers on a grill' },
+  thaiTea: { src: '/img/thai-tea.jpg', alt: 'A tall glass of Thai iced milk tea' },
+  privateDinner: { src: '/img/private-dinner.jpg', alt: 'A dinner table set with candles, wine glasses and folded napkins' }
 } satisfies Record<string, Img>;
 
 export type FunctionRow = { n: string; name: string; fmt: string; thumbs: [Img, Img, Img] };
@@ -89,10 +93,10 @@ export const stations: SwitchItem[] = [
   { name: 'Som tum', thai: 'ส้มตำ', image: img.somtum, text: 'Green papaya salad, made fresh for each guest in a clay pot.', tags: ['Vegan option', 'Spicy', 'Contains nuts'] },
   { name: 'Larb', thai: 'ลาบ', image: img.larb, text: 'Spicy herb salad served on a crispy rice cracker.', tags: ['Vegan option', 'Spicy'] },
   { name: 'Krapao', thai: 'กะเพรา', image: img.krapaoEgg, text: 'Thai basil stir-fry with rice, and a fried egg if you like.', tags: ['Vegan option', 'Egg-free option'] },
-  { name: 'Thai grill', thai: 'หมูปิ้ง', shot: 'Skewers over charcoal, smoke, night', text: 'Grilled skewers with a tangy dipping sauce. Pork and vegan.', tags: ['Vegan option'] },
+  { name: 'Thai grill', thai: 'หมูปิ้ง', image: img.thaiGrill, text: 'Grilled skewers with a tangy dipping sauce. Pork and vegan.', tags: ['Vegan option'] },
   { name: 'Miang kham', thai: 'เมี่ยงคำ', image: img.miang, text: 'One-bite leaf wraps with lime, ginger, peanuts and coconut.', tags: ['Vegan', 'Contains nuts'] },
   { name: 'Mango sticky rice', thai: 'ข้าวเหนียวมะม่วง', image: img.mango, text: 'Sweet mango with coconut sticky rice. Thailand’s favourite dessert.', tags: ['Vegan', 'Egg-free'] },
-  { name: 'Thai tea', thai: 'ชาไทย', shot: 'Tea pulled from height into ice', text: 'Iced Thai tea and Thai coffee.', tags: ['Vegan option'] }
+  { name: 'Thai tea', thai: 'ชาไทย', image: img.thaiTea, text: 'Iced Thai tea and Thai coffee.', tags: ['Vegan option'] }
 ];
 
 /** Sliding row of counters on the Home page. */
@@ -127,9 +131,16 @@ export const eventTypes: { id: string; name: string; image: Img; line: string; t
   { id: 'weddings', name: 'Weddings', image: img.signGuest, line: 'Destination and Indian weddings', text: 'Every event of the wedding weekend, from the welcome dinner to the farewell brunch.', serve: 'Live food counters, sit-down dinners, late-night food' },
   { id: 'parties', name: 'Parties and birthdays', image: img.canapes, line: 'Birthdays, anniversaries, engagements', text: 'Birthdays, anniversaries, engagement parties and house parties. Live cooking gives your guests something to gather around.', serve: 'Live food counters and small bites' },
   { id: 'company', name: 'Company events', image: img.baskets, line: 'Office parties, launches, team dinners', text: 'Office parties, team dinners, product launches and client evenings, for small teams or more than 1,000 guests, with clear vegetarian and allergy labels for everyone.', serve: 'Live food counters, a sit-down dinner, or small bites with drinks' },
-  { id: 'private', name: 'Private dinners', image: img.prawns, line: 'Romantic, family or business dinners', text: 'A Thai dinner made for your taste, wherever you like. Our chefs cook in front of you and tell you about the ingredients and the stories behind each dish. Good for romantic dinners, family celebrations and business dinners.', serve: 'Sit-down Thai dinner or sharing plates' },
+  { id: 'private', name: 'Private dinners', image: img.privateDinner, line: 'Romantic, family or business dinners', text: 'A Thai dinner made for your taste, wherever you like. Our chefs cook in front of you and tell you about the ingredients and the stories behind each dish. Good for romantic dinners, family celebrations and business dinners.', serve: 'Sit-down Thai dinner or sharing plates' },
   { id: 'pop-ups', name: 'Pop-ups and restaurant nights', image: img.riceSalad, line: 'Like our nights in Jakarta and Delhi', text: 'We host Thai pop-up dinners around the world, like our nights in Jakarta and Delhi. Restaurants and festivals can book us for a takeover.', serve: 'Set menus and live food counters' },
-  { id: 'consulting', name: 'Cooking sessions and advice', image: img.larb, line: 'For food lovers and businesses', text: 'One-on-one sessions with our chefs. Learn traditional Thai cooking, how to choose the right ingredients, and cook with us hands-on. We also advise restaurants and food businesses on Thai menus.', serve: 'Hands-on cooking sessions, menu advice and mentoring' }
+  { id: 'consulting', name: 'Cooking sessions and advice', image: img.chef, line: 'For food lovers and businesses', text: 'One-on-one sessions with our chefs. Learn traditional Thai cooking, how to choose the right ingredients, and cook with us hands-on. We also advise restaurants and food businesses on Thai menus.', serve: 'Hands-on cooking sessions, menu advice and mentoring' }
+];
+
+/** Credits for the photos that are not Mahanakorn's own (shown on the Privacy page). All resized for the web. */
+export const photoCredits = [
+  { what: 'Thai grill', author: 'PattayaPatrol', licence: 'CC BY-SA 4.0', licenceUrl: 'https://creativecommons.org/licenses/by-sa/4.0/', source: 'https://commons.wikimedia.org/wiki/File:DFC_2095_Savory_grilled_pork_skewers_sizzling_and_caramelized_to_a_perfect_golden-brown.jpg' },
+  { what: 'Private dinners', author: 'Till Krech', licence: 'CC BY 2.0', licenceUrl: 'https://creativecommons.org/licenses/by/2.0/', source: 'https://commons.wikimedia.org/wiki/File:Candle_light_dinner_(306970309).jpg' },
+  { what: 'Thai tea', author: 'Andy Li', licence: 'CC0 (public domain)', licenceUrl: 'https://creativecommons.org/publicdomain/zero/1.0/', source: 'https://commons.wikimedia.org/wiki/File:Thai_Red_Ice_Milk_Tea_-_Siam_Siam_2024-07-31.jpg' }
 ];
 
 /** The people behind Mahanakorn (from the company profile). */

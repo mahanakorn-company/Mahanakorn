@@ -313,6 +313,8 @@ legend { padding: 0; margin-bottom: 10px; }
 /* footer */
 .foot { background: #fff; color: var(--ink); border-radius: var(--r); padding: 36px; display: flex; flex-direction: column; gap: 40px; }
 .foot a { text-decoration: none; }
+/* The footer is a white card inside dark sections, so it must not inherit `.dark a:hover { color: #fff }`. */
+.foot a:hover, .foot a:focus-visible { color: var(--tamarind); text-decoration: underline; text-underline-offset: 3px; }
 .foot .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 28px; }
 .foot .col { display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
 .foot-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--stone); }
@@ -382,3 +384,12 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
 .team-photo img { object-fit: cover; }
 .team strong { font-size: 18px; font-weight: 600; line-height: 1.25; max-width: 260px; }
 .team li > .mut:last-child { font-size: 14px; line-height: 1.5; max-width: 240px; }
+
+/* Portrait photos beside text (Home "Why people choose us", Services "What we serve", Menu "On the day").
+   The frame matches the photos' upright shape, so nothing is cropped away or zoomed in. */
+.side-photo { width: 100%; max-width: 440px; aspect-ratio: 4 / 5; border-radius: var(--r); }
+
+/* Past Events: key facts in the featured story card. */
+.facts { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+.facts > div { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding-top: 10px; border-top: 1px solid var(--line); }
+.facts dd { margin: 0; font-size: 15px; line-height: 1.5; }

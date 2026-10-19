@@ -68,7 +68,10 @@ export default function ServicesPage() {
       {/* 1. What we serve */}
       <section className="sec" aria-labelledby="serve">
         <div className="in grid-auto" style={{ ['--gap' as string]: '48px', alignItems: 'start' }}>
-          <span className="br" data-reveal>What we serve, at any event</span>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+            <span className="br" data-reveal>What we serve, at any event</span>
+            <Media image={img.pineapple} className="side-photo" sizes="(max-width: 700px) 90vw, 440px" />
+          </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
             <h2 id="serve" className="lit"><span>Live counters, cooked in front of guests.</span><span>A sit-down Thai dinner.</span><span>Small bites with drinks.</span><span>Or a mix of all three.</span></h2>
             <p data-reveal className="lead-copy">Tell us what the event is and how many guests you expect. We suggest the right mix and send a price.</p>

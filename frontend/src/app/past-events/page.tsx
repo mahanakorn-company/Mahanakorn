@@ -14,8 +14,9 @@ export const metadata: Metadata = {
 
 const others = [
   { place: 'Jakarta', name: 'Table Tales pop-up dinner at Hause Rooftop', kind: 'Pop-up dinner', year: '2025', thumb: img.riceSalad },
-  { place: 'Jakarta', name: "Thai dinner with Queen's Tandoor", kind: 'Restaurant night', year: '2025', thumb: null },
-  { place: 'Delhi', name: 'Thai grill night at Foul Play', kind: 'Restaurant night', year: '2026', thumb: null }
+  // Mahanakorn's own dish photos for now; swap in photos from these nights when the client sends them.
+  { place: 'Jakarta', name: "Thai dinner with Queen's Tandoor", kind: 'Restaurant night', year: '2025', thumb: img.prawns },
+  { place: 'Delhi', name: 'Thai grill night at Foul Play', kind: 'Restaurant night', year: '2026', thumb: img.krapaoEgg }
 ];
 
 export default function PastEventsPage() {
@@ -33,11 +34,8 @@ export default function PastEventsPage() {
 
       {/* Featured story */}
       <section aria-labelledby="featured" className="grid-auto" style={{ ['--gap' as string]: '12px' }}>
-        <Media image={img.marketSign} href={routes.baliWedding} clip cursor="Read" priority style={{ height: 'clamp(440px, 48vw, 680px)' }}>
-          <div className="tag-in">
-            <span className="extra"><span>Read the full story</span></span>
-            <PillLabel>Bali · Indian wedding · 2025</PillLabel>
-          </div>
+        <Media image={img.marketSign} clip priority style={{ height: 'clamp(440px, 48vw, 680px)' }}>
+          <div className="tag-in"><PillLabel>Bali · Indian wedding · 2025</PillLabel></div>
         </Media>
         <div className="panel" style={{ padding: 'clamp(28px, 4vw, 56px)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 28 }}>
           <span className="br">Featured · Wedding</span>
@@ -46,8 +44,13 @@ export default function PastEventsPage() {
             <p data-reveal className="mut" style={{ lineHeight: 1.65, fontSize: 16, maxWidth: 460 }}>
               Live Thai food counters at the Mehendi, the Sangeet and a fun fair, next to the Indian caterer, with a vegan version of every dish.
             </p>
+            <dl className="facts">
+              <div><dt className="br">Dates</dt><dd>4–6 September 2025</dd></div>
+              <div><dt className="br">Events</dt><dd>Mehendi · Sangeet · Fun fair</dd></div>
+              <div><dt className="br">On the menu</dt><dd>Khao soi, som tum, larb, krapao, miang kham, mango sticky rice</dd></div>
+            </dl>
           </div>
-          <PillLink href={routes.baliWedding} variant="dk" style={{ alignSelf: 'flex-start' }}>Read the story</PillLink>
+          <PillLink href={`${routes.quote}?event=weddings`} variant="dk" style={{ alignSelf: 'flex-start' }}>Plan something similar</PillLink>
         </div>
       </section>
 
