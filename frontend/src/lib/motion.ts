@@ -101,7 +101,7 @@ export function leavePage(): Promise<void> {
 export function restoreIfStuck(since: number) {
   if (lastArrival >= since) return;
   const route = document.querySelector<HTMLElement>('.route');
-  if (route) gsap.to(route, { opacity: 1, y: 0, duration: 0.3 });
+  if (route) gsap.to(route, { opacity: 1, y: 0, duration: 0.3, clearProps: 'transform,opacity' });
 }
 
 /** Marks a new page as arrived (used by the safety net above). */

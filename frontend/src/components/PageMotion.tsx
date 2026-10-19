@@ -68,7 +68,14 @@ export default function PageMotion() {
     if (!hadCurtain) {
       markArrival();
       const route = marker.current?.closest('.route');
-      if (route) intro.fromTo(route, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' }, 0);
+      // clearProps matters: any transform left on this wrapper (even translate(0, 0)) stops the pinned gallery's
+      // position: fixed from sticking to the screen, so it would scroll away and leave a blank white screen.
+      if (route) {
+        intro.fromTo(route, { opacity: 0, y: 14 }, {
+          opacity: 1, y: 0, duration: 0.45, ease: 'power2.out', clearProps: 'transform,opacity',
+          onComplete: () => ScrollTrigger.refresh()
+        }, 0);
+      }
     }
 
     if (hero) {
@@ -241,7 +248,13 @@ export default function PageMotion() {
 
     /* ---------- recalculate once photos have loaded ---------- */
     let t: number | undefined;
-    const refresh = () => { window.clearTimeout(t); t = window.setTimeout(() => ScrollTrigger.refresh(), 150); };
+    // Never recalculate while a section is pinned (a photo further down can finish loading mid-pin): that made
+    // the pinned gallery jump. Wait until the pin is released instead.
+    const pinned = () => ScrollTrigger.getAll().some((st) => st.pin && st.isActive);
+    const refresh = () => {
+      window.clearTimeout(t);
+      t = window.setTimeout(() => (pinned() ? refresh() : ScrollTrigger.refresh()), pinned() ? 400 : 150);
+    };
     main.addEventListener('load', refresh, true);
     window.addEventListener('load', refresh);
     const ro = new ResizeObserver(refresh);
