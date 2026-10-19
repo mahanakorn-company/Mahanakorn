@@ -26,14 +26,6 @@ const jumpTo = [
   ['prices', 'Prices']
 ];
 
-const indianEvents = [
-  ['Welcome dinner', 'Thai street-food counters', 'Families meet and chat over food.'],
-  ['Mehendi', 'Fresh, light counters', 'Small bites, easy to eat with henna on your hands.'],
-  ['Haldi', 'Fruit, salads and coconut', 'Light and cool for a hot morning.'],
-  ['Sangeet', 'Thai grill and khao soi noodles', 'Filling and quick, between dances.'],
-  ['Reception', 'A Thai corner next to the buffet', 'More choice, and your caterer stays.'],
-  ['After-party', 'Late-night food', 'Pad thai and snacks after the dancing.']
-];
 const diets: [string, string, boolean][] = [
   ['Vegetarian', 'Thai without fish sauce', true],
   ['Vegan', 'Served at the Bali wedding', true],
@@ -49,8 +41,8 @@ const h2 = { fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 1, fontWeight: 500,
 const h3 = { fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 600, textTransform: 'uppercase', marginBottom: 16 } as const;
 
 /*
-  Page flow: what we serve → weddings → Indian weddings → parties, company events, private dinners, pop-ups
-  → vegetarian food → what's included and prices → a real event → questions → get a quote
+  Page flow: what we serve → weddings → Indian weddings → other events → vegetarian food
+  → what's included and prices → questions → get a quote
 */
 export default function ServicesPage() {
   return (
@@ -72,10 +64,6 @@ export default function ServicesPage() {
           {jumpTo.map(([id, label]) => <a key={id} className="pill sm ln" href={`#${id}`}>{label}</a>)}
         </div>
       </nav>
-
-      <Media as="figure" image={img.stationNight} clip priority sizes="100vw" style={{ height: 'clamp(440px, 52vw, 760px)', marginTop: 12 }}>
-        <figcaption className="cap-in"><span className="cap">Khao soi counter</span><span style={{ fontSize: 12 }}>Bali · Sept 2025</span></figcaption>
-      </Media>
 
       {/* 1. What we serve */}
       <section className="sec" aria-labelledby="serve">
@@ -127,12 +115,6 @@ export default function ServicesPage() {
             </div>
             <Media image={img.signGuest} clip style={{ height: 'clamp(360px, 36vw, 520px)' }} imgStyle={{ objectPosition: 'center 28%' }} />
           </div>
-          <div className="rows">
-            <span className="cap mut grp">What we serve at each event</span>
-            {indianEvents.map(([f, fmt, why], i) => (
-              <div key={f} className="row r4 hov"><span>{String(i + 1).padStart(2, '0')}</span><span>{f}</span><span className="fmt">{fmt}</span><span className="fmt hide" style={{ maxWidth: 320 }}>{why}</span></div>
-            ))}
-          </div>
           <div className="grid-auto" style={{ ['--min' as string]: '260px' }} data-stagger>
             <div className="panel" style={{ padding: 28, minHeight: 190, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 20 }}><span className="br">Your caterer</span><strong style={{ fontSize: 24, fontWeight: 500, lineHeight: 1.2 }}>Cooks the Indian food and the main buffet</strong></div>
             <div style={{ background: 'var(--ink)', color: '#fff', borderRadius: 12, padding: 28, minHeight: 190, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 20 }}><span className="br" style={{ color: 'var(--smoke)' }}>Mahanakorn (us)</span><strong style={{ fontSize: 24, fontWeight: 500, lineHeight: 1.2 }}>Cooks the <span className="s">Thai</span> food counters or a whole Thai event</strong></div>
@@ -174,13 +156,7 @@ export default function ServicesPage() {
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
             <span className="br" data-reveal>Vegetarian, vegan and more</span>
             <Split as="h2" id="diet-title" text="Food every guest **can eat**" style={{ fontSize: 'clamp(34px, 4.6vw, 66px)', lineHeight: 1.02, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' }} />
-            <p data-reveal className="lead-copy" style={{ maxWidth: 480 }}>Real Thai taste without fish sauce. Every counter has a vegetarian, vegan and egg-free version, at every kind of event.</p>
-          </div>
-          <div className="grid-auto" style={{ ['--min' as string]: '220px', ['--gap' as string]: '28px' }} data-stagger>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}><span className="br">01 · Our own sauces</span><p style={{ lineHeight: 1.6 }}>We make our curry pastes and sauces without fish sauce or shrimp paste. <span className="mut">To confirm.</span></p></div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}><span className="br">02 · Cooked separately</span><p style={{ lineHeight: 1.6 }}>Vegetarian food has its own pans, spoons and counter. <span className="mut">To confirm.</span></p></div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}><span className="br">03 · Egg-free desserts</span><p style={{ lineHeight: 1.6 }}>Our desserts are egg-free as standard. <span className="mut">To confirm.</span></p></div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}><span className="br">04 · Clear labels</span><p style={{ lineHeight: 1.6 }}>Every dish has a name card that shows if it is vegetarian or vegan, and how spicy it is.</p></div>
+            <p data-reveal className="lead-copy" style={{ maxWidth: 480 }}>Real Thai taste without fish sauce. Every counter has a vegetarian, vegan and egg-free version, and every dish has a label so guests know what they are eating.</p>
           </div>
           <div className="rows">
             {diets.map(([d, note, ok], i) => (
@@ -215,25 +191,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 7. A real event */}
-      <section className="pb" aria-labelledby="story">
-        <div className="in grid-auto" style={{ ['--min' as string]: '240px', ['--gap' as string]: '16px', alignItems: 'start' }}>
-          <Media image={img.guest} clip style={{ height: 460 }} />
-          <Media image={img.miang} speed={0.3} style={{ height: 220 }} />
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }} data-stagger>
-            <span className="br">A real event</span>
-            <span style={{ fontSize: 'clamp(22px, 2vw, 28px)', fontWeight: 600, textTransform: 'uppercase' }}>4–6 September 2025</span>
-            <h2 id="story" style={{ fontSize: 16, fontWeight: 600 }}>Thai food at a three-day Indian wedding in Bali</h2>
-            <p className="mut" style={{ lineHeight: 1.6, fontSize: 15 }}>Live food counters at the Mehendi, the Sangeet and a fun fair, with a vegan version of every dish.</p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
-              <PillLink href={routes.baliWedding} variant="dk">See this wedding</PillLink>
-              <PillLink href={routes.pastEvents} variant="ln">All past events</PillLink>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Questions */}
+      {/* 7. Questions */}
       <section className="pb" aria-label="Questions">
         <div className="in">
           <Faq
@@ -241,12 +199,9 @@ export default function ServicesPage() {
             items={[
               { q: 'How early should we book?', a: 'Answer to confirm with Mahanakorn.' },
               { q: 'What is the smallest event you cater?', a: 'Answer to confirm with Mahanakorn.' },
-              { q: 'Do you need a kitchen at the venue?', a: 'Answer to confirm with Mahanakorn.' },
               { q: 'Can you cook at our office or at home?', a: 'Yes. We need some space, electricity and water close by. We check this with you before the event.' },
               { q: 'Can we taste the food first?', a: 'Yes, we can arrange a tasting. Where and how is to be confirmed.' },
-              { q: "Isn't Thai food too spicy?", a: 'No. We cook every dish to your spice level, and every counter is marked mild, medium or spicy.' },
-              { q: 'What happens if it rains?', a: 'Answer to confirm with Mahanakorn.' },
-              { q: 'Do you serve alcohol?', a: 'Answer to confirm with Mahanakorn.' }
+              { q: "Isn't Thai food too spicy?", a: 'No. We cook every dish to your spice level, and every counter is marked mild, medium or spicy.' }
             ]}
           />
         </div>

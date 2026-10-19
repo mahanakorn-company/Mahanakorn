@@ -374,3 +374,11 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
 @media (max-width: 480px) {
   .brand-text > span { display: none; }
 }
+
+/* Home: Meet the team. */
+.team { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 40px 28px; width: 100%; max-width: 980px; }
+.team li { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.team-photo { position: relative; width: clamp(140px, 14vw, 180px); aspect-ratio: 1; border-radius: 50%; overflow: hidden; margin-bottom: 12px; box-shadow: 0 0 0 4px #F4F1EC, 0 0 0 5px var(--line); }
+.team-photo img { object-fit: cover; }
+.team strong { font-size: 18px; font-weight: 600; line-height: 1.25; max-width: 260px; }
+.team li > .mut:last-child { font-size: 14px; line-height: 1.5; max-width: 240px; }

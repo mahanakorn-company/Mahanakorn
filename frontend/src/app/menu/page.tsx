@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Media from '@/components/Media';
 import Split from '@/components/Split';
 import HeroPause from '@/components/HeroPause';
 import SwitchList from '@/components/SwitchList';
-import { PillLabel, PillLink } from '@/components/Pill';
+import { PillLink } from '@/components/Pill';
 import { ClosingCta } from '@/components/Sections';
 import { img, stationSets, stations } from '@/lib/content';
 import { cta, routes } from '@/lib/site';
@@ -46,15 +45,6 @@ export default function MenuPage() {
           <SwitchList items={stations} label="Food counters" hint="Tap a dish to see it" />
           <p className="br">Guests per counter and space needed: to confirm</p>
         </div>
-      </section>
-
-      <section aria-label="Photos" className="grid-auto">
-        <Media image={img.larb} href={`${routes.quote}?ask=station-menu`} clip cursor="Ask" style={{ height: 560 }}>
-          <div className="tag-in"><PillLabel>Ask for the full menu and prices</PillLabel></div>
-        </Media>
-        <Media image={img.stationNight} href={routes.baliWedding} clip cursor="View" style={{ height: 560 }}>
-          <div className="tag-in"><PillLabel>See them at a real event in Bali</PillLabel></div>
-        </Media>
       </section>
 
       {/* 2. Ready-made menus */}

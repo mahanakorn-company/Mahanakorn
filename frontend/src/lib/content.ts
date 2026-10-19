@@ -132,6 +132,13 @@ export const eventTypes: { id: string; name: string; image: Img; line: string; t
   { id: 'consulting', name: 'Cooking sessions and advice', image: img.larb, line: 'For food lovers and businesses', text: 'One-on-one sessions with our chefs. Learn traditional Thai cooking, how to choose the right ingredients, and cook with us hands-on. We also advise restaurants and food businesses on Thai menus.', serve: 'Hands-on cooking sessions, menu advice and mentoring' }
 ];
 
+/** The people behind Mahanakorn (from the company profile). */
+export const team: { name: string; role: string; about: string; image: Img }[] = [
+  { name: 'Menu', role: 'Founder', about: 'Background in banking', image: { src: '/img/team-founder.jpg', alt: 'Menu, founder of Mahanakorn, smiling at an event' } },
+  { name: "Kamonpilai 'Gink' Danwiriyatrakul", role: 'Co-founder', about: 'Nutritionist and food stylist', image: { src: '/img/team-gink.jpg', alt: 'Gink plating food at a Mahanakorn cooking session' } },
+  { name: 'Dhivesh', role: 'Co-founder', about: 'Loves cooking. Entrepreneur and social media', image: { src: '/img/team-dhivesh.jpg', alt: 'Dhivesh in a Mahanakorn apron at a cooking session' } }
+];
+
 /** Past events we can show (Home, Past Events and For Planners pages). */
 export const pastEvents = [
   { place: 'Bali', name: 'Three-day Indian wedding', kind: 'Wedding', year: '2025' },

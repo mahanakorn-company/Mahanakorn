@@ -5,15 +5,15 @@ import HeroPause from '@/components/HeroPause';
 import TransitionLink from '@/components/TransitionLink';
 import EventsCarousel from '@/components/EventsCarousel';
 import { PillLabel, PillLink } from '@/components/Pill';
-import { FooterNav } from '@/components/Sections';
+import { ClosingCta } from '@/components/Sections';
 import { ArrowRight } from '@/components/Icons';
-import { eventTypes, img, pastEvents, stationStrip, steps } from '@/lib/content';
+import { eventTypes, img, pastEvents, stationStrip, steps, team } from '@/lib/content';
 import { cta, routes } from '@/lib/site';
 
 /*
   Home page flow (one simple story):
-  1 What we do  2 Who we are  3 Events we cater  4 Our food counters  5 Ways we serve
-  6 Why people choose us  7 How it works  8 Past events  9 We come to you + footer  10 Get a quote
+  1 What we do  2 Who we are  3 Events we cater  4 Our food counters  5 Why people choose us
+  6 How it works  7 Past events  8 Meet the team  9 Get a quote + footer
 */
 export default function HomePage() {
   return (
@@ -116,42 +116,10 @@ export default function HomePage() {
         </section>
       </div>
 
-      {/* 5. Ways we serve */}
-      <section aria-labelledby="ways" style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 'clamp(64px, 8vw, 120px)' }}>
-        <div className="in" style={{ display: 'flex', flexDirection: 'column', gap: 12, paddingBottom: 24 }}>
-          <span className="br">How we serve</span>
-          <Split id="ways" text="Three ways *to serve*" style={{ fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 1, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' }} />
-        </div>
-        <div className="grid-auto">
-          <Media image={img.baskets} href={routes.menu} clip cursor="View" style={{ height: 'clamp(420px, 40vw, 600px)' }}>
-            <div className="tag-in">
-              <span className="extra"><span>Cooked fresh in front of your guests</span></span>
-              <PillLabel>Live food counters</PillLabel>
-            </div>
-          </Media>
-          <Media image={img.prawns} href={`${routes.services}#private`} clip cursor="View" style={{ height: 'clamp(420px, 40vw, 600px)' }}>
-            <div className="tag-in">
-              <span className="extra"><span>Served at the table, course by course</span></span>
-              <PillLabel>Sit-down Thai dinners</PillLabel>
-            </div>
-          </Media>
-          <Media image={img.canapes} href={`${routes.services}#parties`} clip cursor="View" style={{ height: 'clamp(420px, 40vw, 600px)' }}>
-            <div className="tag-in">
-              <span className="extra"><span>For drinks, parties and late nights</span></span>
-              <PillLabel>Small bites and late-night food</PillLabel>
-            </div>
-          </Media>
-        </div>
-      </section>
-
-      {/* 6. Why people choose us */}
+      {/* 5. Why people choose us */}
       <section className="panel sec" aria-labelledby="why" style={{ marginTop: 'clamp(64px, 8vw, 120px)' }}>
         <div className="in grid-auto" style={{ ['--gap' as string]: '48px', alignItems: 'start' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-            <span className="br">Why people choose us</span>
-            <Media image={img.chef} clip style={{ height: 'clamp(320px, 32vw, 460px)' }} imgStyle={{ objectPosition: '60% 40%' }} />
-            <span className="br">The Mahanakorn team, Bangkok · team photo to come</span>
-          </div>
+          <span className="br">Why people choose us</span>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
             <h2 id="why" className="lit">
               <span>Fresh ingredients, cooked in front of your guests.</span>
@@ -168,7 +136,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. How it works */}
+      {/* 6. How it works */}
       <section className="sec" aria-labelledby="how">
         <div className="in" style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: 20 }}>
@@ -190,7 +158,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. Past events */}
+      {/* 7. Past events */}
       <section className="pb" aria-labelledby="past">
         <div className="in" style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: 20 }}>
@@ -221,40 +189,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 9. We come to you + footer */}
-      <section className="dark" data-dark aria-labelledby="where" style={{ padding: '20px 20px 0', display: 'flex', flexDirection: 'column', gap: 12 }}>
-        <div aria-hidden="true" className="grid-auto" style={{ ['--min' as string]: '140px', ['--gap' as string]: '10px', alignItems: 'start', paddingTop: 40 }}>
-          {[[img.chilli, 0.2, 170], [img.larb, 0.6, 230], [img.baskets, 0.35, 310], [img.miang, 0.75, 200], [img.krapaoCard, 0.3, 170], [img.mango, 0.55, 250]].map(([im, sp, h], i) => (
-            <Media key={i} image={im as typeof img.chilli} decorative speed={sp as number} sizes="200px" style={{ height: h as number, borderRadius: 8 }} />
-          ))}
-        </div>
-        <p aria-hidden="true" className="giant" data-marquee style={{ marginTop: 40 }}>
-          Maha<span className="s" style={{ letterSpacing: '-.02em' }}>nakorn</span> · Thai catering <span className="s">for every event</span>
-        </p>
-        <div className="grid-auto" style={{ ['--gap' as string]: '40px', padding: '90px 20px 70px', alignItems: 'start' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
-            <span className="br">We come to you</span>
-            <Split id="where" text="We bring the team and the food to your venue." style={{ fontSize: 'clamp(26px, 2.6vw, 36px)', fontWeight: 500, lineHeight: 1.25, maxWidth: 480 }} />
-            <p data-reveal className="mut" style={{ lineHeight: 1.6, fontSize: 15, maxWidth: 420 }}>Hotels, villas, rooftops, offices and restaurants. We plan everything with you, or with your event planner.</p>
-            <PillLink href={routes.quote} style={{ alignSelf: 'flex-start' }}>{cta.quote}</PillLink>
+      {/* 8. Meet the team */}
+      <section className="sec" aria-labelledby="team" style={{ paddingTop: 0 }}>
+        <div className="in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 40, textAlign: 'center' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
+            <span className="br">Meet the team</span>
+            <Split id="team" text="The people *behind Mahanakorn*" style={{ fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 1, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' }} />
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <ul className="lit" data-on="#FFFFFF" data-off="#5E5B57" style={{ fontSize: 'clamp(36px, 3.8vw, 54px)', lineHeight: 1.12 }}>
-              <li>Bangkok</li><li>Bali</li><li>Jakarta</li><li>Delhi</li><li className="s">your venue</li>
-            </ul>
-          </div>
+          <ul className="team" data-stagger>
+            {team.map((p) => (
+              <li key={p.name}>
+                <span className="team-photo"><Image src={p.image.src} alt={p.image.alt} fill sizes="180px" /></span>
+                <span className="cap mut">{p.role}</span>
+                <strong>{p.name}</strong>
+                <span className="mut">{p.about}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-        <FooterNav />
       </section>
 
-      {/* 10. Get a quote */}
-      <section className="dark" data-dark aria-labelledby="closing" style={{ padding: '72px 20px 64px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 40, textAlign: 'center' }}>
-        <h2 id="closing" data-grow style={{ fontSize: 'clamp(46px, 8vw, 128px)', lineHeight: 0.92, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.035em' }}>
-          Planning<br /><span className="s">an event?</span>
-        </h2>
-        <p className="mut" style={{ maxWidth: 440, lineHeight: 1.6 }}>Tell us the type of event, date, place and number of guests. We reply with a menu idea and a price.</p>
-        <PillLink href={routes.quote}>{cta.quote}</PillLink>
-      </section>
+      {/* 9. Get a quote + footer (small) */}
+      <ClosingCta label="Planning an event?" title="Let's cook *for your guests*" text="Tell us the type of event, date, place and number of guests. We reply with a menu idea and a price." />
     </>
   );
 }

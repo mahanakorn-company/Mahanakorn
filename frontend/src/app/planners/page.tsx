@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Media, { Thumb } from '@/components/Media';
+import Media from '@/components/Media';
 import Split from '@/components/Split';
-import TransitionLink from '@/components/TransitionLink';
 import PlannerPackForm from '@/components/forms/PlannerPackForm';
 import { PillLink } from '@/components/Pill';
 import { Faq, FooterNav, PageTitle } from '@/components/Sections';
@@ -61,7 +60,6 @@ export default function PlannersPage() {
             <Media image={img.padthai} clip style={{ height: 240 }} />
           </div>
         </div>
-        <p aria-hidden="true" className="giant" data-marquee>for <span className="s">planners</span> · for <span className="s">venues</span></p>
       </section>
 
       <section className="sec" aria-labelledby="specs">
@@ -91,23 +89,6 @@ export default function PlannersPage() {
               <span className="mut">guests: to confirm</span>
             </div>
           ))}
-        </div>
-      </section>
-
-      <section className="pb" aria-labelledby="cooked">
-        <div className="in rows">
-          <Split id="cooked" text="Where *we've* cooked" style={{ fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 600, textTransform: 'uppercase', marginBottom: 16 }} />
-          <span className="cap mut grp">Bali</span>
-          <TransitionLink className="row" href={routes.baliWedding}>
-            <span>01</span><span>Three-day Indian wedding</span><span className="fmt">2025</span>
-            <span className="thumbs" aria-hidden="true"><span className="more"><Thumb image={img.guest} /></span><Thumb image={img.marketSign} /></span>
-            <span className="go" aria-hidden="true"><ArrowRight /></span>
-          </TransitionLink>
-          <span className="cap mut grp">Jakarta</span>
-          <div className="row hov"><span>01</span><span>Hause Rooftop · Table Tales</span><span className="fmt">2025</span><span className="thumbs" aria-hidden="true"><Thumb image={img.riceSalad} /></span><span /></div>
-          <div className="row hov"><span>02</span><span>Queen&apos;s Tandoor · Thai dinner</span><span className="fmt">2025</span><span className="thumbs" aria-hidden="true"><span className="tb ph">Photo</span></span><span /></div>
-          <span className="cap mut grp">Delhi</span>
-          <div className="row hov"><span>01</span><span>Foul Play · Thai grill night</span><span className="fmt">2026</span><span className="thumbs" aria-hidden="true"><span className="tb ph">Photo</span></span><span /></div>
         </div>
       </section>
 

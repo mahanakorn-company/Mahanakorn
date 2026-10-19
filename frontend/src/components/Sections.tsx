@@ -120,19 +120,19 @@ export function FooterNav() {
   );
 }
 
-/** Dark closing section with a big heading, the two main actions and the footer. */
+/** Small dark closing section: a short heading, the two main actions and the footer. */
 export function ClosingCta({ label = 'Ready when you are', title, text }: { label?: string; title: string; text?: string }) {
   const wa = whatsappLink();
   return (
-    <section className="dark" data-dark aria-label={cta.quote} style={{ padding: 'clamp(80px, 8vw, 130px) 20px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28, textAlign: 'center' }}>
+    <section className="dark" data-dark aria-label={cta.quote} style={{ padding: 'clamp(48px, 5vw, 72px) 20px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
       <span className="br">{label}</span>
-      <Split as="h2" text={title} style={{ fontSize: 'clamp(46px, 7.4vw, 116px)', lineHeight: 0.94, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.03em' }} />
+      <Split as="h2" text={title} style={{ fontSize: 'clamp(30px, 4vw, 56px)', lineHeight: 1, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.02em' }} />
       {text && <p data-reveal className="mut" style={{ maxWidth: 420, lineHeight: 1.6 }}>{text}</p>}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center' }}>
         <PillLink href={routes.quote}>{cta.quote}</PillLink>
         {wa && <PillLink href={wa} variant="wa">WhatsApp</PillLink>}
       </div>
-      <div style={{ width: '100%', marginTop: 70, textAlign: 'left' }}>
+      <div style={{ width: '100%', marginTop: 40, textAlign: 'left' }}>
         <FooterNav />
       </div>
     </section>
