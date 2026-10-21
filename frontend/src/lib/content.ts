@@ -26,7 +26,7 @@ export const img = {
   smoked: { src: '/img/smoked.jpg', alt: 'A glass smoke cloche lifted from a drink at a guest table' },
   menuHero: { src: '/img/menu-hero.jpg', alt: 'Larb on crispy rice crackers, laid out on banana leaf on a wooden tray' },
   signGuest: { src: '/img/sign-guest.jpg', alt: 'A guest holding the Mahanakorn sign beside the food counters in Bali' },
-  fineDining: { src: '/img/fine-dining.jpg', alt: 'Blue flower-shaped Thai dumplings on white plates, garnished with coriander' }
+  fineDining: { src: '/img/fine-dining-mango.jpg', alt: 'Mango sticky rice with green sticky rice, gold leaf, coconut ice cream and an edible flower on a white plate' }
 } satisfies Record<string, Img>;
 
 export type FunctionRow = { n: string; name: string; fmt: string; thumbs: [Img, Img, Img] };
@@ -172,7 +172,7 @@ export const eventTypes: { id: string; name: string; image: Img; line: string; t
 
 /** OUR TEAM, exactly as on the client's slide (team.jpg), including its capitals. */
 export const team: { role: string; lines: string[]; image: Img }[] = [
-  { role: 'FOUNDER', lines: ['MENU - BANKER'], image: { src: '/img/team-founder.jpg', alt: 'Menu, founder of Mahanakorn' } },
+  { role: 'FOUNDER', lines: ['MEENU - BANKER'], image: { src: '/img/team-founder.jpg', alt: 'Meenu, founder of Mahanakorn' } },
   { role: 'CO FOUNDER', lines: ["KAMONPILAI 'GINK' DANWIRIYATRAKUL", 'NUTRITIONIST & FOOD STYLIST'], image: { src: '/img/team-gink.jpg', alt: "Kamonpilai 'Gink' Danwiriyatrakul, co-founder of Mahanakorn" } },
   { role: 'CO FOUNDER', lines: ['DHIVESH - PASSION IN CULINARY, ENTREPRENEUR, SOCIAL MEDIA'], image: { src: '/img/team-dhivesh.jpg', alt: 'Dhivesh, co-founder of Mahanakorn' } }
 ];
