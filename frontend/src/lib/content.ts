@@ -26,8 +26,7 @@ export const img = {
   smoked: { src: '/img/smoked.jpg', alt: 'A glass smoke cloche lifted from a drink at a guest table' },
   menuHero: { src: '/img/menu-hero.jpg', alt: 'Larb on crispy rice crackers, laid out on banana leaf on a wooden tray' },
   signGuest: { src: '/img/sign-guest.jpg', alt: 'A guest holding the Mahanakorn sign beside the food counters in Bali' },
-  // Free-licence photos from Wikimedia Commons (credited on the Privacy page, see `photoCredits`).
-  privateDinner: { src: '/img/private-dinner.jpg', alt: 'A dinner table set with candles, wine glasses and folded napkins' }
+  fineDining: { src: '/img/fine-dining.jpg', alt: 'Blue flower-shaped Thai dumplings on white plates, garnished with coriander' }
 } satisfies Record<string, Img>;
 
 export type FunctionRow = { n: string; name: string; fmt: string; thumbs: [Img, Img, Img] };
@@ -170,12 +169,7 @@ export const eventTypes: { id: string; name: string; image: Img; line: string; t
   { id: 'weddings', name: 'Destination Weddings', image: img.signGuest, line: 'Destination and Indian weddings', text: 'Every event of the wedding weekend, from the welcome dinner to the farewell brunch.', serve: 'Live food counters, sit-down dinners, late-night food' },
   { id: 'parties', name: 'Private Events', image: img.canapes, line: 'Customized Menus', text: 'Birthdays, anniversaries, engagement parties and house parties.', serve: 'Live food counters and small bites' },
   { id: 'company', name: 'Corporate Events', image: img.baskets, line: 'Large Scale Capacity', text: 'Office parties, team dinners, product launches and client evenings.', serve: 'Live food counters, a sit-down dinner, or small bites with drinks' },
-  { id: 'private', name: 'Fine Dining', image: img.privateDinner, line: 'Personalized Culinary Services', text: profile.privateDining[0].text, serve: 'Sit-down Thai dinner or sharing plates' }
-];
-
-/** Credits for the photos that are not Mahanakorn's own (shown on the Privacy page). All resized for the web. */
-export const photoCredits = [
-  { what: 'Fine Dining', author: 'Till Krech', licence: 'CC BY 2.0', licenceUrl: 'https://creativecommons.org/licenses/by/2.0/', source: 'https://commons.wikimedia.org/wiki/File:Candle_light_dinner_(306970309).jpg' }
+  { id: 'private', name: 'Fine Dining', image: img.fineDining, line: 'Personalized Culinary Services', text: profile.privateDining[0].text, serve: 'Sit-down Thai dinner or sharing plates' }
 ];
 
 /** OUR TEAM, exactly as on the client's slide (team.jpg), including its capitals. */

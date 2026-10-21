@@ -114,7 +114,6 @@ export function FooterNav() {
         <span>© {new Date().getFullYear()} {site.name}, Bangkok</span>
         <span style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
           <TransitionLink href={routes.privacy}>Privacy</TransitionLink>
-          <TransitionLink href={`${routes.privacy}#credits`}>Photo credits</TransitionLink>
           <a href={site.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
         </span>
       </div>

@@ -62,7 +62,7 @@ export default function HomePage() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <span className="br">Events we cater</span>
               <Split id="events" text="Diverse *Catering Services*" style={{ fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 1, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' }} />
-              <p data-reveal className="lead-copy" style={{ maxWidth: 520 }}>{profile.pillars[2].text}</p>
+              <p data-reveal className="lead-copy" style={{ maxWidth: 520 }}>Destination Weddings, Private Events, Corporate Events, Fine Dining</p>
             </div>
             <PillLink href={routes.services} variant="dk">See our services</PillLink>
           </div>
@@ -174,7 +174,7 @@ export default function HomePage() {
       </section>
 
       {/* 9. Get a quote + footer (small) */}
-      <ClosingCta label="Planning an event?" title="Let's cook *for your guests*" text="Tell us the type of event, date, place and number of guests. We reply with a menu idea and a price." />
+      <ClosingCta label="Planning an event?" title="Let's create an experience *for your guests*" text="Tell us the type of event, date, place and number of guests. We reply with a menu idea and a price." />
     </>
   );
 }
