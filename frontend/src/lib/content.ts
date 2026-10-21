@@ -105,9 +105,7 @@ export const stationStrip: { name: string; thai: string; line: string; image: Im
   { name: 'Larb', thai: 'ลาบ', line: 'Herb salad on crispy rice', image: img.canapes },
   { name: 'Krapao', thai: 'กะเพรา', line: 'Thai basil, rice, fried egg', image: img.krapaoEgg },
   { name: 'Miang kham', thai: 'เมี่ยงคำ', line: 'One-bite leaf wraps', image: img.miang },
-  { name: 'Mango sticky rice', thai: 'ข้าวเหนียวมะม่วง', line: 'Mango and coconut rice', image: img.mango },
-  { name: 'Rice salad', thai: 'ข้าวยำ', line: 'Blue rice with herbs', image: img.riceSalad },
-  { name: 'Late night', thai: 'ผัดไทย', line: 'Pad thai at 1 a.m.', image: img.padthai }
+  { name: 'Mango sticky rice', thai: 'ข้าวเหนียวมะม่วง', line: 'Mango and coconut rice', image: img.mango }
 ];
 
 /** Ready-made counter menus (Our Menu page). */
