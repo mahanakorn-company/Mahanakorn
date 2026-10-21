@@ -135,7 +135,7 @@ export const profile = {
   pillars: [
     { title: 'Authentic Thai Cuisine', text: 'MAHANAKORN delivers the greatest tasting authentic Thai food with passion and excellence.' },
     { title: 'Global Pop-Up Events', text: 'Hosts pop-up events worldwide, showcasing culinary expertise and expanding presence.' },
-    { title: 'Diverse Catering Services', text: 'Covers weddings, private parties, and corporate functions with flexible, high-quality service.' },
+    { title: 'Diverse Catering Services', text: 'Covers weddings, private parties, and corporate events with flexible, high-quality service.' },
     { title: 'Cultural Heritage Focus', text: 'Every event is infused with rich Thai flavors and cultural heritage for memorable experiences.' }
   ],
   // The first heading is partly hidden under the slide title: "Comm… ty", about 28 characters wide, so "Commitment to Sustainability".
