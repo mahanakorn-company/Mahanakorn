@@ -397,3 +397,92 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
 .points > div { display: flex; flex-direction: column; gap: 6px; padding-top: 14px; border-top: 1px solid var(--line); }
 .points dt { font-weight: 600; font-size: 16px; }
 .points dd { margin: 0; color: var(--stone); font-size: 15px; line-height: 1.6; }
+
+/* ===================================================================================================
+   Our Services page: editorial service sections (app/services/page.tsx)
+   One grid, one label style, one title style, one primary button ("Get a quote"), real photos only.
+   =================================================================================================== */
+.svc-label { display: flex; align-items: center; gap: 12px; font: 600 11px/1.3 var(--f-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--stone); }
+.svc-n { color: var(--ink); }
+.svc-rule { width: 28px; height: 1px; background: currentColor; opacity: 0.5; }
+.svc-title { font-size: clamp(40px, 4.4vw, 66px); line-height: 0.98; font-weight: 500; text-transform: uppercase; letter-spacing: -0.02em; }
+.svc-subtitle { font-size: clamp(28px, 2.8vw, 40px); line-height: 1.05; font-weight: 500; text-transform: uppercase; letter-spacing: -0.015em; }
+.svc-lead { font-size: clamp(16px, 1.25vw, 18px); line-height: 1.65; color: #4b4741; max-width: 480px; }
+.svc-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; margin-top: 8px; }
+.svc-link { display: inline-flex; align-items: center; gap: 8px; font: 600 11px/1 var(--f-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); text-decoration: none; padding-block: 8px; border-bottom: 1px solid var(--line); transition: border-color 0.3s, color 0.3s; }
+.svc-link span { display: inline-flex; transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.svc-link:hover { color: var(--tamarind); border-color: currentColor; }
+.svc-link:hover span { transform: translateX(4px); }
+
+/* Intro photo */
+.svc-hero { padding-top: clamp(28px, 4vw, 56px); }
+.svc-hero-photo { position: relative; margin: 0; aspect-ratio: 21 / 9; border-radius: var(--r); overflow: hidden; background: #e9e4db; }
+.svc-hero-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px; padding-top: clamp(24px, 3vw, 36px); border-bottom: 1px solid var(--line); padding-bottom: clamp(24px, 3vw, 36px); }
+.svc-hero-line { font-family: var(--f-serif); font-style: italic; font-size: clamp(22px, 2.3vw, 32px); line-height: 1.3; max-width: 720px; }
+
+/* Catering Services: heading left, the four points right */
+.svc-intro { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
+.svc-intro-head { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.svc-points { display: grid; gap: 0; }
+.svc-points > div { display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-top: 1px solid var(--line); }
+.svc-points > div:last-child { border-bottom: 1px solid var(--line); }
+.svc-points dt { font-weight: 600; font-size: 16px; }
+.svc-points dd { margin: 0; color: #4b4741; font-size: 15px; line-height: 1.65; }
+.svc-points-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(24px, 3vw, 48px); }
+.svc-points-2 > div:nth-last-child(2) { border-bottom: 1px solid var(--line); }
+
+/* A service: photo 6/12, text 5/12, alternating sides; thin divider between services */
+.svc { padding-block: clamp(56px, 7vw, 112px); }
+.svc + .svc .svc-grid, .svc-detail + .svc .svc-grid { border-top: 1px solid var(--line); padding-top: clamp(56px, 7vw, 112px); }
+.svc-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(20px, 3vw, 48px); align-items: center; }
+.svc-photo { position: relative; margin: 0; grid-column: 1 / span 6; grid-row: 1; aspect-ratio: 4 / 5; max-height: 760px; width: 100%; border-radius: var(--r); overflow: hidden; background: #e9e4db; }
+.svc-photo img { transition: transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.svc-photo:hover img { transform: scale(1.03); }
+.svc-text { grid-column: 8 / span 5; grid-row: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 22px; }
+.svc-flip .svc-photo { grid-column: 7 / span 6; }
+.svc-flip .svc-text { grid-column: 1 / span 5; }
+.svc-meta { width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: 6px; padding-top: 16px; border-top: 1px solid var(--line); }
+.svc-meta dd { margin: 0; font-size: 15px; line-height: 1.55; }
+.svc-options { width: 100%; max-width: 480px; }
+.svc-options > div { display: flex; flex-direction: column; gap: 6px; padding: 16px 0; border-top: 1px solid var(--line); }
+.svc-options > div:last-child { border-bottom: 1px solid var(--line); }
+.svc-options dd { margin: 0; display: flex; flex-direction: column; gap: 2px; }
+.svc-options strong { font-weight: 600; font-size: 16px; }
+.svc-options dd span { color: #4b4741; font-size: 15px; }
+.svc .svc-points { width: 100%; max-width: 480px; }
+
+/* Destination Weddings, in detail */
+.svc-detail { padding-bottom: clamp(56px, 7vw, 112px); }
+.svc-detail-panel { padding: clamp(28px, 4vw, 56px); display: flex; flex-direction: column; gap: 18px; }
+.svc-indian { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(20px, 3vw, 48px); align-items: center; }
+.svc-indian-text { grid-column: 1 / span 7; display: flex; flex-direction: column; align-items: flex-start; gap: 22px; }
+.svc-photo-sm { grid-column: 9 / span 4; max-height: 560px; }
+.svc-roles { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.svc-roles > div { display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid var(--line); }
+.svc-roles p { font-size: 17px; line-height: 1.35; font-weight: 500; }
+.svc-role-us { border-top-color: var(--tamarind) !important; }
+.svc-role-us .cap { color: var(--tamarind); }
+.svc-note { width: 100%; padding: 16px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.svc-note p { font-size: 15px; line-height: 1.6; color: #4b4741; }
+.svc-note strong { color: var(--ink); font-weight: 600; }
+
+/* Vegetarian food and venue */
+.svc-diet { padding: clamp(32px, 5vw, 72px); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.svc-diet-head { display: flex; flex-direction: column; gap: 20px; }
+.svc-venue { display: flex; flex-direction: column; gap: clamp(40px, 5vw, 64px); }
+.svc-included { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); }
+.svc-included > div { display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid var(--line); }
+.svc-included dd { margin: 0; font-size: 16px; line-height: 1.6; }
+
+@media (max-width: 900px) {
+  .svc-intro, .svc-diet { grid-template-columns: 1fr; }
+  .svc-points-2 { grid-template-columns: 1fr; }
+  .svc-points-2 > div:nth-last-child(2) { border-bottom: 0; }
+  .svc-grid, .svc-indian { grid-template-columns: 1fr; row-gap: 28px; }
+  .svc-photo, .svc-flip .svc-photo, .svc-photo-sm { grid-column: 1; grid-row: 1; max-height: 70vh; }
+  .svc-text, .svc-flip .svc-text, .svc-indian-text { grid-column: 1; grid-row: 2; }
+  .svc-photo-sm { aspect-ratio: 4 / 3; }
+  .svc-roles, .svc-included { grid-template-columns: 1fr; }
+  .svc-hero-photo { aspect-ratio: 4 / 3; }
+  .svc-actions .pill { min-height: 50px; }
+}

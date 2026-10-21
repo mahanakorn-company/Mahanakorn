@@ -23,6 +23,7 @@ export const img = {
   pineapple: { src: '/img/pineapple.jpg', alt: 'Pineapple fried rice with prawns served in a pineapple' },
   padthai: { src: '/img/padthai.jpg', alt: 'A plate of pad thai handed across a live station' },
   papaya: { src: '/img/papaya.jpg', alt: 'Shredded green papaya and carrot in a rattan basket' },
+  smoked: { src: '/img/smoked.jpg', alt: 'A glass smoke cloche lifted from a drink at a guest table' },
   signGuest: { src: '/img/sign-guest.jpg', alt: 'A guest holding the Mahanakorn sign beside the food counters in Bali' },
   // Free-licence photos from Wikimedia Commons (credited on the Privacy page, see `photoCredits`).
   thaiGrill: { src: '/img/thai-grill.jpg', alt: 'Glazed Thai pork skewers on a grill' },

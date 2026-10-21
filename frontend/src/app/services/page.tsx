@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
-import Media from '@/components/Media';
+import type { ReactNode } from 'react';
+import Image from 'next/image';
 import Split from '@/components/Split';
 import SwitchList from '@/components/SwitchList';
 import TransitionLink from '@/components/TransitionLink';
-import { PillLabel, PillLink } from '@/components/Pill';
+import { PillLink } from '@/components/Pill';
 import { ClosingCta, Faq, PageTitle } from '@/components/Sections';
-import { eventTypes, functions, img, profile } from '@/lib/content';
+import { ArrowRight } from '@/components/Icons';
+import { eventTypes, functions, img, profile, type Img } from '@/lib/content';
 import { cta, routes } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -14,11 +16,7 @@ export const metadata: Metadata = {
   alternates: { canonical: routes.services }
 };
 
-// Weddings get the long section; every other kind of event gets one block.
-const others = eventTypes.filter((e) => e.id !== 'weddings');
-// Fine Dining shows the client's four Private Dining Experiences points (company profile).
-const pointsFor: Record<string, { title: string; text: string }[]> = { private: profile.privateDining };
-
+const service = (id: string) => eventTypes.find((e) => e.id === id)!;
 
 const diets: [string, string, boolean][] = [
   ['Vegetarian', 'Thai without fish sauce', true],
@@ -30,14 +28,47 @@ const diets: [string, string, boolean][] = [
 ];
 const venueNeeds = [['Space for each food counter', 'to confirm'], ['Electricity or gas', 'to confirm'], ['Water close to the counters', 'Needed'], ['Time to set up before serving', 'to confirm']];
 
-const h2 = { fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 1, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' } as const;
-const h3 = { fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 600, textTransform: 'uppercase', marginBottom: 16 } as const;
+/** A secondary action: a small text link with an arrow (the one primary action is always "Get a quote"). */
+function TextLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <TransitionLink className="svc-link" href={href}>
+      {children} <span aria-hidden="true"><ArrowRight size={11} /></span>
+    </TransitionLink>
+  );
+}
+
+/** One service: a large real photograph beside its number, name, existing description and the quote button. */
+function ServiceBlock({ id, n, tagline, title, image, imagePosition, flip, quote, children }: {
+  id: string; n: string; tagline: string; title: string; image: Img; imagePosition?: string; flip?: boolean; quote: string; children: ReactNode;
+}) {
+  return (
+    <section id={id} className={`svc anchor${flip ? ' svc-flip' : ''}`} aria-labelledby={`${id}-title`}>
+      <div className="in svc-grid">
+        <figure className="svc-photo" data-reveal>
+          <Image src={image.src} alt={image.alt} fill sizes="(max-width: 900px) 92vw, 46vw" style={{ objectFit: 'cover', objectPosition: imagePosition || 'center' }} />
+        </figure>
+        <div className="svc-text" data-stagger>
+          <p className="svc-label"><span className="svc-n">{n}</span><span className="svc-rule" aria-hidden="true" /><span>{tagline}</span></p>
+          <Split as="h2" id={`${id}-title`} className="svc-title" text={title} />
+          {children}
+          <div className="svc-actions">
+            <PillLink href={quote} variant="dk">{cta.quote}</PillLink>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 /*
-  Page flow: Catering Services → Destination Weddings (with Indian weddings) → Private Events, Corporate Events,
-  Fine Dining → vegetarian food → what's included and venue needs (prices only on request) → questions → get a quote
+  Page flow: intro (title, photo, one line, quote) → Catering Services → 01 Destination Weddings (wedding events,
+  Indian weddings) → 02 Private Events → 03 Corporate Events → 04 Fine Dining → vegetarian food
+  → what's included and venue needs (prices only on request) → questions → get a quote
 */
 export default function ServicesPage() {
+  const parties = service('parties');
+  const company = service('company');
+
   return (
     <>
       <PageTitle
@@ -49,126 +80,131 @@ export default function ServicesPage() {
         ]}
       />
 
-      {/* 1. Catering Services (client's wording only) */}
-      <section id="catering" className="sec anchor" aria-labelledby="serve">
-        <div className="in grid-auto" style={{ ['--gap' as string]: '48px', alignItems: 'start' }}>
-          <Media image={img.chef} className="side-photo" sizes="(max-width: 700px) 90vw, 440px" />
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-            <Split as="h2" id="serve" text="Catering *Services*" style={h2} />
-            <dl className="points" data-stagger>
-              {profile.catering.map((p) => <div key={p.title}><dt>{p.title}</dt><dd>{p.text}</dd></div>)}
-            </dl>
-            <PillLink href={routes.menu} variant="dk" style={{ alignSelf: 'flex-start' }}>See our menu</PillLink>
+      {/* Intro: one strong photograph, the existing line and the quote button */}
+      <section className="svc-hero" aria-label="Diverse Catering Services">
+        <div className="in">
+          <figure className="svc-hero-photo">
+            <Image src={img.marketSign.src} alt={img.marketSign.alt} fill priority sizes="(max-width: 1240px) 96vw, 1180px" style={{ objectFit: 'cover', objectPosition: 'center 55%' }} />
+          </figure>
+          <div className="svc-hero-foot">
+            <p className="svc-hero-line" data-reveal>{profile.pillars[2].text}</p>
+            <PillLink href={routes.quote} variant="dk">{cta.quote}</PillLink>
           </div>
         </div>
       </section>
 
-      {/* 2. Weddings */}
-      <section id="weddings" className="anchor" aria-labelledby="weddings-title" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-        <div className="in" style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 680, paddingBottom: 24 }}>
-          <span className="br">01 · Destination Weddings</span>
-          <Split as="h2" id="weddings-title" text="Thai food for *your wedding*" style={h2} />
-          <p data-reveal className="lead-copy">Book us for one event or the whole weekend. We work next to your main caterer, and every guest finds something to eat.</p>
-        </div>
-        <div className="grid-auto">
-          <Media image={img.marketSign} href={routes.menu} clip cursor="View" style={{ height: 'clamp(420px, 40vw, 600px)' }}>
-            <span className="cap" style={{ position: 'absolute', left: 20, top: 20, color: '#fff', zIndex: 2 }}>Option 1 · Most popular</span>
-            <div className="tag-in"><span className="extra"><span>Added next to your Indian or main caterer</span></span><PillLabel>Thai food counters at your wedding</PillLabel></div>
-          </Media>
-          <Media image={img.riceSalad} href={`${routes.quote}?event=weddings`} clip cursor="Ask" style={{ height: 'clamp(420px, 40vw, 600px)' }}>
-            <span className="cap" style={{ position: 'absolute', left: 20, top: 20, color: '#fff', zIndex: 2 }}>Option 2</span>
-            <div className="tag-in"><span className="extra"><span>Welcome dinner, reception or brunch</span></span><PillLabel>We cater a whole event</PillLabel></div>
-          </Media>
+      {/* Catering Services: the client's four points, text only */}
+      <section id="catering" className="sec anchor" aria-labelledby="catering-title">
+        <div className="in svc-intro">
+          <div className="svc-intro-head">
+            <p className="svc-label"><span>{profile.pillars[2].title}</span></p>
+            <Split as="h2" id="catering-title" className="svc-title" text="Catering *Services*" />
+            <TextLink href={routes.menu}>See our menu</TextLink>
+          </div>
+          <dl className="svc-points svc-points-2" data-stagger>
+            {profile.catering.map((p) => <div key={p.title}><dt>{p.title}</dt><dd>{p.text}</dd></div>)}
+          </dl>
         </div>
       </section>
 
-      <section className="panel sec-sm" aria-label="Food for each wedding event" style={{ marginTop: 12 }}>
-        <div className="in" style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-          <p className="lead-copy" style={{ maxWidth: 560 }}>Here is what we usually serve at each wedding event. Tap an event to see it.</p>
-          <SwitchList items={functions} label="Wedding events" hint="Tap an event" initial={1} small link={{ href: `${routes.quote}?event=weddings&ask=sample-menu`, label: 'Ask for a sample menu' }} />
+      {/* 01 Destination Weddings */}
+      <ServiceBlock id="weddings" n="01" tagline="Thai food for your wedding" title="Destination *Weddings*" image={img.signGuest} imagePosition="center 30%" quote={`${routes.quote}?event=weddings`}>
+        <p className="svc-lead">Book us for one event or the whole weekend. We work next to your main caterer, and every guest finds something to eat.</p>
+        <dl className="svc-options">
+          <div>
+            <dt className="cap mut">Option 1 · Most popular</dt>
+            <dd><strong>Thai food counters at your wedding</strong><span>Added next to your Indian or main caterer</span></dd>
+          </div>
+          <div>
+            <dt className="cap mut">Option 2</dt>
+            <dd><strong>We cater a whole event</strong><span>Welcome dinner, reception or brunch</span></dd>
+          </div>
+        </dl>
+      </ServiceBlock>
+
+      {/* Destination Weddings, in detail: food for each wedding event */}
+      <section className="svc-detail" aria-label="Food for each wedding event">
+        <div className="in">
+          <div className="panel svc-detail-panel">
+            <p className="lead-copy" style={{ maxWidth: 560 }}>Here is what we usually serve at each wedding event. Tap an event to see it.</p>
+            <SwitchList items={functions} label="Wedding events" hint="Tap an event" initial={1} small link={{ href: `${routes.quote}?event=weddings&ask=sample-menu`, label: 'Ask for a sample menu' }} />
+          </div>
         </div>
       </section>
 
-      {/* 3. Indian weddings */}
-      <section id="indian-weddings" className="sec anchor" aria-labelledby="indian-title">
-        <div className="in" style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
-          <div className="grid-auto" style={{ ['--gap' as string]: '40px', alignItems: 'center' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-              <span className="br">02 · Indian weddings</span>
-              <Split as="h2" id="indian-title" text="Thai food at *every* Indian wedding event" style={h2} />
-              <p data-reveal className="lead-copy">Our Thai food counters sit next to your Indian caterer. Your guests get more choice, and there is a vegetarian version of every dish.</p>
-              <PillLink href={`${routes.quote}?ask=veg-menu&type=indian`} variant="dk" style={{ alignSelf: 'flex-start' }}>Get the vegetarian menu</PillLink>
+      {/* Destination Weddings, in detail: Indian weddings */}
+      <section id="indian-weddings" className="svc-detail anchor" aria-labelledby="indian-title">
+        <div className="in svc-indian">
+          <div className="svc-indian-text" data-stagger>
+            <p className="svc-label"><span>Destination Weddings</span><span className="svc-rule" aria-hidden="true" /><span>Indian weddings</span></p>
+            <Split as="h3" id="indian-title" className="svc-subtitle" text="Thai food at *every* Indian wedding event" />
+            <p className="svc-lead">Our Thai food counters sit next to your Indian caterer. Your guests get more choice, and there is a vegetarian version of every dish.</p>
+            <div className="svc-roles">
+              <div><span className="cap mut">Your caterer</span><p>Cooks the Indian food and the main buffet</p></div>
+              <div className="svc-role-us"><span className="cap">Mahanakorn (us)</span><p>Cooks the <span className="s">Thai</span> food counters or a whole Thai event</p></div>
+              <div><span className="cap mut">Your planner</span><p>Plans the timing so everything runs smoothly</p></div>
             </div>
-            <Media image={img.signGuest} clip style={{ height: 'clamp(360px, 36vw, 520px)' }} imgStyle={{ objectPosition: 'center 28%' }} />
+            <div className="svc-note">
+              <p><strong>Need Indian food too?</strong> We can cater together with our partners at Queen&apos;s Catering (only if the partnership is confirmed).</p>
+            </div>
+            <div className="svc-actions">
+              <TextLink href={`${routes.quote}?ask=veg-menu&type=indian`}>Get the vegetarian menu</TextLink>
+              <TextLink href={`${routes.quote}?ask=joint-menu&type=indian`}>Ask about a joint menu</TextLink>
+            </div>
           </div>
-          <div className="grid-auto" style={{ ['--min' as string]: '260px' }} data-stagger>
-            <div className="panel" style={{ padding: 28, minHeight: 190, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 20 }}><span className="br">Your caterer</span><strong style={{ fontSize: 24, fontWeight: 500, lineHeight: 1.2 }}>Cooks the Indian food and the main buffet</strong></div>
-            <div style={{ background: 'var(--ink)', color: '#fff', borderRadius: 12, padding: 28, minHeight: 190, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 20 }}><span className="br" style={{ color: 'var(--smoke)' }}>Mahanakorn (us)</span><strong style={{ fontSize: 24, fontWeight: 500, lineHeight: 1.2 }}>Cooks the <span className="s">Thai</span> food counters or a whole Thai event</strong></div>
-            <div className="panel" style={{ padding: 28, minHeight: 190, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 20 }}><span className="br">Your planner</span><strong style={{ fontSize: 24, fontWeight: 500, lineHeight: 1.2 }}>Plans the timing so everything runs smoothly</strong></div>
-          </div>
-          <div data-reveal style={{ border: '1px dashed #A79E8C', borderRadius: 12, padding: '24px 28px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 16 }}>
-            <span style={{ display: 'flex', flexDirection: 'column', gap: 4 }}><strong style={{ fontWeight: 600 }}>Need Indian food too?</strong><span className="mut" style={{ fontSize: 14 }}>We can cater together with our partners at Queen&apos;s Catering (only if the partnership is confirmed).</span></span>
-            <TransitionLink className="cap" href={`${routes.quote}?ask=joint-menu&type=indian`} style={{ textDecoration: 'none' }}>Ask about a joint menu →</TransitionLink>
+          <figure className="svc-photo svc-photo-sm" data-reveal>
+            <Image src={img.guest.src} alt={img.guest.alt} fill sizes="(max-width: 900px) 92vw, 34vw" style={{ objectFit: 'cover', objectPosition: 'center 35%' }} />
+          </figure>
+        </div>
+      </section>
+
+      {/* 02 Private Events */}
+      <ServiceBlock id="parties" n="02" tagline={parties.line} title="Private *Events*" image={img.smoked} flip quote={`${routes.quote}?event=parties`}>
+        <p className="svc-lead">{parties.text}</p>
+        <dl className="svc-meta"><dt className="cap mut">What we usually serve</dt><dd>{parties.serve}</dd></dl>
+      </ServiceBlock>
+
+      {/* 03 Corporate Events */}
+      <ServiceBlock id="company" n="03" tagline={company.line} title="Corporate *Events*" image={img.chef} imagePosition="center 40%" quote={`${routes.quote}?event=company`}>
+        <p className="svc-lead">{company.text}</p>
+        <dl className="svc-meta"><dt className="cap mut">What we usually serve</dt><dd>{company.serve}</dd></dl>
+      </ServiceBlock>
+
+      {/* 04 Fine Dining: the client's Private Dining Experiences points */}
+      <ServiceBlock id="private" n="04" tagline="Private Dining Experiences" title="Fine *Dining*" image={img.dessert} flip quote={`${routes.quote}?event=private`}>
+        <dl className="svc-points">
+          {profile.privateDining.map((p) => <div key={p.title}><dt>{p.title}</dt><dd>{p.text}</dd></div>)}
+        </dl>
+      </ServiceBlock>
+
+      {/* Vegetarian food (all events) */}
+      <section id="diet" className="sec anchor" aria-labelledby="diet-title">
+        <div className="in">
+          <div className="panel svc-diet">
+            <div className="svc-diet-head">
+              <p className="svc-label"><span>Vegetarian, vegan and more</span></p>
+              <Split as="h2" id="diet-title" className="svc-title" text="Food every guest *can eat*" />
+              <p className="svc-lead">Real Thai taste without fish sauce. Every counter has a vegetarian, vegan and egg-free version, and every dish has a label so guests know what they are eating.</p>
+            </div>
+            <div className="rows">
+              {diets.map(([d, note, ok], i) => (
+                <div key={d} className="row r4 hov on-white"><span>{String(i + 1).padStart(2, '0')}</span><span>{d}</span><span className="fmt hide">{note}</span><span className={`st ${ok ? 'ok' : 'tbc'}`}>{ok ? 'Available' : 'To confirm'}</span></div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 4. Private Events, Corporate Events, Fine Dining */}
-      <section className="sec" aria-labelledby="other-title" style={{ paddingTop: 0 }}>
-        <div className="in" style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(48px, 6vw, 88px)' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 640 }}>
-            <span className="br">Not a wedding?</span>
-            <Split as="h2" id="other-title" text="Events *and fine dining*" style={h2} />
-          </div>
-          {others.map((e, i) => (
-            <article key={e.id} id={e.id} className="grid-auto anchor" style={{ ['--gap' as string]: '40px', alignItems: 'center' }} aria-labelledby={`${e.id}-title`}>
-              <Media image={e.image} clip style={{ height: 'clamp(320px, 34vw, 480px)', order: i % 2 ? 2 : 0 }} />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }} data-stagger>
-                <span className="br">{String(i + 3).padStart(2, '0')} · {e.line}</span>
-                <h3 id={`${e.id}-title`} style={{ fontSize: 'clamp(28px, 3vw, 42px)', lineHeight: 1.05, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' }}>{e.name}</h3>
-                {pointsFor[e.id] ? (
-                  <dl className="points">
-                    {pointsFor[e.id].map((p) => <div key={p.title}><dt>{p.title}</dt><dd>{p.text}</dd></div>)}
-                  </dl>
-                ) : (
-                  <>
-                    <p className="mut" style={{ lineHeight: 1.65, fontSize: 16, maxWidth: 460 }}>{e.text}</p>
-                    <p style={{ fontSize: 15, lineHeight: 1.5 }}><b style={{ fontWeight: 600 }}>What we usually serve:</b> {e.serve}</p>
-                  </>
-                )}
-                <PillLink href={`${routes.quote}?event=${e.id}`} variant="dk" style={{ alignSelf: 'flex-start' }}>Get a quote for this</PillLink>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* 5. Vegetarian food (all events) */}
-      <section id="diet" className="panel sec anchor" aria-labelledby="diet-title">
-        <div className="in" style={{ display: 'flex', flexDirection: 'column', gap: 48 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
-            <span className="br" data-reveal>Vegetarian, vegan and more</span>
-            <Split as="h2" id="diet-title" text="Food every guest **can eat**" style={{ fontSize: 'clamp(34px, 4.6vw, 66px)', lineHeight: 1.02, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' }} />
-            <p data-reveal className="lead-copy" style={{ maxWidth: 480 }}>Real Thai taste without fish sauce. Every counter has a vegetarian, vegan and egg-free version, and every dish has a label so guests know what they are eating.</p>
-          </div>
+      {/* What's included and venue needs (no prices: shared on request) */}
+      <section id="venue" className="pb anchor" aria-labelledby="venue-title">
+        <div className="in svc-venue">
+          <dl className="svc-included" data-stagger>
+            <div><dt className="cap mut">Included</dt><dd>The menu, Thai ingredients, chefs, cooking equipment, serving staff and food labels.</dd></div>
+            <div><dt className="cap mut">Extras you can add</dt><dd>Thai tea and drinks bar, dessert table, a tasting, more staff.</dd></div>
+            <div><dt className="cap mut">You, your planner or venue handle</dt><dd>The venue, decoration, other food, tables and linen, and alcohol.</dd></div>
+          </dl>
           <div className="rows">
-            {diets.map(([d, note, ok], i) => (
-              <div key={d} className="row r4 hov on-white"><span>{String(i + 1).padStart(2, '0')}</span><span>{d}</span><span className="fmt hide">{note}</span><span className={`st ${ok ? 'ok' : 'tbc'}`}>{ok ? 'Available' : 'To confirm'}</span></div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. What's included and venue needs (no prices: shared on request) */}
-      <section id="venue" className="sec anchor" aria-labelledby="prices-title">
-        <div className="in" style={{ display: 'flex', flexDirection: 'column', gap: 48 }}>
-          <div className="grid-auto" style={{ ['--min' as string]: '240px', ['--gap' as string]: '32px' }} data-stagger>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}><span className="br">Included</span><p style={{ lineHeight: 1.6 }}>The menu, Thai ingredients, chefs, cooking equipment, serving staff and food labels.</p></div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}><span className="br">Extras you can add</span><p style={{ lineHeight: 1.6 }}>Thai tea and drinks bar, dessert table, a tasting, more staff.</p></div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}><span className="br">You, your planner or venue handle</span><p style={{ lineHeight: 1.6 }}>The venue, decoration, other food, tables and linen, and alcohol.</p></div>
-          </div>
-          <div className="rows">
-            <Split as="h2" id="prices-title" text="What we need *from your venue*" style={h3} />
+            <Split as="h2" id="venue-title" className="svc-subtitle" text="What we need *from your venue*" />
             <p className="mut" style={{ fontSize: 15, lineHeight: 1.6, paddingBottom: 12 }}>We share prices on request, based on your date, place and number of guests.</p>
             {venueNeeds.map(([k, v], i) => (
               <div key={k} className="row r4 hov"><span>{String(i + 1).padStart(2, '0')}</span><span>{k}</span><span className="fmt">{v}</span><span /></div>
@@ -177,7 +213,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 7. Questions */}
+      {/* Questions */}
       <section className="pb" aria-label="Questions">
         <div className="in">
           <Faq
