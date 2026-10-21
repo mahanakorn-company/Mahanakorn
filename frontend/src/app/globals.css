@@ -393,3 +393,9 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
 .facts { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
 .facts > div { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding-top: 10px; border-top: 1px solid var(--line); }
 .facts dd { margin: 0; font-size: 15px; line-height: 1.5; }
+
+/* The client's headed points (Mission Statement, services): title + one sentence, two columns on desktop. */
+.points { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 22px 32px; }
+.points > div { display: flex; flex-direction: column; gap: 6px; padding-top: 14px; border-top: 1px solid var(--line); }
+.points dt { font-weight: 600; font-size: 16px; }
+.points dd { margin: 0; color: var(--stone); font-size: 15px; line-height: 1.6; }

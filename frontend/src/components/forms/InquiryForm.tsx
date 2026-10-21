@@ -10,7 +10,7 @@ import { PillLink } from '../Pill';
 import { ArrowLeft, ArrowRight, Restart } from '../Icons';
 
 const ROLES = [['host', "It's my event"], ['planner', 'Event or wedding planner'], ['company', 'Booking for a company'], ['venue', 'Venue or restaurant'], ['other', 'Other']] as const;
-export const EVENT_TYPES = [['wedding', 'Wedding'], ['party', 'Party or birthday'], ['corporate', 'Company event'], ['private-dinner', 'Private dinner'], ['pop-up', 'Pop-up or restaurant night'], ['consulting', 'Cooking session or advice'], ['other', 'Something else']] as const;
+export const EVENT_TYPES = [['wedding', 'Wedding'], ['party', 'Private party'], ['corporate', 'Corporate event'], ['private-dinner', 'Private dining experience'], ['pop-up', 'Pop-up event'], ['consulting', 'Culinary consultation'], ['other', 'Something else']] as const;
 const DESTINATIONS = [['bangkok', 'Bangkok'], ['phuket', 'Phuket'], ['koh-samui', 'Koh Samui'], ['krabi', 'Krabi'], ['hua-hin', 'Hua Hin'], ['bali', 'Bali'], ['jakarta', 'Jakarta'], ['india', 'India'], ['other', 'Other or undecided']] as const;
 const GUESTS = [['under-50', 'Under 50'], ['50-100', '50–100'], ['100-200', '100–200'], ['200-350', '200–350'], ['350-plus', '350+']] as const;
 const FUNCTIONS = [['welcome-dinner', 'Welcome dinner'], ['mehendi', 'Mehendi'], ['haldi', 'Haldi'], ['sangeet', 'Sangeet'], ['wedding-lunch', 'Wedding lunch'], ['reception', 'Reception'], ['after-party', 'After-party'], ['brunch', 'Brunch']] as const;

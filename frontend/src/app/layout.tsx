@@ -11,13 +11,13 @@ const thai = Noto_Serif_Thai({ subsets: ['thai'], weight: ['400', '500'], variab
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: `${site.name} · Thai catering for weddings and events`, template: `%s · ${site.name}` },
+  title: { default: `${site.name} · Authentic Thai Cuisine`, template: `%s · ${site.name}` },
   description: site.description,
   applicationName: site.name,
   openGraph: {
     type: 'website',
     siteName: site.name,
-    title: `${site.name} · Thai catering for weddings and events`,
+    title: `${site.name} · Authentic Thai Cuisine`,
     description: site.description,
     images: [{ url: '/img/station-night.jpg', width: 1600, height: 1066, alt: 'Mahanakorn khao soi counter at night' }]
   },

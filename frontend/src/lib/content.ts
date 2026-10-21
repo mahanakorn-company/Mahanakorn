@@ -126,14 +126,53 @@ export const steps = [
   { title: 'We cook at your event', text: 'We bring the team and the food, and work with you or your planner.' }
 ];
 
+/**
+ * The client's own wording, copied exactly from the Mahanakorn company profile (Given/menu-1..3.jpg, team.jpg).
+ * Keep this text as the client wrote it.
+ */
+export const profile = {
+  intro: 'Born out of love for Thai food, Mahanakorn is a homegrown crew from Thailand',
+  pillars: [
+    { title: 'Authentic Thai Cuisine', text: 'MAHANAKORN delivers the greatest tasting authentic Thai food with passion and excellence.' },
+    { title: 'Global Pop-Up Events', text: 'Hosts pop-up events worldwide, showcasing culinary expertise and expanding presence.' },
+    { title: 'Diverse Catering Services', text: 'Covers weddings, private parties, and corporate functions with flexible, high-quality service.' },
+    { title: 'Cultural Heritage Focus', text: 'Every event is infused with rich Thai flavors and cultural heritage for memorable experiences.' }
+  ],
+  // The first heading is partly hidden under the slide title: "Comm… ty", about 28 characters wide, so "Commitment to Sustainability".
+  mission: [
+    { title: 'Commitment to Sustainability', text: 'Focus on fresh, sustainable ingredients ensures environmentally responsible meals.' },
+    { title: 'Authentic Thai Cuisine', text: 'Traditional Thai cooking techniques create genuine, creative dishes with cultural authenticity.' },
+    { title: 'Passion and Detail', text: 'Food is made with heart, passion, and meticulous attention enhancing the dining experience.' },
+    { title: 'Excellence and Innovation', text: 'Dedication to culinary innovation builds reputation for exceptional service and quality.' }
+  ],
+  catering: [
+    { title: 'Large Scale Capacity', text: 'Supports catering for over 1000 guests at various event types with efficient service.' },
+    { title: 'Customized Menus', text: 'Collaborates with clients to create menus tailored to themes, diets, and cultures.' },
+    { title: 'Quality and Detail', text: 'Each dish is crafted perfectly with attention to quality and guest satisfaction.' },
+    { title: 'Flexible Catering Solutions', text: 'Offers scalable and adaptable catering services for events of any size or complexity.' }
+  ],
+  privateDining: [
+    { title: 'Personalized Culinary Services', text: 'Clients receive bespoke menus tailored to their tastes and preferences. Dining locations are flexible to client choice.' },
+    { title: 'Chef Interaction Experience', text: 'Guests interact with chefs to learn about ingredients, techniques, and cultural stories behind dishes.' },
+    { title: 'Cultural and Culinary Immersion', text: "The experience highlights Thai cuisine's authenticity and rich cultural background, enhancing appreciation." },
+    { title: 'Versatile Event Options', text: 'Ideal for romantic dinners, family celebrations, and business gatherings with luxury and authenticity..' }
+  ],
+  consultations: [
+    { title: 'Personalized Culinary Guidance', text: 'One-on-one sessions tailor to individual and business culinary goals and interests.' },
+    { title: 'Expertise in Thai Cuisine', text: 'Experienced chefs share knowledge on traditional cooking methods and ingredient selection.' },
+    { title: 'Hands-on Experience', text: 'Participants gain practical skills and insights to improve cooking or business strategies.' },
+    { title: 'Cultural Education & Mentorship', text: 'Service reflects commitment to cultural exchange and professional culinary mentorship.' }
+  ]
+};
+
 /** Kinds of events we cater (Home and Services pages). `id` is the anchor on the Services page. */
 export const eventTypes: { id: string; name: string; image: Img; line: string; text: string; serve: string }[] = [
   { id: 'weddings', name: 'Weddings', image: img.signGuest, line: 'Destination and Indian weddings', text: 'Every event of the wedding weekend, from the welcome dinner to the farewell brunch.', serve: 'Live food counters, sit-down dinners, late-night food' },
-  { id: 'parties', name: 'Parties and birthdays', image: img.canapes, line: 'Birthdays, anniversaries, engagements', text: 'Birthdays, anniversaries, engagement parties and house parties. Live cooking gives your guests something to gather around.', serve: 'Live food counters and small bites' },
-  { id: 'company', name: 'Company events', image: img.baskets, line: 'Office parties, launches, team dinners', text: 'Office parties, team dinners, product launches and client evenings, for small teams or more than 1,000 guests, with clear vegetarian and allergy labels for everyone.', serve: 'Live food counters, a sit-down dinner, or small bites with drinks' },
-  { id: 'private', name: 'Private dinners', image: img.privateDinner, line: 'Romantic, family or business dinners', text: 'A Thai dinner made for your taste, wherever you like. Our chefs cook in front of you and tell you about the ingredients and the stories behind each dish. Good for romantic dinners, family celebrations and business dinners.', serve: 'Sit-down Thai dinner or sharing plates' },
-  { id: 'pop-ups', name: 'Pop-ups and restaurant nights', image: img.riceSalad, line: 'Like our nights in Jakarta and Delhi', text: 'We host Thai pop-up dinners around the world, like our nights in Jakarta and Delhi. Restaurants and festivals can book us for a takeover.', serve: 'Set menus and live food counters' },
-  { id: 'consulting', name: 'Cooking sessions and advice', image: img.chef, line: 'For food lovers and businesses', text: 'One-on-one sessions with our chefs. Learn traditional Thai cooking, how to choose the right ingredients, and cook with us hands-on. We also advise restaurants and food businesses on Thai menus.', serve: 'Hands-on cooking sessions, menu advice and mentoring' }
+  { id: 'parties', name: 'Private parties', image: img.canapes, line: 'Customized Menus', text: 'Birthdays, anniversaries, engagement parties and house parties.', serve: 'Live food counters and small bites' },
+  { id: 'company', name: 'Corporate Events', image: img.baskets, line: 'Large Scale Capacity', text: 'Office parties, team dinners, product launches and client evenings.', serve: 'Live food counters, a sit-down dinner, or small bites with drinks' },
+  { id: 'private', name: 'Private Dining Experiences', image: img.privateDinner, line: 'Personalized Culinary Services', text: profile.privateDining[0].text, serve: 'Sit-down Thai dinner or sharing plates' },
+  { id: 'pop-ups', name: 'Global Pop-Up Events', image: img.riceSalad, line: 'Pop-up events worldwide', text: profile.pillars[1].text, serve: 'Set menus and live food counters' },
+  { id: 'consulting', name: 'Culinary Consultations', image: img.chef, line: 'Personalized Culinary Guidance', text: profile.consultations[0].text, serve: 'One-on-one sessions, hands-on cooking and mentorship' }
 ];
 
 /** Credits for the photos that are not Mahanakorn's own (shown on the Privacy page). All resized for the web. */
@@ -143,11 +182,11 @@ export const photoCredits = [
   { what: 'Thai tea', author: 'Andy Li', licence: 'CC0 (public domain)', licenceUrl: 'https://creativecommons.org/publicdomain/zero/1.0/', source: 'https://commons.wikimedia.org/wiki/File:Thai_Red_Ice_Milk_Tea_-_Siam_Siam_2024-07-31.jpg' }
 ];
 
-/** The people behind Mahanakorn (from the company profile). */
-export const team: { name: string; role: string; about: string; image: Img }[] = [
-  { name: 'Menu', role: 'Founder', about: 'Background in banking', image: { src: '/img/team-founder.jpg', alt: 'Menu, founder of Mahanakorn, smiling at an event' } },
-  { name: "Kamonpilai 'Gink' Danwiriyatrakul", role: 'Co-founder', about: 'Nutritionist and food stylist', image: { src: '/img/team-gink.jpg', alt: 'Gink plating food at a Mahanakorn cooking session' } },
-  { name: 'Dhivesh', role: 'Co-founder', about: 'Loves cooking. Entrepreneur and social media', image: { src: '/img/team-dhivesh.jpg', alt: 'Dhivesh in a Mahanakorn apron at a cooking session' } }
+/** OUR TEAM, exactly as on the client's slide (team.jpg), including its capitals. */
+export const team: { role: string; lines: string[]; image: Img }[] = [
+  { role: 'FOUNDER', lines: ['MENU - BANKER'], image: { src: '/img/team-founder.jpg', alt: 'Menu, founder of Mahanakorn' } },
+  { role: 'CO FOUNDER', lines: ["KAMONPILAI 'GINK' DANWIRIYATRAKUL", 'NUTRITIONIST & FOOD STYLIST'], image: { src: '/img/team-gink.jpg', alt: "Kamonpilai 'Gink' Danwiriyatrakul, co-founder of Mahanakorn" } },
+  { role: 'CO FOUNDER', lines: ['DHIVESH - PASSION IN CULINARY, ENTREPRENEUR, SOCIAL MEDIA'], image: { src: '/img/team-dhivesh.jpg', alt: 'Dhivesh, co-founder of Mahanakorn' } }
 ];
 
 /** Past events we can show (Home, Past Events and For Planners pages). */

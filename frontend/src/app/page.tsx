@@ -7,13 +7,13 @@ import EventsCarousel from '@/components/EventsCarousel';
 import { PillLabel, PillLink } from '@/components/Pill';
 import { ClosingCta } from '@/components/Sections';
 import { ArrowRight } from '@/components/Icons';
-import { eventTypes, img, pastEvents, stationStrip, steps, team } from '@/lib/content';
+import { eventTypes, img, pastEvents, profile, stationStrip, steps, team } from '@/lib/content';
 import { cta, routes } from '@/lib/site';
 
 /*
   Home page flow (one simple story):
-  1 What we do  2 Who we are  3 Events we cater  4 Our food counters  5 Why people choose us
-  6 How it works  7 Past events  8 Meet the team  9 Get a quote + footer
+  1 What we do  2 Brand introduction  3 Events we cater  4 Our food counters  5 Mission Statement
+  6 How it works  7 Past events  8 OUR TEAM  9 Get a quote + footer
 */
 export default function HomePage() {
   return (
@@ -40,19 +40,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. Who we are */}
+      {/* 2. Brand introduction (client's wording only) */}
       <section className="sec" aria-labelledby="about">
         <div className="in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28 }}>
-          <span className="br" data-reveal>Who we are</span>
           <div className="statement">
             <div className="cut" aria-hidden="true">
               <Image className="img" src={img.chef.src} alt="" fill sizes="260px" style={{ objectFit: 'cover', objectPosition: '62% 30%' }} />
             </div>
-            <Split id="about" text="**real** Thai food,|cooked *fresh* for every|guest at your *event*" />
+            <Split id="about" text="Born out of love|for *Thai food*, Mahanakorn|is a homegrown crew|from *Thailand*" />
           </div>
-          <p data-reveal className="lead-copy" style={{ textAlign: 'center', maxWidth: 480 }}>
-            Born out of love for Thai food, Mahanakorn is a homegrown crew from Thailand. We cook at weddings, parties, company events and pop-ups around the world, with a vegetarian version of almost every dish.
-          </p>
+          <dl className="points" style={{ maxWidth: 860, width: '100%' }} data-stagger>
+            {[profile.pillars[0], profile.pillars[3]].map((p) => <div key={p.title}><dt>{p.title}</dt><dd>{p.text}</dd></div>)}
+          </dl>
         </div>
       </section>
 
@@ -62,7 +61,8 @@ export default function HomePage() {
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: 20 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <span className="br">Events we cater</span>
-              <Split id="events" text="Any event, *big or small*" style={{ fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 1, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' }} />
+              <Split id="events" text="Diverse *Catering Services*" style={{ fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 1, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' }} />
+              <p data-reveal className="lead-copy" style={{ maxWidth: 520 }}>{profile.pillars[2].text}</p>
             </div>
             <PillLink href={routes.services} variant="dk">See our services</PillLink>
           </div>
@@ -116,25 +116,20 @@ export default function HomePage() {
         </section>
       </div>
 
-      {/* 5. Why people choose us */}
+      {/* 5. Mission Statement (client's wording only) */}
       <section className="panel sec" aria-labelledby="why" style={{ marginTop: 'clamp(64px, 8vw, 120px)' }}>
         <div className="in grid-auto" style={{ ['--gap' as string]: '48px', alignItems: 'start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-            <span className="br">Why people choose us</span>
+            <span className="br">Mission Statement</span>
             <Media image={img.guest} className="side-photo" sizes="(max-width: 700px) 90vw, 440px" />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
             <h2 id="why" className="lit">
-              <span>Fresh ingredients, cooked in front of your guests.</span>
-              <span>Traditional Thai cooking, from a team from Thailand.</span>
-              <span>A menu made for your event, diet and culture.</span>
-              <span>Care and detail in every dish.</span>
+              {profile.mission.map((m) => <span key={m.title}>{m.title}</span>)}
             </h2>
-            <div className="grid-auto" style={{ ['--min' as string]: '140px', marginTop: 12 }} data-stagger>
-              <div className="stat"><span className="n" data-count="8">8</span><span className="br">live food counters</span></div>
-              <div className="stat"><span className="n" data-count="6">6</span><span className="br">kinds of events</span></div>
-              <div className="stat"><span className="n">1,000+</span><span className="br">guests we can cater for</span></div>
-            </div>
+            <dl className="points" data-stagger>
+              {profile.mission.map((m) => <div key={m.title}><dt>{m.title}</dt><dd>{m.text}</dd></div>)}
+            </dl>
           </div>
         </div>
       </section>
@@ -192,20 +187,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. Meet the team */}
+      {/* 8. OUR TEAM (client's wording only) */}
       <section className="sec" aria-labelledby="team" style={{ paddingTop: 0 }}>
         <div className="in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 40, textAlign: 'center' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
-            <span className="br">Meet the team</span>
-            <Split id="team" text="The people *behind Mahanakorn*" style={{ fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 1, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' }} />
-          </div>
+          <Split id="team" text="OUR *TEAM*" style={{ fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 1, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' }} />
           <ul className="team" data-stagger>
             {team.map((p) => (
-              <li key={p.name}>
+              <li key={p.lines[0]}>
                 <span className="team-photo"><Image src={p.image.src} alt={p.image.alt} fill sizes="180px" /></span>
                 <span className="cap mut">{p.role}</span>
-                <strong>{p.name}</strong>
-                <span className="mut">{p.about}</span>
+                <strong>{p.lines[0]}</strong>
+                {p.lines.slice(1).map((l) => <span key={l} className="mut">{l}</span>)}
               </li>
             ))}
           </ul>

@@ -6,19 +6,22 @@ import TransitionLink from '@/components/TransitionLink';
 import { PillLabel, PillLink } from '@/components/Pill';
 import { ClosingCta, Faq, PageTitle } from '@/components/Sections';
 import { ArrowRight } from '@/components/Icons';
-import { eventTypes, functions, img } from '@/lib/content';
+import { eventTypes, functions, img, profile } from '@/lib/content';
 import { cta, routes } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Our Services',
-  description: 'Thai catering for weddings, Indian weddings, parties, company events, private dinners, pop-ups and cooking sessions. Live food counters, sit-down Thai dinners and small bites, with vegetarian options at every counter.',
+  description: 'Diverse Catering Services: weddings, private parties and corporate functions, Private Dining Experiences, Culinary Consultations and Global Pop-Up Events, by Mahanakorn.',
   alternates: { canonical: routes.services }
 };
 
 // Weddings get the long section; every other kind of event gets one block.
 const others = eventTypes.filter((e) => e.id !== 'weddings');
+// Private Dining Experiences and Culinary Consultations show the client's four headed points (company profile).
+const pointsFor: Record<string, { title: string; text: string }[]> = { private: profile.privateDining, consulting: profile.consultations };
 
 const jumpTo = [
+  ['catering', 'Catering Services'],
   ['weddings', 'Weddings'],
   ['indian-weddings', 'Indian weddings'],
   ...others.map((e) => [e.id, e.name]),
@@ -41,7 +44,8 @@ const h2 = { fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 1, fontWeight: 500,
 const h3 = { fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 600, textTransform: 'uppercase', marginBottom: 16 } as const;
 
 /*
-  Page flow: what we serve → weddings → Indian weddings → other events → vegetarian food
+  Page flow: Catering Services → weddings → Indian weddings → private parties, corporate functions,
+  Private Dining Experiences, Culinary Consultations, Global Pop-Up Events → vegetarian food
   → what's included and prices → questions → get a quote
 */
 export default function ServicesPage() {
@@ -49,10 +53,10 @@ export default function ServicesPage() {
     <>
       <PageTitle
         title="Our services"
-        sub="(Thai catering for every event)"
+        sub="(Diverse Catering Services)"
         meta={[
-          { label: 'What we serve', value: 'Food counters · Dinners · Small bites' },
-          { label: 'Events', value: 'Weddings · Parties · Company events · Private dinners · Cooking sessions' },
+          { label: 'Catering', value: 'Weddings · Private parties · Corporate Events' },
+          { label: 'Also', value: 'Private Dining Experiences · Culinary Consultations · Global Pop-Up Events' },
           { label: 'Where', value: 'Thailand · Bali · Jakarta · India', note: 'And wherever your event is' }
         ]}
       />
@@ -65,16 +69,15 @@ export default function ServicesPage() {
         </div>
       </nav>
 
-      {/* 1. What we serve */}
-      <section className="sec" aria-labelledby="serve">
+      {/* 1. Catering Services (client's wording only) */}
+      <section id="catering" className="sec anchor" aria-labelledby="serve">
         <div className="in grid-auto" style={{ ['--gap' as string]: '48px', alignItems: 'start' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-            <span className="br" data-reveal>What we serve, at any event</span>
-            <Media image={img.pineapple} className="side-photo" sizes="(max-width: 700px) 90vw, 440px" />
-          </div>
+          <Media image={img.chef} className="side-photo" sizes="(max-width: 700px) 90vw, 440px" />
           <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-            <h2 id="serve" className="lit"><span>Live counters, cooked in front of guests.</span><span>A sit-down Thai dinner.</span><span>Small bites with drinks.</span><span>Or a mix of all three.</span></h2>
-            <p data-reveal className="lead-copy">Tell us what the event is and how many guests you expect. We suggest the right mix and send a price.</p>
+            <Split as="h2" id="serve" text="Catering *Services*" style={h2} />
+            <dl className="points" data-stagger>
+              {profile.catering.map((p) => <div key={p.title}><dt>{p.title}</dt><dd>{p.text}</dd></div>)}
+            </dl>
             <PillLink href={routes.menu} variant="dk" style={{ alignSelf: 'flex-start' }}>See our menu</PillLink>
           </div>
         </div>
@@ -135,8 +138,7 @@ export default function ServicesPage() {
         <div className="in" style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(48px, 6vw, 88px)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 640 }}>
             <span className="br">Not a wedding?</span>
-            <Split as="h2" id="other-title" text="Parties, dinners *and more*" style={h2} />
-            <p data-reveal className="lead-copy">We bring the same Thai cooking to any event, and we can teach it too.</p>
+            <Split as="h2" id="other-title" text="Private parties, *functions and more*" style={h2} />
           </div>
           {others.map((e, i) => (
             <article key={e.id} id={e.id} className="grid-auto anchor" style={{ ['--gap' as string]: '40px', alignItems: 'center' }} aria-labelledby={`${e.id}-title`}>
@@ -144,8 +146,16 @@ export default function ServicesPage() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }} data-stagger>
                 <span className="br">{String(i + 3).padStart(2, '0')} · {e.line}</span>
                 <h3 id={`${e.id}-title`} style={{ fontSize: 'clamp(28px, 3vw, 42px)', lineHeight: 1.05, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' }}>{e.name}</h3>
-                <p className="mut" style={{ lineHeight: 1.65, fontSize: 16, maxWidth: 460 }}>{e.text}</p>
-                <p style={{ fontSize: 15, lineHeight: 1.5 }}><b style={{ fontWeight: 600 }}>What we usually serve:</b> {e.serve}</p>
+                {pointsFor[e.id] ? (
+                  <dl className="points">
+                    {pointsFor[e.id].map((p) => <div key={p.title}><dt>{p.title}</dt><dd>{p.text}</dd></div>)}
+                  </dl>
+                ) : (
+                  <>
+                    <p className="mut" style={{ lineHeight: 1.65, fontSize: 16, maxWidth: 460 }}>{e.text}</p>
+                    <p style={{ fontSize: 15, lineHeight: 1.5 }}><b style={{ fontWeight: 600 }}>What we usually serve:</b> {e.serve}</p>
+                  </>
+                )}
                 <PillLink href={`${routes.quote}?event=${e.id}`} variant="dk" style={{ alignSelf: 'flex-start' }}>Get a quote for this</PillLink>
               </div>
             </article>

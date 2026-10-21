@@ -7,9 +7,9 @@ export const site = {
   logo: '/img/logo.png',
   /** Tighter crop of the crocodile for small sizes (header badge). */
   logoMark: '/img/logo-mark.png',
-  tagline: 'Thai catering for every event',
+  tagline: 'Authentic Thai Cuisine',
   description:
-    'Thai catering for weddings, parties, company events and private dinners. Live food counters and sit-down Thai dinners, with vegetarian, vegan and egg-free options, in Thailand, Bali, India and beyond.',
+    'MAHANAKORN delivers the greatest tasting authentic Thai food with passion and excellence. Catering for weddings, private parties and corporate functions, Private Dining Experiences, Culinary Consultations and Global Pop-Up Events.',
   url: (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, ''),
   apiUrl: (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000').replace(/\/$/, ''),
   whatsappNumber: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '').replace(/\D/g, ''),
