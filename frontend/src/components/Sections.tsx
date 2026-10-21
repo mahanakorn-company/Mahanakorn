@@ -90,10 +90,10 @@ export function FooterNav() {
         </div>
         <nav className="col" aria-label="Services">
           <span className="cap mut">Services</span>
-          <TransitionLink href={`${routes.services}#weddings`}>Weddings</TransitionLink>
-          <TransitionLink href={`${routes.services}#indian-weddings`}>Indian weddings</TransitionLink>
-          <TransitionLink href={`${routes.services}#parties`}>Private parties</TransitionLink>
-          <TransitionLink href={`${routes.services}#private`}>Private dining</TransitionLink>
+          <TransitionLink href={`${routes.services}#weddings`}>Destination Weddings</TransitionLink>
+          <TransitionLink href={`${routes.services}#parties`}>Private Events</TransitionLink>
+          <TransitionLink href={`${routes.services}#company`}>Corporate Events</TransitionLink>
+          <TransitionLink href={`${routes.services}#private`}>Fine Dining</TransitionLink>
           <TransitionLink href={routes.pastEvents}>Past events</TransitionLink>
         </nav>
         <nav className="col" aria-label="Food">

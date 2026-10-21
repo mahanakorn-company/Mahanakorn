@@ -5,28 +5,26 @@ import SwitchList from '@/components/SwitchList';
 import TransitionLink from '@/components/TransitionLink';
 import { PillLabel, PillLink } from '@/components/Pill';
 import { ClosingCta, Faq, PageTitle } from '@/components/Sections';
-import { ArrowRight } from '@/components/Icons';
 import { eventTypes, functions, img, profile } from '@/lib/content';
 import { cta, routes } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Our Services',
-  description: 'Diverse Catering Services: weddings, private parties and corporate functions, Private Dining Experiences, Culinary Consultations and Global Pop-Up Events, by Mahanakorn.',
+  description: 'Thai catering by Mahanakorn for destination weddings, private events, corporate events and fine dining.',
   alternates: { canonical: routes.services }
 };
 
 // Weddings get the long section; every other kind of event gets one block.
 const others = eventTypes.filter((e) => e.id !== 'weddings');
-// Private Dining Experiences and Culinary Consultations show the client's four headed points (company profile).
-const pointsFor: Record<string, { title: string; text: string }[]> = { private: profile.privateDining, consulting: profile.consultations };
+// Fine Dining shows the client's four Private Dining Experiences points (company profile).
+const pointsFor: Record<string, { title: string; text: string }[]> = { private: profile.privateDining };
 
+// Only the four services (client's request).
 const jumpTo = [
-  ['catering', 'Catering Services'],
-  ['weddings', 'Weddings'],
-  ['indian-weddings', 'Indian weddings'],
-  ...others.map((e) => [e.id, e.name]),
-  ['diet', 'Vegetarian food'],
-  ['prices', 'Prices']
+  ['weddings', 'Destination Weddings'],
+  ['parties', 'Private Events'],
+  ['company', 'Corporate Events'],
+  ['private', 'Fine Dining']
 ];
 
 const diets: [string, string, boolean][] = [
@@ -37,16 +35,14 @@ const diets: [string, string, boolean][] = [
   ['Halal', 'Certified or halal-friendly (to check)', false],
   ['No beef or no pork', 'Can be set for your menu', false]
 ];
-const prices = ['Live food counters', 'Sit-down Thai dinner', 'Small bites', 'Late-night food'];
 const venueNeeds = [['Space for each food counter', 'to confirm'], ['Electricity or gas', 'to confirm'], ['Water close to the counters', 'Needed'], ['Time to set up before serving', 'to confirm']];
 
 const h2 = { fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 1, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' } as const;
 const h3 = { fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 600, textTransform: 'uppercase', marginBottom: 16 } as const;
 
 /*
-  Page flow: Catering Services → weddings → Indian weddings → private parties, corporate functions,
-  Private Dining Experiences, Culinary Consultations, Global Pop-Up Events → vegetarian food
-  → what's included and prices → questions → get a quote
+  Page flow: Catering Services → Destination Weddings (with Indian weddings) → Private Events, Corporate Events,
+  Fine Dining → vegetarian food → what's included and venue needs (prices only on request) → questions → get a quote
 */
 export default function ServicesPage() {
   return (
@@ -55,8 +51,7 @@ export default function ServicesPage() {
         title="Our services"
         sub="(Diverse Catering Services)"
         meta={[
-          { label: 'Catering', value: 'Weddings · Private parties · Corporate Events' },
-          { label: 'Also', value: 'Private Dining Experiences · Culinary Consultations · Global Pop-Up Events' },
+          { label: 'Services', value: 'Destination Weddings · Private Events · Corporate Events · Fine Dining' },
           { label: 'Where', value: 'Thailand · Bali · Jakarta · India', note: 'And wherever your event is' }
         ]}
       />
@@ -86,7 +81,7 @@ export default function ServicesPage() {
       {/* 2. Weddings */}
       <section id="weddings" className="anchor" aria-labelledby="weddings-title" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
         <div className="in" style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 680, paddingBottom: 24 }}>
-          <span className="br">01 · Weddings</span>
+          <span className="br">01 · Destination Weddings</span>
           <Split as="h2" id="weddings-title" text="Thai food for *your wedding*" style={h2} />
           <p data-reveal className="lead-copy">Book us for one event or the whole weekend. We work next to your main caterer, and every guest finds something to eat.</p>
         </div>
@@ -133,12 +128,12 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 4. Parties, company events, private dinners, pop-ups */}
+      {/* 4. Private Events, Corporate Events, Fine Dining */}
       <section className="sec" aria-labelledby="other-title" style={{ paddingTop: 0 }}>
         <div className="in" style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(48px, 6vw, 88px)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 640 }}>
             <span className="br">Not a wedding?</span>
-            <Split as="h2" id="other-title" text="Private parties, *functions and more*" style={h2} />
+            <Split as="h2" id="other-title" text="Events *and fine dining*" style={h2} />
           </div>
           {others.map((e, i) => (
             <article key={e.id} id={e.id} className="grid-auto anchor" style={{ ['--gap' as string]: '40px', alignItems: 'center' }} aria-labelledby={`${e.id}-title`}>
@@ -179,8 +174,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 6. What's included, prices and venue needs */}
-      <section id="prices" className="sec anchor" aria-labelledby="prices-title">
+      {/* 6. What's included and venue needs (no prices: shared on request) */}
+      <section id="venue" className="sec anchor" aria-labelledby="prices-title">
         <div className="in" style={{ display: 'flex', flexDirection: 'column', gap: 48 }}>
           <div className="grid-auto" style={{ ['--min' as string]: '240px', ['--gap' as string]: '32px' }} data-stagger>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}><span className="br">Included</span><p style={{ lineHeight: 1.6 }}>The menu, Thai ingredients, chefs, cooking equipment, serving staff and food labels.</p></div>
@@ -188,15 +183,8 @@ export default function ServicesPage() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}><span className="br">You, your planner or venue handle</span><p style={{ lineHeight: 1.6 }}>The venue, decoration, other food, tables and linen, and alcohol.</p></div>
           </div>
           <div className="rows">
-            <Split as="h2" id="prices-title" text="Prices *and* what we need" style={h3} />
-            <span className="cap mut grp">Starting price per guest</span>
-            {prices.map((p, i) => (
-              <TransitionLink key={p} className="row r4" href={routes.quote}>
-                <span>{String(i + 1).padStart(2, '0')}</span><span>{p}</span><span className="fmt">from THB — (to confirm)</span><span className="go" aria-hidden="true"><ArrowRight /></span>
-              </TransitionLink>
-            ))}
-            <p className="mut" style={{ fontSize: 13, paddingTop: 8 }}>Travel outside Bangkok is extra. Tap a row to get an exact price for your date.</p>
-            <span className="cap mut grp" style={{ paddingTop: 28 }}>What we need from your venue</span>
+            <Split as="h2" id="prices-title" text="What we need *from your venue*" style={h3} />
+            <p className="mut" style={{ fontSize: 15, lineHeight: 1.6, paddingBottom: 12 }}>We share prices on request, based on your date, place and number of guests.</p>
             {venueNeeds.map(([k, v], i) => (
               <div key={k} className="row r4 hov"><span>{String(i + 1).padStart(2, '0')}</span><span>{k}</span><span className="fmt">{v}</span><span /></div>
             ))}

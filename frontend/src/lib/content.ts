@@ -165,14 +165,12 @@ export const profile = {
   ]
 };
 
-/** Kinds of events we cater (Home and Services pages). `id` is the anchor on the Services page. */
+/** The four services we offer (Home and Services pages). `id` is the anchor on the Services page. */
 export const eventTypes: { id: string; name: string; image: Img; line: string; text: string; serve: string }[] = [
-  { id: 'weddings', name: 'Weddings', image: img.signGuest, line: 'Destination and Indian weddings', text: 'Every event of the wedding weekend, from the welcome dinner to the farewell brunch.', serve: 'Live food counters, sit-down dinners, late-night food' },
-  { id: 'parties', name: 'Private parties', image: img.canapes, line: 'Customized Menus', text: 'Birthdays, anniversaries, engagement parties and house parties.', serve: 'Live food counters and small bites' },
+  { id: 'weddings', name: 'Destination Weddings', image: img.signGuest, line: 'Destination and Indian weddings', text: 'Every event of the wedding weekend, from the welcome dinner to the farewell brunch.', serve: 'Live food counters, sit-down dinners, late-night food' },
+  { id: 'parties', name: 'Private Events', image: img.canapes, line: 'Customized Menus', text: 'Birthdays, anniversaries, engagement parties and house parties.', serve: 'Live food counters and small bites' },
   { id: 'company', name: 'Corporate Events', image: img.baskets, line: 'Large Scale Capacity', text: 'Office parties, team dinners, product launches and client evenings.', serve: 'Live food counters, a sit-down dinner, or small bites with drinks' },
-  { id: 'private', name: 'Private Dining Experiences', image: img.privateDinner, line: 'Personalized Culinary Services', text: profile.privateDining[0].text, serve: 'Sit-down Thai dinner or sharing plates' },
-  { id: 'pop-ups', name: 'Global Pop-Up Events', image: img.riceSalad, line: 'Pop-up events worldwide', text: profile.pillars[1].text, serve: 'Set menus and live food counters' },
-  { id: 'consulting', name: 'Culinary Consultations', image: img.chef, line: 'Personalized Culinary Guidance', text: profile.consultations[0].text, serve: 'One-on-one sessions, hands-on cooking and mentorship' }
+  { id: 'private', name: 'Fine Dining', image: img.privateDinner, line: 'Personalized Culinary Services', text: profile.privateDining[0].text, serve: 'Sit-down Thai dinner or sharing plates' }
 ];
 
 /** Credits for the photos that are not Mahanakorn's own (shown on the Privacy page). All resized for the web. */
