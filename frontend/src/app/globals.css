@@ -539,3 +539,13 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
   .menu-day-photo { max-height: 70vh; }
 }
 .mc-head { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 14px; font: 500 12px/1.2 var(--f-sans); color: var(--stone); }
+
+/* Home: brand introduction, text left and photo right */
+.about-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+.about-text { display: flex; flex-direction: column; gap: clamp(28px, 3vw, 44px); }
+.about-title { font-size: clamp(32px, 4.2vw, 62px); line-height: 1.02; font-weight: 500; text-transform: uppercase; letter-spacing: -0.015em; }
+.about-photo { justify-self: end; }
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-photo { justify-self: stretch; max-width: none; }
+}

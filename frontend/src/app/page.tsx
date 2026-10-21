@@ -40,18 +40,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. Brand introduction (client's wording only) */}
+      {/* 2. Brand introduction (client's wording only): text left, photo right */}
       <section className="sec" aria-labelledby="about">
-        <div className="in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28 }}>
-          <div className="statement">
-            <div className="cut" aria-hidden="true">
-              <Image className="img" src={img.chef.src} alt="" fill sizes="260px" style={{ objectFit: 'cover', objectPosition: '62% 30%' }} />
-            </div>
-            <Split id="about" text="Born out of love|for *Thai food*, Mahanakorn|is a homegrown crew|from *Thailand*" />
+        <div className="in about-grid">
+          <div className="about-text">
+            <Split id="about" className="about-title" text="Born out of love|for *Thai food*, Mahanakorn|is a homegrown crew|from *Thailand*" />
+            <dl className="points" data-stagger>
+              {[profile.pillars[0], profile.pillars[3]].map((p) => <div key={p.title}><dt>{p.title}</dt><dd>{p.text}</dd></div>)}
+            </dl>
           </div>
-          <dl className="points" style={{ maxWidth: 860, width: '100%' }} data-stagger>
-            {[profile.pillars[0], profile.pillars[3]].map((p) => <div key={p.title}><dt>{p.title}</dt><dd>{p.text}</dd></div>)}
-          </dl>
+          <Media image={img.chef} className="side-photo about-photo" sizes="(max-width: 900px) 90vw, 440px" imgStyle={{ objectPosition: '62% 30%' }} />
         </div>
       </section>
 
