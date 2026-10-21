@@ -61,8 +61,8 @@ function ServiceBlock({ id, n, tagline, title, image, imagePosition, flip, quote
 }
 
 /*
-  Page flow: intro (title, photo, one line, quote) → Catering Services → 01 Destination Weddings (wedding events,
-  Indian weddings) → 02 Private Events → 03 Corporate Events → 04 Fine Dining → vegetarian food
+  Page flow: intro (title, photo, one line, quote) → Catering Services → 01 Destination Weddings (wedding events)
+  → 02 Private Events → 03 Corporate Events → 04 Fine Dining → vegetarian food
   → what's included and venue needs (prices only on request) → questions → get a quote
 */
 export default function ServicesPage() {
@@ -129,32 +129,6 @@ export default function ServicesPage() {
             <p className="lead-copy" style={{ maxWidth: 560 }}>Here is what we usually serve at each wedding event. Tap an event to see it.</p>
             <SwitchList items={functions} label="Wedding events" hint="Tap an event" initial={1} small link={{ href: `${routes.quote}?event=weddings&ask=sample-menu`, label: 'Ask for a sample menu' }} />
           </div>
-        </div>
-      </section>
-
-      {/* Destination Weddings, in detail: Indian weddings */}
-      <section id="indian-weddings" className="svc-detail anchor" aria-labelledby="indian-title">
-        <div className="in svc-indian">
-          <div className="svc-indian-text" data-stagger>
-            <p className="svc-label"><span>Destination Weddings</span><span className="svc-rule" aria-hidden="true" /><span>Indian weddings</span></p>
-            <Split as="h3" id="indian-title" className="svc-subtitle" text="Thai food at *every* Indian wedding event" />
-            <p className="svc-lead">Our Thai food counters sit next to your Indian caterer. Your guests get more choice, and there is a vegetarian version of every dish.</p>
-            <div className="svc-roles">
-              <div><span className="cap mut">Your caterer</span><p>Cooks the Indian food and the main buffet</p></div>
-              <div className="svc-role-us"><span className="cap">Mahanakorn (us)</span><p>Cooks the <span className="s">Thai</span> food counters or a whole Thai event</p></div>
-              <div><span className="cap mut">Your planner</span><p>Plans the timing so everything runs smoothly</p></div>
-            </div>
-            <div className="svc-note">
-              <p><strong>Need Indian food too?</strong> We can cater together with our partners at Queen&apos;s Catering (only if the partnership is confirmed).</p>
-            </div>
-            <div className="svc-actions">
-              <TextLink href={`${routes.quote}?ask=veg-menu&type=indian`}>Get the vegetarian menu</TextLink>
-              <TextLink href={`${routes.quote}?ask=joint-menu&type=indian`}>Ask about a joint menu</TextLink>
-            </div>
-          </div>
-          <figure className="svc-photo svc-photo-sm" data-reveal>
-            <Image src={img.guest.src} alt={img.guest.alt} fill sizes="(max-width: 900px) 92vw, 34vw" style={{ objectFit: 'cover', objectPosition: 'center 35%' }} />
-          </figure>
         </div>
       </section>
 

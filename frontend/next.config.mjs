@@ -12,7 +12,7 @@ const nextConfig = {
     return [
       { source: '/stations', destination: '/menu', permanent: true },
       { source: '/weddings', destination: '/services#weddings', permanent: true },
-      { source: '/indian-weddings', destination: '/services#indian-weddings', permanent: true },
+      { source: '/indian-weddings', destination: '/services#weddings', permanent: true },
       { source: '/events', destination: '/services#parties', permanent: true },
       // The separate Bali story page was folded into Past Events.
       { source: '/past-events/bali', destination: '/past-events', permanent: true },

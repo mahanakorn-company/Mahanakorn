@@ -24,10 +24,9 @@ export const img = {
   padthai: { src: '/img/padthai.jpg', alt: 'A plate of pad thai handed across a live station' },
   papaya: { src: '/img/papaya.jpg', alt: 'Shredded green papaya and carrot in a rattan basket' },
   smoked: { src: '/img/smoked.jpg', alt: 'A glass smoke cloche lifted from a drink at a guest table' },
+  menuHero: { src: '/img/menu-hero.jpg', alt: 'Larb on crispy rice crackers, laid out on banana leaf on a wooden tray' },
   signGuest: { src: '/img/sign-guest.jpg', alt: 'A guest holding the Mahanakorn sign beside the food counters in Bali' },
   // Free-licence photos from Wikimedia Commons (credited on the Privacy page, see `photoCredits`).
-  thaiGrill: { src: '/img/thai-grill.jpg', alt: 'Glazed Thai pork skewers on a grill' },
-  thaiTea: { src: '/img/thai-tea.jpg', alt: 'A tall glass of Thai iced milk tea' },
   privateDinner: { src: '/img/private-dinner.jpg', alt: 'A dinner table set with candles, wine glasses and folded napkins' }
 } satisfies Record<string, Img>;
 
@@ -94,10 +93,10 @@ export const stations: SwitchItem[] = [
   { name: 'Som tum', thai: 'ส้มตำ', image: img.somtum, text: 'Green papaya salad, made fresh for each guest in a clay pot.', tags: ['Vegan option', 'Spicy', 'Contains nuts'] },
   { name: 'Larb', thai: 'ลาบ', image: img.larb, text: 'Spicy herb salad served on a crispy rice cracker.', tags: ['Vegan option', 'Spicy'] },
   { name: 'Krapao', thai: 'กะเพรา', image: img.krapaoEgg, text: 'Thai basil stir-fry with rice, and a fried egg if you like.', tags: ['Vegan option', 'Egg-free option'] },
-  { name: 'Thai grill', thai: 'หมูปิ้ง', image: img.thaiGrill, text: 'Grilled skewers with a tangy dipping sauce. Pork and vegan.', tags: ['Vegan option'] },
+  { name: 'Thai grill', thai: 'หมูปิ้ง', text: 'Grilled skewers with a tangy dipping sauce. Pork and vegan.', tags: ['Vegan option'] },
   { name: 'Miang kham', thai: 'เมี่ยงคำ', image: img.miang, text: 'One-bite leaf wraps with lime, ginger, peanuts and coconut.', tags: ['Vegan', 'Contains nuts'] },
   { name: 'Mango sticky rice', thai: 'ข้าวเหนียวมะม่วง', image: img.mango, text: 'Sweet mango with coconut sticky rice. Thailand’s favourite dessert.', tags: ['Vegan', 'Egg-free'] },
-  { name: 'Thai tea', thai: 'ชาไทย', image: img.thaiTea, text: 'Iced Thai tea and Thai coffee.', tags: ['Vegan option'] }
+  { name: 'Thai tea', thai: 'ชาไทย', text: 'Iced Thai tea and Thai coffee.', tags: ['Vegan option'] }
 ];
 
 /** Sliding row of counters on the Home page. */
@@ -176,9 +175,7 @@ export const eventTypes: { id: string; name: string; image: Img; line: string; t
 
 /** Credits for the photos that are not Mahanakorn's own (shown on the Privacy page). All resized for the web. */
 export const photoCredits = [
-  { what: 'Thai grill', author: 'PattayaPatrol', licence: 'CC BY-SA 4.0', licenceUrl: 'https://creativecommons.org/licenses/by-sa/4.0/', source: 'https://commons.wikimedia.org/wiki/File:DFC_2095_Savory_grilled_pork_skewers_sizzling_and_caramelized_to_a_perfect_golden-brown.jpg' },
-  { what: 'Private dinners', author: 'Till Krech', licence: 'CC BY 2.0', licenceUrl: 'https://creativecommons.org/licenses/by/2.0/', source: 'https://commons.wikimedia.org/wiki/File:Candle_light_dinner_(306970309).jpg' },
-  { what: 'Thai tea', author: 'Andy Li', licence: 'CC0 (public domain)', licenceUrl: 'https://creativecommons.org/publicdomain/zero/1.0/', source: 'https://commons.wikimedia.org/wiki/File:Thai_Red_Ice_Milk_Tea_-_Siam_Siam_2024-07-31.jpg' }
+  { what: 'Fine Dining', author: 'Till Krech', licence: 'CC BY 2.0', licenceUrl: 'https://creativecommons.org/licenses/by/2.0/', source: 'https://commons.wikimedia.org/wiki/File:Candle_light_dinner_(306970309).jpg' }
 ];
 
 /** OUR TEAM, exactly as on the client's slide (team.jpg), including its capitals. */
