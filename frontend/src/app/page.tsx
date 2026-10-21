@@ -4,16 +4,16 @@ import Split from '@/components/Split';
 import HeroPause from '@/components/HeroPause';
 import TransitionLink from '@/components/TransitionLink';
 import EventsCarousel from '@/components/EventsCarousel';
-import { PillLabel, PillLink } from '@/components/Pill';
+import { PillLink } from '@/components/Pill';
 import { ClosingCta } from '@/components/Sections';
 import { ArrowRight } from '@/components/Icons';
-import { eventTypes, img, pastEvents, profile, stationStrip, steps, team } from '@/lib/content';
+import { eventTypes, img, profile, stationStrip, steps, team } from '@/lib/content';
 import { cta, routes } from '@/lib/site';
 
 /*
   Home page flow (one simple story):
   1 What we do  2 Brand introduction  3 Events we cater  4 Our food counters  5 Mission Statement
-  6 How it works  7 Past events  8 OUR TEAM  9 Get a quote + footer
+  6 How it works  8 OUR TEAM  9 Get a quote + footer
 */
 export default function HomePage() {
   return (
@@ -153,37 +153,6 @@ export default function HomePage() {
               </li>
             ))}
           </ol>
-        </div>
-      </section>
-
-      {/* 7. Past events */}
-      <section className="pb" aria-labelledby="past">
-        <div className="in" style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: 20 }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <span className="br">Past events</span>
-              <Split id="past" text="Where we've *cooked*" style={{ fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 1, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' }} />
-            </div>
-            <PillLink href={routes.pastEvents} variant="dk">See past events</PillLink>
-          </div>
-          <div className="grid-auto" style={{ ['--min' as string]: '280px', ['--gap' as string]: '24px', alignItems: 'start' }}>
-            <Media image={img.marketSign} href={routes.pastEvents} clip cursor="View" style={{ height: 460 }}>
-              <div className="tag-in">
-                <span className="extra"><span>Thai food counters at the Mehendi, Sangeet and a fun fair</span></span>
-                <PillLabel>Bali · Indian wedding · 2025</PillLabel>
-              </div>
-            </Media>
-            <div className="rows">
-              {pastEvents.map((e, i) => (
-                <TransitionLink key={e.name} className="row r4" href={routes.pastEvents}>
-                  <span>{String(i + 1).padStart(2, '0')}</span>
-                  <span style={{ display: 'flex', flexDirection: 'column' }}><span>{e.place} · {e.name}</span><span className="mut" style={{ fontSize: 13 }}>{e.kind}</span></span>
-                  <span className="fmt">{e.year}</span>
-                  <span className="go" aria-hidden="true"><ArrowRight /></span>
-                </TransitionLink>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
