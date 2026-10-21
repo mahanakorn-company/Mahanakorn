@@ -19,13 +19,6 @@ const others = eventTypes.filter((e) => e.id !== 'weddings');
 // Fine Dining shows the client's four Private Dining Experiences points (company profile).
 const pointsFor: Record<string, { title: string; text: string }[]> = { private: profile.privateDining };
 
-// Only the four services (client's request).
-const jumpTo = [
-  ['weddings', 'Destination Weddings'],
-  ['parties', 'Private Events'],
-  ['company', 'Corporate Events'],
-  ['private', 'Fine Dining']
-];
 
 const diets: [string, string, boolean][] = [
   ['Vegetarian', 'Thai without fish sauce', true],
@@ -55,14 +48,6 @@ export default function ServicesPage() {
           { label: 'Where', value: 'Thailand · Bali · Jakarta · India', note: 'And wherever your event is' }
         ]}
       />
-
-      {/* Quick links to each part of this page */}
-      <nav aria-label="On this page" className="in jump" data-intro-fade>
-        <span className="br">Jump to</span>
-        <div className="jump-links">
-          {jumpTo.map(([id, label]) => <a key={id} className="pill sm ln" href={`#${id}`}>{label}</a>)}
-        </div>
-      </nav>
 
       {/* 1. Catering Services (client's wording only) */}
       <section id="catering" className="sec anchor" aria-labelledby="serve">

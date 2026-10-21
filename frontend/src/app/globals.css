@@ -367,9 +367,7 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
 .evc-btn:disabled { opacity: 0.35; cursor: default; }
 @media (max-width: 700px) { .evc-item { flex-basis: 74vw; } }
 
-/* Services page: "Jump to" links, and room under the fixed header when jumping to a section. */
-.jump { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; padding-block: 8px 20px; }
-.jump-links { display: flex; flex-wrap: wrap; gap: 8px; }
+/* Room under the fixed header when a link jumps to a section (e.g. /services#weddings from the footer). */
 .anchor { scroll-margin-top: 96px; }
 
 /* Narrow phones: logo + name only, so the Menu button keeps its room. */
