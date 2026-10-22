@@ -14,12 +14,12 @@ const nextConfig = {
       { source: '/weddings', destination: '/services#weddings', permanent: true },
       { source: '/indian-weddings', destination: '/services#weddings', permanent: true },
       { source: '/events', destination: '/services#parties', permanent: true },
-      // The separate Bali story page was folded into Past Events.
-      { source: '/past-events/bali', destination: '/past-events', permanent: true },
-      { source: '/celebrations/bali', destination: '/past-events', permanent: true },
-      { source: '/past-weddings/bali', destination: '/past-events', permanent: true },
-      { source: '/celebrations', destination: '/past-events', permanent: true },
-      { source: '/past-weddings', destination: '/past-events', permanent: true },
+      // Past Events (and the older Bali story pages) were removed: send visitors to Our Services.
+      { source: '/past-events/:path*', destination: '/services', permanent: true },
+      { source: '/celebrations/:path*', destination: '/services', permanent: true },
+      { source: '/past-weddings/:path*', destination: '/services', permanent: true },
+      // The For Planners page was removed.
+      { source: '/planners', destination: '/services', permanent: true },
       { source: '/plan-your-menu', destination: '/get-a-quote', permanent: true }
     ];
   },

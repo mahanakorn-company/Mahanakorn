@@ -93,9 +93,9 @@ Facts the client still has to confirm are marked in plain words on the page, for
 
 ## Pages
 
-`/` Home · `/services` Our Services (Destination Weddings, Private Events, Corporate Events and Fine Dining, with `#weddings`, `#parties`, `#company` and `#private` anchors; prices are not shown, they are given on request) · `/menu` Our Menu · `/past-events` Past Events · `/planners` For Planners · `/get-a-quote` Get a quote (accepts `?event=weddings|parties|company|private`, `?type=indian` and `?ask=veg-menu|sample-menu|station-menu|joint-menu` to pre-fill the form) · `/privacy` · a 404 page · `/sitemap.xml` · `/robots.txt`
+`/` Home · `/services` Our Services (Destination Weddings, Private Events, Corporate Events and Fine Dining, with `#weddings`, `#parties`, `#company` and `#private` anchors; prices are not shown, they are given on request) · `/menu` Our Menu · `/get-a-quote` Get a quote (accepts `?event=weddings|parties|company|private`, `?type=indian` and `?ask=veg-menu|sample-menu|station-menu|joint-menu` to pre-fill the form) · `/privacy` · a 404 page · `/sitemap.xml` · `/robots.txt`
 
-Old addresses redirect to the new ones: `/weddings`, `/indian-weddings` and `/events` → the matching part of `/services` (Indian weddings → Destination Weddings), `/stations` → `/menu`, `/past-events/bali`, `/celebrations/bali` and `/past-weddings/bali` → `/past-events` (the Bali story is the featured card there), `/celebrations` and `/past-weddings` → `/past-events`, `/plan-your-menu` → `/get-a-quote` (see `frontend/next.config.mjs`).
+Old addresses redirect to the new ones: `/weddings`, `/indian-weddings` and `/events` → the matching part of `/services` (Indian weddings → Destination Weddings), `/stations` → `/menu`, `/past-events`, `/celebrations` and `/past-weddings` (and their old Bali pages) → `/services`, `/planners` → `/services`, `/plan-your-menu` → `/get-a-quote` (see `frontend/next.config.mjs`).
 
 ## Bugs fixed from the design prototype
 

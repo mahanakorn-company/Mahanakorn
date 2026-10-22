@@ -22,8 +22,6 @@ export const routes = {
   home: '/',
   services: '/services',
   menu: '/menu',
-  pastEvents: '/past-events',
-  planners: '/planners',
   quote: '/get-a-quote',
   privacy: '/privacy'
 } as const;
@@ -34,17 +32,13 @@ export const cta = { quote: 'Get a quote' };
 export const nav = [
   { href: routes.home, label: 'Home' },
   { href: routes.services, label: 'Our Services' },
-  { href: routes.menu, label: 'Our Menu' },
-  { href: routes.pastEvents, label: 'Past Events' },
-  { href: routes.planners, label: 'For Planners' }
+  { href: routes.menu, label: 'Our Menu' }
 ];
 
 export const mobileNav = [
   { href: routes.home, label: 'Home' },
   { href: routes.services, label: 'Our Services' },
-  { href: routes.menu, label: 'Our Menu' },
-  { href: routes.pastEvents, label: 'Past Events' },
-  { href: routes.planners, label: 'For Planners' }
+  { href: routes.menu, label: 'Our Menu' }
 ];
 
 /** Pages whose first section is a dark full-bleed photo (header starts in its light-on-dark style). */

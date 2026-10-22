@@ -86,7 +86,6 @@ export function FooterNav() {
             <strong style={{ fontSize: 22, letterSpacing: '-.02em' }}>{site.shortName}</strong>
           </span>
           <span className="mut" style={{ lineHeight: 1.5 }}>Born out of love for Thai food, Mahanakorn is a homegrown crew from Thailand.</span>
-          <span className="th mut">{site.thaiName}</span>
         </div>
         <nav className="col" aria-label="Services">
           <span className="cap mut">Services</span>
@@ -94,21 +93,14 @@ export function FooterNav() {
           <TransitionLink href={`${routes.services}#parties`}>Private Events</TransitionLink>
           <TransitionLink href={`${routes.services}#company`}>Corporate Events</TransitionLink>
           <TransitionLink href={`${routes.services}#private`}>Fine Dining</TransitionLink>
-          <TransitionLink href={routes.pastEvents}>Past events</TransitionLink>
         </nav>
-        <nav className="col" aria-label="Food">
-          <span className="cap mut">Food</span>
+        <nav className="col" aria-label="Explore">
+          <span className="cap mut">Explore</span>
           <TransitionLink href={routes.menu}>Our menu</TransitionLink>
-          <TransitionLink href={`${routes.menu}#sets`}>Ready-made menus</TransitionLink>
-          <TransitionLink href={`${routes.services}#diet`}>Vegetarian food</TransitionLink>
-        </nav>
-        <div className="col">
-          <span className="cap mut">Contact</span>
           <TransitionLink href={routes.quote}>{cta.quote}</TransitionLink>
           {whatsappLink() && <a href={whatsappLink()!} target="_blank" rel="noopener noreferrer">WhatsApp</a>}
           {site.email && <span style={{ userSelect: 'all' }}>{site.email}</span>}
-          <TransitionLink href={routes.planners}>For planners</TransitionLink>
-        </div>
+        </nav>
       </div>
       <div className="foot-row">
         <span>© {new Date().getFullYear()} {site.name}, Bangkok</span>
@@ -126,7 +118,7 @@ export function ClosingCta({ label = 'Ready when you are', title, text }: { labe
   const wa = whatsappLink();
   return (
     <section className="dark" data-dark aria-label={cta.quote} style={{ padding: 'clamp(48px, 5vw, 72px) 20px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
-      <span className="br">{label}</span>
+      {label && <span className="br">{label}</span>}
       <Split as="h2" text={title} style={{ fontSize: 'clamp(30px, 4vw, 56px)', lineHeight: 1, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.02em' }} />
       {text && <p data-reveal className="mut" style={{ maxWidth: 420, lineHeight: 1.6 }}>{text}</p>}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center' }}>

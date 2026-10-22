@@ -42,22 +42,20 @@ export default function GetAQuotePage({ searchParams }: { searchParams: Record<s
     <>
       <section className="ptitle" style={{ paddingBottom: 40 }}>
         <div className="in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
-          <span className="br" data-intro-fade>Free, no commitment</span>
-          <Split as="h1" text="Get a *quote*" intro style={{ fontFamily: 'var(--f-sans)', fontWeight: 500, letterSpacing: '-.035em' }} />
-          <p className="mut" data-intro-fade style={{ fontSize: 16, lineHeight: 1.6, maxWidth: 440 }}>Two short steps, about one minute. We reply on WhatsApp with a menu idea and a price, usually within 1–2 days.</p>
+          <Split as="h1" text="Share your *thoughts*" intro style={{ fontFamily: 'var(--f-sans)', fontWeight: 500, letterSpacing: '-.035em' }} />
         </div>
       </section>
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'stretch' }}>
-        <aside aria-label="What happens next" style={{ flex: '1 1 360px', display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <aside aria-label="Your experience, curated" style={{ flex: '1 1 360px', display: 'flex', flexDirection: 'column', gap: 12 }}>
           <Media image={img.chef} clip style={{ minHeight: 520, flex: 1 }}>
             <div className="tag-in"><PillLabel icon={<Dot />}>Our team in Bangkok</PillLabel></div>
           </Media>
           <div className="panel" style={{ padding: 24, display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <span className="cap mut" style={{ paddingBottom: 6 }}>What happens next</span>
+            <span className="cap" style={{ paddingBottom: 6, fontWeight: 600 }}>Your experience, curated</span>
             <ol className="rows" style={{ gap: 8 }}>
               {steps.map((s, i) => (
-                <li key={s.title} className="stp"><span>{String(i + 1).padStart(2, '0')}</span><span><b style={{ fontWeight: 600 }}>{s.title}.</b> <span className="mut">{s.text}</span></span></li>
+                <li key={s.title} className="stp"><span>{String(i + 1).padStart(2, '0')}</span><span><b style={{ fontWeight: 700 }}>{s.title}.</b> <span style={{ fontWeight: 500 }}>{s.text}</span></span></li>
               ))}
             </ol>
           </div>

@@ -41,7 +41,7 @@ export default function PageMotion() {
 
     const cleanups: Array<() => void> = [];
 
-    // In-page anchors (#pack, #diet) use smooth scrolling.
+    // In-page anchors (e.g. #pack) use smooth scrolling.
     const onAnchor = (e: Event) => {
       const a = (e.target as Element).closest('a[href^="#"]') as HTMLAnchorElement | null;
       if (!a) return;
@@ -50,6 +50,33 @@ export default function PageMotion() {
     };
     main.addEventListener('click', onAnchor);
     cleanups.push(() => main.removeEventListener('click', onAnchor));
+
+    // Arriving through a link to a section (e.g. footer "Corporate Events" → /services#company): the page opens at
+    // the top as usual, then glides down to that section. It stops if the visitor starts scrolling themselves.
+    const hash = decodeURIComponent(window.location.hash.slice(1));
+    if (hash) {
+      let stopped = false;
+      const targetY = () => {
+        const target = document.getElementById(hash);
+        return target ? target.getBoundingClientRect().top + window.scrollY - 96 : null;
+      };
+      const glide = window.setTimeout(() => {
+        ScrollTrigger.refresh();
+        const y = targetY();
+        if (stopped || y === null) return;
+        // If anything above the section grew while gliding (fonts, photos), finish exactly on it.
+        const settle = () => { const end = targetY(); if (!stopped && end !== null && Math.abs(window.scrollY - end) > 2) lenis?.scrollTo(end, { duration: 0.4 }); };
+        if (lenis) lenis.scrollTo(y, { duration: 1.1, onComplete: settle });
+        else window.scrollTo({ top: y, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+      }, 600);
+      const stop = () => { stopped = true; };
+      const inputs = ['wheel', 'touchstart', 'keydown', 'pointerdown'] as const;
+      inputs.forEach((ev) => window.addEventListener(ev, stop, { passive: true, once: true }));
+      cleanups.push(() => {
+        window.clearTimeout(glide);
+        inputs.forEach((ev) => window.removeEventListener(ev, stop));
+      });
+    }
 
     if (prefersReducedMotion()) {
       // No animation: still keep the header readable over the hero.

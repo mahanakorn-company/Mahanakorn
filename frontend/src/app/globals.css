@@ -39,6 +39,10 @@ body {
   overflow-x: clip;
 }
 body.is-dark { background: var(--night); }
+/* While a dark section fills the screen, the rest of the page fades into the night with the background,
+   so grey labels and photos above it don't stay half-visible. */
+main section:not(.dark) { transition: opacity 0.7s ease; }
+body.is-dark main section:not(.dark):not(.dark section) { opacity: 0; }
 [hidden] { display: none !important; }
 h1, h2, h3, p, figure, blockquote, dl, dd, ul, ol { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
@@ -73,7 +77,7 @@ button { font: inherit; color: inherit; }
 .panel { background: var(--rice); border-radius: var(--r); }
 .dark { background: var(--night); color: #fff; border-radius: var(--r); overflow: hidden; }
 .dark .br, .dark .mut { color: var(--smoke); }
-.dark a:hover { color: #fff; }
+.dark a:not(.pill):hover { color: #fff; } /* buttons keep their own colours on hover */
 .grid-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min, 300px)), 1fr)); gap: var(--gap, 12px); }
 
 /* header */
@@ -96,12 +100,19 @@ button { font: inherit; color: inherit; }
 .hdr[data-tone='dark'] .gnav a[aria-current='page'] { background: #fff; color: var(--ink); }
 .hdr[data-tone='dark'] .gnav a:hover { background: rgba(255, 255, 255, 0.22); }
 .hdr-actions { display: flex; gap: 8px; }
+/* Wide screens: brand | nav | actions in three columns, so the nav pill sits in the exact centre of the page
+   whatever the brand or button widths (the quote button is hidden on the quote page itself). */
+@media (min-width: 1001px) {
+  .hdr { display: grid; grid-template-columns: 1fr auto 1fr; }
+  .hdr .brand { justify-self: start; }
+  .hdr-actions { justify-self: end; }
+}
 .hdr .menu-btn { background: var(--ink); color: #fff; }
 .hdr .menu-btn .ic { background: #fff; color: var(--ink); }
 .hdr[data-tone='dark'] .menu-btn { background: #fff; color: var(--ink); }
 .hdr[data-tone='dark'] .menu-btn .ic { background: var(--ink); color: #fff; }
 .pill.menu-btn { display: none; }
-/* Five nav links need about 1000px; below that the Menu button takes over (the quote button stays until 900px). */
+/* Below 1000px the Menu button takes over from the nav pill (the quote button stays until 900px). */
 @media (max-width: 1000px) {
   .gnav { display: none; }
   .pill.menu-btn { display: inline-flex; }
@@ -168,7 +179,7 @@ button { font: inherit; color: inherit; }
 .crumbs { text-align: center; margin-bottom: 18px; }
 .meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 52px; }
 .meta dd { margin-top: 4px; }
-.meta > div:last-child { text-align: right; }
+.meta > div:last-child:not(:first-child) { text-align: right; }
 @media (max-width: 640px) { .meta > div:last-child { text-align: left; } }
 
 /* statement with cut-out photo */
@@ -387,11 +398,6 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
    The frame matches the photos' upright shape, so nothing is cropped away or zoomed in. */
 .side-photo { width: 100%; max-width: 440px; aspect-ratio: 4 / 5; border-radius: var(--r); }
 
-/* Past Events: key facts in the featured story card. */
-.facts { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
-.facts > div { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding-top: 10px; border-top: 1px solid var(--line); }
-.facts dd { margin: 0; font-size: 15px; line-height: 1.5; }
-
 /* The client's headed points (Mission Statement, services): title + one sentence, two columns on desktop. */
 .points { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 22px 32px; }
 .points > div { display: flex; flex-direction: column; gap: 6px; padding-top: 14px; border-top: 1px solid var(--line); }
@@ -406,7 +412,6 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
 .svc-n { color: var(--ink); }
 .svc-rule { width: 28px; height: 1px; background: currentColor; opacity: 0.5; }
 .svc-title { font-size: clamp(40px, 4.4vw, 66px); line-height: 0.98; font-weight: 500; text-transform: uppercase; letter-spacing: -0.02em; }
-.svc-subtitle { font-size: clamp(28px, 2.8vw, 40px); line-height: 1.05; font-weight: 500; text-transform: uppercase; letter-spacing: -0.015em; }
 .svc-lead { font-size: clamp(16px, 1.25vw, 18px); line-height: 1.65; color: #4b4741; max-width: 480px; }
 .svc-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; margin-top: 8px; }
 .svc-link { display: inline-flex; align-items: center; gap: 8px; font: 600 11px/1 var(--f-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); text-decoration: none; padding-block: 8px; border-bottom: 1px solid var(--line); transition: border-color 0.3s, color 0.3s; }
@@ -455,22 +460,14 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
 .svc-detail { padding-bottom: clamp(56px, 7vw, 112px); }
 .svc-detail-panel { padding: clamp(28px, 4vw, 56px); display: flex; flex-direction: column; gap: 18px; }
 
-/* Vegetarian food and venue */
-.svc-diet { padding: clamp(32px, 5vw, 72px); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
-.svc-diet-head { display: flex; flex-direction: column; gap: 20px; }
-.svc-venue { display: flex; flex-direction: column; gap: clamp(40px, 5vw, 64px); }
-.svc-included { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); }
-.svc-included > div { display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid var(--line); }
-.svc-included dd { margin: 0; font-size: 16px; line-height: 1.6; }
 
 @media (max-width: 900px) {
-  .svc-intro, .svc-diet { grid-template-columns: 1fr; }
+  .svc-intro { grid-template-columns: 1fr; }
   .svc-points-2 { grid-template-columns: 1fr; }
   .svc-points-2 > div:nth-last-child(2) { border-bottom: 0; }
   .svc-grid { grid-template-columns: 1fr; row-gap: 28px; }
   .svc-photo, .svc-flip .svc-photo { grid-column: 1; grid-row: 1; max-height: 70vh; }
   .svc-text, .svc-flip .svc-text { grid-column: 1; grid-row: 2; }
-  .svc-included { grid-template-columns: 1fr; }
   .svc-hero-photo { aspect-ratio: 4 / 3; }
   .svc-actions .pill { min-height: 50px; }
 }
@@ -480,7 +477,6 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
    =================================================================================================== */
 .menu-intro { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 24px clamp(32px, 5vw, 80px); align-items: end; margin-bottom: clamp(40px, 5vw, 72px); }
 .menu-intro-head { display: flex; flex-direction: column; gap: 18px; }
-.menu-note { margin-top: 24px; font: 500 12px/1.4 var(--f-sans); color: var(--stone); }
 
 /* Live food counters: list (7/12) + sticky dish panel (5/12) */
 .mc { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
@@ -512,7 +508,6 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
 .menu-set-photo { position: relative; margin: 0 0 8px; aspect-ratio: 4 / 3; border-radius: var(--r); overflow: hidden; background: var(--rice); }
 .menu-set-photo img, .menu-day-photo img { transition: transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1); }
 .menu-set:hover .menu-set-photo img, .menu-day-photo:hover img { transform: scale(1.04); }
-.menu-set-name { font: 500 clamp(26px, 2.4vw, 36px)/1.05 var(--f-sans); text-transform: uppercase; letter-spacing: -0.015em; }
 .menu-set-items { margin-top: 6px; border-top: 1px solid var(--line); }
 .menu-set-items li { display: grid; grid-template-columns: 36px minmax(0, 1fr) auto; align-items: baseline; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--line); }
 .menu-set-en { font-size: 16px; transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), color 0.3s; }
@@ -538,7 +533,6 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
   .mc-photo-inline { aspect-ratio: 4 / 3; }
   .menu-day-photo { max-height: 70vh; }
 }
-.mc-head { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 14px; font: 500 12px/1.2 var(--f-sans); color: var(--stone); }
 
 /* Home: brand introduction, text left and photo right */
 .about-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
@@ -549,3 +543,9 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
   .about-grid { grid-template-columns: 1fr; }
   .about-photo { justify-self: stretch; max-width: none; }
 }
+
+/* Larger version of the headed points, for sections where they are the main content (Home: Mission Statement). */
+.points-lg { gap: clamp(28px, 3vw, 44px) clamp(32px, 4vw, 56px); }
+.points-lg > div { gap: 10px; padding-top: 20px; }
+.points-lg dt { font-size: clamp(20px, 1.75vw, 26px); line-height: 1.2; }
+.points-lg dd { font-size: clamp(16px, 1.35vw, 19px); line-height: 1.6; }

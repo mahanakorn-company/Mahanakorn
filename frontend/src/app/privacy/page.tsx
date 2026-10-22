@@ -12,7 +12,7 @@ export default function PrivacyPage() {
         <div className="in" style={{ maxWidth: 760, display: 'flex', flexDirection: 'column', gap: 18, lineHeight: 1.7 }}>
           <p className="mut" style={{ fontSize: 13 }}>Draft: to be checked by a lawyer before the site goes live.</p>
           <h2 style={{ fontSize: 22, fontWeight: 600 }}>What we collect</h2>
-          <p>When you use the &ldquo;Get a quote&rdquo; or planner pack forms we collect the details you type: your name, email, WhatsApp number and the wedding details you choose to share.</p>
+          <p>When you use the &ldquo;Get a quote&rdquo; form we collect the details you type: your name, email, WhatsApp number and the event details you choose to share.</p>
           <h2 style={{ fontSize: 22, fontWeight: 600 }}>Why</h2>
           <p>Only to reply to you about catering and to prepare a menu or proposal. We do not sell or share your details with anyone else.</p>
           <h2 style={{ fontSize: 22, fontWeight: 600 }}>How long</h2>

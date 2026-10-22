@@ -23,4 +23,3 @@ async function post(path: string, body: unknown): Promise<ApiResult> {
 }
 
 export const submitInquiry = (body: unknown) => post('/api/inquiries', body);
-export const submitPlannerPack = (body: unknown) => post('/api/planner-pack', body);

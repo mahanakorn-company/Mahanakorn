@@ -6,6 +6,7 @@ export const img = {
   stationNight: { src: '/img/station-night.jpg', alt: 'The khao soi station at night, with garnish bowls and a basket of crispy noodles' },
   marketSign: { src: '/img/market-sign.jpg', alt: 'Rattan baskets of fresh produce beside the Mahanakorn station sign' },
   baskets: { src: '/img/baskets.jpg', alt: 'Baskets of papaya, beans, tomato and chilli at a som tum station' },
+  corporateCounter: { src: '/img/corporate-counter.jpg', alt: 'Mahanakorn chefs serving a guest at a live food counter in a lit event tent' },
   prawns: { src: '/img/prawns.jpg', alt: 'Grilled river prawns with herb salad, plated' },
   canapes: { src: '/img/canapes.jpg', alt: 'Crispy rice canapés topped with spiced filling and chilli on banana leaf' },
   krapaoCard: { src: '/img/krapao-card.jpg', alt: 'Mahanakorn station card reading Krapao, vegan' },
@@ -117,10 +118,10 @@ export const stationSets = [
 
 /** How booking works, step by step. */
 export const steps = [
-  { title: 'Tell us about your event', text: 'The type of event, date, place and number of guests.' },
-  { title: 'Get a menu idea', text: 'We reply on WhatsApp with a menu idea and a price, usually in 1–2 days.' },
-  { title: 'Taste the food', text: 'A tasting in Bangkok or at one of our pop-ups.' },
-  { title: 'We cook at your event', text: 'We bring the team and the food, and work with you or your planner.' }
+  { title: 'Share your vision', text: 'Tell us the occasion, date, place and number of guests.' },
+  { title: 'Receive a bespoke proposal', text: 'We send a menu and price on WhatsApp within 1–2 days.' },
+  { title: 'Taste before you decide', text: 'Join us for a tasting in Bangkok or at one of our pop-ups.' },
+  { title: 'Leave the rest to us', text: 'Our team cooks and serves on the day, so you can enjoy your event.' }
 ];
 
 /**
@@ -166,7 +167,7 @@ export const profile = {
 export const eventTypes: { id: string; name: string; image: Img; line: string; text: string; serve: string }[] = [
   { id: 'weddings', name: 'Destination Weddings', image: img.signGuest, line: 'Destination and Indian weddings', text: 'Every event of the wedding weekend, from the welcome dinner to the farewell brunch.', serve: 'Live food counters, sit-down dinners, late-night food' },
   { id: 'parties', name: 'Private Events', image: img.canapes, line: 'Customized Menus', text: 'Birthdays, anniversaries, engagement parties and house parties.', serve: 'Live food counters and small bites' },
-  { id: 'company', name: 'Corporate Events', image: img.baskets, line: 'Large Scale Capacity', text: 'Office parties, team dinners, product launches and client evenings.', serve: 'Live food counters, a sit-down dinner, or small bites with drinks' },
+  { id: 'company', name: 'Corporate Events', image: img.corporateCounter, line: 'Large Scale Capacity', text: 'Office parties, team dinners, product launches and client evenings.', serve: 'Live food counters, a sit-down dinner, or small bites with drinks' },
   { id: 'private', name: 'Fine Dining', image: img.fineDining, line: 'Personalized Culinary Services', text: profile.privateDining[0].text, serve: 'Sit-down Thai dinner or sharing plates' }
 ];
 
@@ -177,21 +178,3 @@ export const team: { role: string; lines: string[]; image: Img }[] = [
   { role: 'CO FOUNDER', lines: ['DHIVESH - PASSION IN CULINARY, ENTREPRENEUR, SOCIAL MEDIA'], image: { src: '/img/team-dhivesh.jpg', alt: 'Dhivesh, co-founder of Mahanakorn' } }
 ];
 
-/** Past events we can show (Home, Past Events and For Planners pages). */
-export const pastEvents = [
-  { place: 'Bali', name: 'Three-day Indian wedding', kind: 'Wedding', year: '2025' },
-  { place: 'Jakarta', name: 'Table Tales pop-up dinner at Hause Rooftop', kind: 'Pop-up', year: '2025' },
-  { place: 'Jakarta', name: "Thai dinner with Queen's Tandoor", kind: 'Restaurant night', year: '2025' },
-  { place: 'Delhi', name: 'Thai grill night at Foul Play', kind: 'Restaurant night', year: '2026' }
-];
-
-export const baliMenu = [
-  ['Khao soi', 'ข้าวซอย', 'Vegan option'],
-  ['Som tum', 'ส้มตำ', 'Vegan option'],
-  ['Larb on crispy rice', 'ลาบ', 'Vegan option'],
-  ['Krapao', 'กะเพรา', 'Vegan'],
-  ['Miang kham', 'เมี่ยงคำ', 'Vegan'],
-  ['Massaman curry', 'แกงมัสมั่น', 'Diet to confirm'],
-  ['Prawn pad thai', 'ผัดไทยกุ้ง', 'Non-veg'],
-  ['Mango sticky rice', 'ข้าวเหนียวมะม่วง', 'Vegan']
-] as const;

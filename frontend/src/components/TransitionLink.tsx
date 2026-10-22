@@ -30,7 +30,8 @@ export default function TransitionLink({ href, onClick, children, ...rest }: Pro
     e.preventDefault();
     const started = Date.now();
     await leavePage();
-    router.push(url.pathname + url.search + url.hash);
+    // Section links (#…): don't let Next jump straight there; PageMotion opens the page and then glides down.
+    router.push(url.pathname + url.search + url.hash, { scroll: !url.hash });
     window.setTimeout(() => restoreIfStuck(started), 5000);
   }
 

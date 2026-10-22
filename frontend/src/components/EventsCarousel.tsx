@@ -6,7 +6,7 @@ import TransitionLink from './TransitionLink';
 import { ArrowLeft, ArrowRight } from './Icons';
 import type { Img } from '@/lib/content';
 
-type Item = { id: string; name: string; line: string; image: Img; href: string };
+type Item = { id: string; name: string; image: Img; href: string };
 
 /**
  * Compact sideways-scrolling row of cards (native scroll with snap, so touch, trackpad and keyboard all work).
@@ -87,11 +87,10 @@ export default function EventsCarousel({ items, more }: { items: Item[]; more: {
           <li key={it.id} className="evc-item">
             <Media image={it.image} href={it.href} cursor="View" eager className="evc-photo" sizes="(max-width: 700px) 78vw, 290px">
               <span className="evc-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-              <span className="sr-only">{it.name}: {it.line}</span>
+              <span className="sr-only">{it.name}</span>
             </Media>
             <TransitionLink href={it.href} className="evc-cap" tabIndex={-1}>
               <b>{it.name}</b>
-              <span>{it.line}</span>
             </TransitionLink>
           </li>
         ))}

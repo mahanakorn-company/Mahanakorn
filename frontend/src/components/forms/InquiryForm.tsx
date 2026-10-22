@@ -9,7 +9,7 @@ import { routes, whatsappLink } from '@/lib/site';
 import { PillLink } from '../Pill';
 import { ArrowLeft, ArrowRight, Restart } from '../Icons';
 
-const ROLES = [['host', "It's my event"], ['planner', 'Event or wedding planner'], ['company', 'Booking for a company'], ['venue', 'Venue or restaurant'], ['other', 'Other']] as const;
+const ROLES = [['host', 'My celebration'], ['private', 'Private events'], ['company', 'Corporate events'], ['other', 'Other']] as const;
 export const EVENT_TYPES = [['wedding', 'Destination wedding'], ['party', 'Private event'], ['corporate', 'Corporate event'], ['private-dinner', 'Fine dining'], ['other', 'Something else']] as const;
 const DESTINATIONS = [['bangkok', 'Bangkok'], ['phuket', 'Phuket'], ['koh-samui', 'Koh Samui'], ['krabi', 'Krabi'], ['hua-hin', 'Hua Hin'], ['bali', 'Bali'], ['jakarta', 'Jakarta'], ['india', 'India'], ['other', 'Other or undecided']] as const;
 const GUESTS = [['under-50', 'Under 50'], ['50-100', '50–100'], ['100-200', '100–200'], ['200-350', '200–350'], ['350-plus', '350+']] as const;
@@ -22,7 +22,7 @@ export type InquiryPreset = { eventType?: string; functions?: string[]; diet?: s
 type Data = {
   name: string; email: string; whatsapp: string; role: string; eventType: string;
   date: string; dateFlexible: boolean; destination: string; venue: string; guests: string;
-  functions: string[]; need: string; diet: string[]; hasPlanner: string; message: string; company: string;
+  functions: string[]; need: string; diet: string[]; message: string; company: string;
 };
 type Errors = Partial<Record<keyof Data | '_', string>>;
 type Step = 1 | 2 | 'done';
@@ -52,7 +52,7 @@ export default function InquiryForm({ preset }: { preset?: InquiryPreset }) {
   const [serverError, setServerError] = useState('');
   const [data, setData] = useState<Data>({
     name: '', email: '', whatsapp: '', role: 'host', eventType: preset?.eventType ?? '', date: '', dateFlexible: false, destination: '', venue: '', guests: '',
-    functions: preset?.functions ?? [], need: preset?.need ?? '', diet: preset?.diet ?? [], hasPlanner: '', message: preset?.message ?? '', company: ''
+    functions: preset?.functions ?? [], need: preset?.need ?? '', diet: preset?.diet ?? [], message: preset?.message ?? '', company: ''
   });
   const boxRef = useRef<HTMLDivElement>(null);
   const summaryRef = useRef<HTMLDivElement>(null);
@@ -102,8 +102,7 @@ export default function InquiryForm({ preset }: { preset?: InquiryPreset }) {
       ...data,
       date: data.dateFlexible ? '' : data.date,
       functions: data.eventType === 'wedding' ? data.functions : [],
-      need: data.need || undefined,
-      hasPlanner: data.hasPlanner || undefined
+      need: data.need || undefined
     });
     setBusy(false);
     if (res.ok) { setErrors({}); setStep('done'); return; }
@@ -155,12 +154,12 @@ export default function InquiryForm({ preset }: { preset?: InquiryPreset }) {
             </div>
             <div className="f">
               <label htmlFor="q-whatsapp">WhatsApp, with country code</label>
-              <input className="ul" id="q-whatsapp" name="whatsapp" type="tel" autoComplete="tel" inputMode="tel" placeholder="+91" required value={data.whatsapp} onChange={(e) => set('whatsapp', e.target.value)} {...field('whatsapp')} />
+              <input className="ul" id="q-whatsapp" name="whatsapp" type="tel" autoComplete="tel" inputMode="tel" required value={data.whatsapp} onChange={(e) => set('whatsapp', e.target.value)} {...field('whatsapp')} />
               {err('whatsapp') && <span className="err" id="e-whatsapp">{err('whatsapp')}</span>}
             </div>
           </div>
           <fieldset id="q-role">
-            <legend className="lg">I am…</legend>
+            <legend className="sr-only">I am…</legend>
             <div className="opts">
               {ROLES.map(([v, l]) => (
                 <label key={v} className="opt"><input type="radio" name="role" value={v} checked={data.role === v} onChange={() => set('role', v)} />{l}</label>
@@ -228,13 +227,6 @@ export default function InquiryForm({ preset }: { preset?: InquiryPreset }) {
             <legend className="lg">Food needs (optional)</legend>
             <div className="opts">{DIETS.map(([v, l]) => <label key={v} className="opt"><input type="checkbox" checked={data.diet.includes(v)} onChange={() => toggle('diet', v)} />{l}</label>)}</div>
           </fieldset>
-          <fieldset>
-            <legend className="lg">Do you have an event planner? (optional)</legend>
-            <div className="opts">
-              <label className="opt"><input type="radio" name="hasPlanner" checked={data.hasPlanner === 'yes'} onChange={() => set('hasPlanner', 'yes')} />Yes</label>
-              <label className="opt"><input type="radio" name="hasPlanner" checked={data.hasPlanner === 'no'} onChange={() => set('hasPlanner', 'no')} />Not yet</label>
-            </div>
-          </fieldset>
           <div className="f">
             <label htmlFor="q-message">Anything else? (optional)</label>
             <textarea className="ul" id="q-message" name="message" rows={3} maxLength={2000} placeholder="Favourite dishes, the mood, spice levels" value={data.message} onChange={(e) => set('message', e.target.value)} />
@@ -253,7 +245,7 @@ export default function InquiryForm({ preset }: { preset?: InquiryPreset }) {
           <h2 ref={headingRef} tabIndex={-1} style={{ fontSize: 'clamp(36px,4.4vw,62px)', fontWeight: 500, lineHeight: 1, textTransform: 'uppercase', letterSpacing: '-.02em', outline: 'none' }}>We&apos;ve <span className="s">got it</span></h2>
           <p className="mut" style={{ lineHeight: 1.6, fontSize: 16, maxWidth: 460 }}>Thanks, {data.name.split(' ')[0]}. We&apos;ll message you on WhatsApp at {data.whatsapp} with a menu idea and a price.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
-            <PillLink href={routes.pastEvents} variant="dk">See past events</PillLink>
+            <PillLink href={routes.services} variant="dk">See our services</PillLink>
             <PillLink href={routes.menu} variant="ln">See our menu</PillLink>
             {wa && <PillLink href={wa} variant="wa">WhatsApp us now</PillLink>}
           </div>

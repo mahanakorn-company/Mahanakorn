@@ -51,7 +51,6 @@ export default function MenuPage() {
             <p data-reveal className="svc-lead">Each counter is a small Thai street-food stall. A chef cooks one dish fresh for each guest. Most events have 3 to 5 counters.</p>
           </div>
           <MenuCounters items={stations} />
-          <p className="menu-note">Guests per counter and space needed: to confirm</p>
         </div>
       </section>
 
@@ -67,12 +66,10 @@ export default function MenuPage() {
           </div>
           <div className="menu-sets">
             {stationSets.map((set, s) => (
-              <article key={set.name} className="menu-set" aria-labelledby={`set-${s}`} data-reveal>
+              <article key={set.name} className="menu-set" aria-label={set.name} data-reveal>
                 <figure className="menu-set-photo">
                   <Image src={setPhotos[s].src} alt={setPhotos[s].alt} fill sizes="(max-width: 900px) 92vw, 30vw" style={{ objectFit: 'cover' }} />
                 </figure>
-                <p className="svc-label"><span>{set.when}</span></p>
-                <h3 id={`set-${s}`} className="menu-set-name">{set.name}</h3>
                 <ol className="menu-set-items">
                   {set.items.map(([en, th], i) => (
                     <li key={en}>
@@ -96,15 +93,13 @@ export default function MenuPage() {
               <Image src={img.krapaoCard.src} alt={img.krapaoCard.alt} fill sizes="(max-width: 900px) 92vw, 44vw" style={{ objectFit: 'cover' }} />
             </figure>
             <div className="menu-day-text">
-              <p className="svc-label"><span>On the day</span></p>
               <h2 id="serve" className="lit"><span>Served on banana leaf and clay plates.</span><span>A name card for every dish.</span><span>Vegan dishes clearly marked.</span><span>Enough chefs, so no long queues.</span></h2>
-              <p data-reveal className="svc-lead">No buffet trays. Each counter looks like a Thai market stall, and we plan the layout with your wedding planner.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <ClosingCta label="Found dishes you like?" title="Let's build|*your menu*" text="Tell us your date, place and number of guests. We send a menu idea and a price." />
+      <ClosingCta label="Found dishes you like?" title="Let's build|*your menu*" />
     </>
   );
 }

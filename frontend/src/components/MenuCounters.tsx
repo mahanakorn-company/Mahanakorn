@@ -36,7 +36,6 @@ export default function MenuCounters({ items, initial = 0 }: { items: SwitchItem
   return (
     <div className="mc">
       <div>
-      <div className="mc-head" aria-hidden="true"><span>Food counters</span><span>Tap a dish to see it</span></div>
       <ol className="mc-list" aria-label="Food counters">
         {items.map((it, i) => {
           const on = i === active;
