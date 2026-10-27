@@ -161,6 +161,6 @@ export const team: { role: string; name: string; desc: string; image: Img }[] = 
   { role: 'FOUNDER', name: 'MEENU', desc: 'BANKER', image: { src: '/img/team-meenu.jpg', alt: 'Meenu, founder of Mahanakorn' } },
   { role: 'CO FOUNDER', name: 'GINK', desc: 'NUTRITIONIST & FOOD STYLIST', image: { src: '/img/team-gink.jpg', alt: "Kamonpilai 'Gink' Danwiriyatrakul, co-founder of Mahanakorn" } },
   { role: 'CO FOUNDER', name: 'DHIVESH', desc: 'PASSION IN CULINARY, ENTREPRENEUR, SOCIAL MEDIA', image: { src: '/img/team-dhivesh.jpg', alt: 'Dhivesh, co-founder of Mahanakorn' } },
-  { role: 'CO FOUNDER', name: 'PRANAV', desc: 'DRINKS EXPERT', image: { src: '/img/team-pranav.jpg', alt: 'Pranav, co-founder of Mahanakorn' } }
+  { role: 'CO FOUNDER', name: 'PRANAV', desc: 'BEVERAGE CURATOR', image: { src: '/img/team-pranav.jpg', alt: 'Pranav, co-founder of Mahanakorn' } }
 ];
 
