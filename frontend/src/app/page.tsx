@@ -101,7 +101,7 @@ export default function HomePage() {
               <li className="hcard-li">
                 <TransitionLink href={routes.menu} className="hcard hcard-end" data-cursor="Open">
                   <span className="cap" style={{ color: 'var(--smoke)' }}>Our menu</span>
-                  <span className="hcard-end-title">See every <span className="s">dish</span></span>
+                  <span className="hcard-end-title">Discover every <span className="s">creation</span></span>
                   <span className="hcard-end-go" aria-hidden="true"><ArrowRight size={18} /></span>
                 </TransitionLink>
               </li>
@@ -144,7 +144,7 @@ export default function HomePage() {
       </section>
 
       {/* 9. Get a quote + footer (small) */}
-      <ClosingCta label="" title="Let's create an experience *for your guests*" text="Tell us about your event" />
+      <ClosingCta label="" title="Let's create an *experience*" text="Tell us about your event" />
     </>
   );
 }
