@@ -125,7 +125,7 @@ export default function ServicesPage() {
         </dl>
       </ServiceBlock>
 
-      <ClosingCta label={cta.quote} title="Tell us *about*|your event" text="The type of event, date, place and number of guests. We reply with a menu idea and a price, usually in 1–2 days." />
+      <ClosingCta label={cta.quote} title="Tell us *about*|your event" />
     </>
   );
 }

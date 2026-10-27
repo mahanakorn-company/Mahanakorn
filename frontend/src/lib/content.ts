@@ -36,7 +36,7 @@ export const img = {
   welcomeCounter: { src: '/img/welcome-counter.jpg', alt: 'A Mahanakorn cook ladling curry at an outdoor live counter' },
   pannaCotta: { src: '/img/panna-cotta.jpg', alt: 'Vegetarian coconut panna cotta served in spoons on banana leaf' },
   grillPlate: { src: '/img/thai-grill-plate.jpg', alt: 'Grilled meat with crushed toasted rice and a fresh herb salad' },
-  vegTarts: { src: '/img/veg-tarts.jpg', alt: 'Vegetarian tartlets on a tiered wooden stand' },
+  cocktailBar: { src: '/img/cocktail-bar.jpg', alt: 'A Smoked Kancha cocktail served on a lit tray at the bar' },
   basilRice: { src: '/img/basil-rice.jpg', alt: 'A saucy Thai stir-fry with basil and jasmine rice on banana leaf' },
   omelette: { src: '/img/thai-omelette.jpg', alt: 'A Thai omelette on banana leaf with chilli sauce' },
   corporateDrinks: { src: '/img/corporate-drinks.jpg', alt: 'A cocktail in a coupe glass and iced drinks served at the bar' },
@@ -61,15 +61,15 @@ export type SwitchItem = {
 
 /** Wedding events (Services page, weddings section). */
 export const functions: SwitchItem[] = [
-  { name: 'Welcome dinner', image: img.welcomeCounter, meta: 'Day 1 · Live food counters', text: 'Four to six live counters, so families can meet and mingle as they arrive.' },
-  { name: 'Mehendi', image: img.pannaCotta, meta: 'Day 2 · Light, fresh snacks', text: 'Small bites that are easy to eat with henna on your hands: leaf wraps, papaya salad, coconut ice cream.' },
-  { name: 'Haldi', image: img.papaya, meta: 'Day 2 · Fruit, salads and coconut', text: 'Light, cooling food for a hot morning outdoors.' },
-  { name: 'Sangeet', image: img.grillPlate, meta: 'Day 2 · Hot noodles and grill', text: 'Khao soi noodles, grilled skewers (pork and vegan) and satay, served late into the night.' },
-  { name: 'Cocktails', image: img.vegTarts, meta: 'Day 2 · Small bites', text: 'Bite-sized Thai snacks carried around by our team.' },
-  { name: 'Wedding lunch', image: img.basilRice, meta: 'Day 3 · Sharing plates', text: 'Thai dishes served to every table for everyone to share.' },
-  { name: 'Reception', image: img.prawns, meta: 'Day 3 · Sit-down dinner', text: 'A served Thai dinner, or a Thai food corner next to your main buffet.' },
-  { name: 'After-party', image: img.padthai, meta: 'Day 3 · Late-night food', text: 'Pad thai, fried rice and sweet toast at 1 a.m.' },
-  { name: 'Farewell brunch', image: img.omelette, meta: 'Day 4 · Thai breakfast', text: 'Rice porridge, Thai doughnuts with pandan custard, and strong Thai coffee.' }
+  { name: 'Welcome dinner', image: img.welcomeCounter },
+  { name: 'Mehendi', image: img.pannaCotta },
+  { name: 'Haldi', image: img.papaya },
+  { name: 'Sangeet', image: img.grillPlate },
+  { name: 'Cocktails', image: img.cocktailBar },
+  { name: 'Wedding lunch', image: img.basilRice },
+  { name: 'Reception', image: img.prawns },
+  { name: 'After-party', image: img.padthai },
+  { name: 'Farewell brunch', image: img.omelette }
 ];
 
 /** Our live food counters (Our Menu page). */

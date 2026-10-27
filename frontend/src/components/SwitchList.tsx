@@ -63,8 +63,6 @@ export default function SwitchList({ items, label, hint, initial = 0, small, pan
             </span>
           )}
         </div>
-        <span className="cap mut">{cur.meta ?? cur.name}</span>
-        {cur.text && <p style={{ lineHeight: 1.6, fontSize: 16 }}>{cur.text}</p>}
         {cur.list && (
           <ul className="panel-list">
             {cur.list.map((x) => <li key={x}>{x}</li>)}
