@@ -48,7 +48,6 @@ export default function MenuPage() {
               <p className="svc-label"><span>Choose your counters</span></p>
               <Split as="h2" id="counters" className="svc-title" text="Pick the dishes *you love*" />
             </div>
-            <p data-reveal className="svc-lead">Each counter is a small Thai street-food stall. A chef cooks one dish fresh for each guest. Most events have 3 to 5 counters.</p>
           </div>
           <MenuCounters items={stations} />
         </div>
