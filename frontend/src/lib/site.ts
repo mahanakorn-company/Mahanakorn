@@ -1,7 +1,7 @@
 /** Site-wide settings. Values that change per deployment come from environment variables (see .env.example). */
 export const site = {
   name: 'Mahanakorn Thai Catering',
-  shortName: 'mahanakorn.ww',
+  shortName: 'mahanakorn',
   thaiName: 'มหานคร',
   /** The crocodile logo (transparent PNG; its black linework needs a light background, see .brand-badge). */
   logo: '/img/logo.png',
