@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const setPhotos = [img.khaosoiSign, img.riceSalad, img.pandanToast];
 
 /*
-  Page flow: hero → choose your counters (interactive dish list) → ready-made menus → on the day → get a quote
+  Page flow: hero → choose your counters (interactive dish list) → ready-made menus → get a quote
 */
 export default function MenuPage() {
   return (
@@ -80,20 +80,6 @@ export default function MenuPage() {
                 </ol>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 3. On the day */}
-      <section className="sec" aria-labelledby="serve" style={{ paddingTop: 0 }}>
-        <div className="in">
-          <div className="panel menu-day">
-            <figure className="menu-day-photo" data-reveal>
-              <Image src={img.krapaoCard.src} alt={img.krapaoCard.alt} fill sizes="(max-width: 900px) 92vw, 44vw" style={{ objectFit: 'cover' }} />
-            </figure>
-            <div className="menu-day-text">
-              <h2 id="serve" className="lit"><span>Served on banana leaf and clay plates.</span><span>A name card for every dish.</span><span>Vegan dishes clearly marked.</span><span>Enough chefs, so no long queues.</span></h2>
-            </div>
           </div>
         </div>
       </section>

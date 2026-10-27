@@ -504,8 +504,8 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
 .menu-sets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 3vw, 48px); align-items: start; }
 .menu-set { display: flex; flex-direction: column; gap: 14px; }
 .menu-set-photo { position: relative; margin: 0 0 8px; aspect-ratio: 4 / 3; border-radius: var(--r); overflow: hidden; background: var(--rice); }
-.menu-set-photo img, .menu-day-photo img { transition: transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1); }
-.menu-set:hover .menu-set-photo img, .menu-day-photo:hover img { transform: scale(1.04); }
+.menu-set-photo img { transition: transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.menu-set:hover .menu-set-photo img { transform: scale(1.04); }
 .menu-set-items { margin-top: 6px; border-top: 1px solid var(--line); }
 .menu-set-items li { display: grid; grid-template-columns: 36px minmax(0, 1fr) auto; align-items: baseline; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--line); }
 .menu-set-en { font-size: 16px; transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), color 0.3s; }
@@ -513,12 +513,9 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
 .menu-set-th { font-family: var(--f-thai); font-size: 15px; color: var(--stone); }
 
 /* On the day */
-.menu-day { padding: clamp(24px, 4vw, 56px); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
-.menu-day-photo { position: relative; margin: 0; aspect-ratio: 4 / 5; max-height: 680px; width: 100%; border-radius: var(--r); overflow: hidden; background: #e9e4db; }
-.menu-day-text { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
 
 @media (max-width: 900px) {
-  .menu-intro, .mc, .menu-day { grid-template-columns: 1fr; }
+  .menu-intro, .mc { grid-template-columns: 1fr; }
   .menu-sets { grid-template-columns: 1fr; gap: 48px; }
   .mc-panel { display: none; }
   .mc-name { font-size: clamp(26px, 7.4vw, 36px); }
@@ -529,8 +526,7 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
   .mc-list li.on .mc-inline { grid-template-rows: 1fr; }
   .mc-list li.on .mc-inline > div { padding-bottom: 22px; }
   .mc-photo-inline { aspect-ratio: 4 / 3; }
-  .menu-day-photo { max-height: 70vh; }
-}
+  }
 
 /* Home: brand introduction, text left and photo right */
 .about-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
