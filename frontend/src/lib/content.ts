@@ -39,7 +39,7 @@ export const img = {
   vegTarts: { src: '/img/veg-tarts.jpg', alt: 'Vegetarian tartlets on a tiered wooden stand' },
   basilRice: { src: '/img/basil-rice.jpg', alt: 'A saucy Thai stir-fry with basil and jasmine rice on banana leaf' },
   omelette: { src: '/img/thai-omelette.jpg', alt: 'A Thai omelette on banana leaf with chilli sauce' },
-  teamServing: { src: '/img/team-serving.jpg', alt: 'Mahanakorn staff in branded aprons serving guests at an event' },
+  corporateDrinks: { src: '/img/corporate-drinks.jpg', alt: 'A cocktail in a coupe glass and iced drinks served at the bar' },
   khaosoiCounter: { src: '/img/khaosoi-counter.jpg', alt: 'The khao soi counter with crispy noodles, lime and pickled greens ready to serve' },
   krapaoPlate: { src: '/img/krapao-plate.jpg', alt: 'Krapao with a fried egg, jasmine rice and cucumber on a teal plate' },
   khaosoiSign: { src: '/img/khaosoi-sign.jpg', alt: 'The khao soi pot beside the Mahanakorn sign at a live counter' },
@@ -152,7 +152,7 @@ export const profile = {
 export const eventTypes: { id: string; name: string; image: Img; line: string; text: string }[] = [
   { id: 'weddings', name: 'Vows Beyond Borders', image: img.pineappleCurry, line: 'Destination and Indian weddings', text: 'Every event of the wedding weekend, from the welcome dinner to the farewell brunch.' },
   { id: 'parties', name: 'Private Events', image: img.privateGuests, line: 'Customized Menus', text: 'Our private dining experiences are flawlessly executed from menu curation to tableside service.' },
-  { id: 'company', name: 'Corporate Events', image: img.teamBangkok, line: 'Large Scale Capacity', text: 'We design and execute private corporate events with precision and style. Whether hosting 20 executives or 500 guests, we bring together refined cuisine, seamless service — anywhere in the world.' },
+  { id: 'company', name: 'Corporate Events', image: img.teamBangkok, line: 'Large Scale Capacity', text: 'We design and execute private corporate events with precision and style. Whether hosting 20 executives or 500 guests, we bring together refined cuisine and seamless service — anywhere in the world.' },
   { id: 'private', name: 'Fine Dining', image: img.fineDiningCurry, line: 'Personalized Culinary Services', text: profile.privateDining[0].text }
 ];
 

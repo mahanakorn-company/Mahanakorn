@@ -113,7 +113,7 @@ export default function ServicesPage() {
       </ServiceBlock>
 
       {/* 03 Corporate Events */}
-      <ServiceBlock id="company" title="Corporate *Events*" image={img.teamServing} imagePosition="center 35%" quote={`${routes.quote}?event=company`}>
+      <ServiceBlock id="company" title="Corporate *Events*" image={img.corporateDrinks} imagePosition="center 60%" quote={`${routes.quote}?event=company`}>
         <p className="svc-sub">Where Business Meets Celebration.</p>
         <p className="svc-lead">{company.text}</p>
       </ServiceBlock>
