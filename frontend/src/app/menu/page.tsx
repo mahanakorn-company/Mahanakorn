@@ -29,10 +29,8 @@ export default function MenuPage() {
         </div>
         <div className="shade" style={{ background: 'linear-gradient(180deg, rgba(10,10,10,.3) 0%, rgba(10,10,10,.18) 40%, rgba(10,10,10,.68) 100%)' }} />
         <div className="hero-foot">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 820 }}>
-            <span className="cap" data-intro-fade style={{ color: '#F4F1EC' }}>Our menu · live Thai food counters</span>
-            <Split as="h1" id="hero-title" className="plain" text="Thai food, cooked *in front of your guests*" intro />
-          </div>
+          {/* Photo only: the heading is kept for screen readers and search, not shown. */}
+          <div><h1 id="hero-title" className="sr-only">Our Menu</h1></div>
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10 }} data-intro-fade>
             <HeroPause />
             <PillLink href={routes.quote}>{cta.quote}</PillLink>

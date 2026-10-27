@@ -11,7 +11,7 @@ export const img = {
   canapes: { src: '/img/canapes.jpg', alt: 'Crispy rice canapés topped with spiced filling and chilli on banana leaf' },
   krapaoCard: { src: '/img/krapao-card.jpg', alt: 'Mahanakorn station card reading Krapao, vegan' },
   chef: { src: '/img/chef.jpg', alt: 'A Mahanakorn chef serving curry to a guest at a live station' },
-  guest: { src: '/img/guest.jpg', alt: 'A wedding guest tasting a miang kham leaf wrap' },
+  miangPlated: { src: '/img/miang-plated.jpg', alt: 'Miang kham plated with pomelo, toasted coconut and an edible flower in a glazed dish' },
   khaosoi: { src: '/img/khaosoi.jpg', alt: 'A bowl of khao soi beside its vegan station card' },
   somtum: { src: '/img/somtum.jpg', alt: 'Som tum in a white bowl' },
   larb: { src: '/img/larb.jpg', alt: 'Larb on crispy rice crackers on banana leaf' },
@@ -36,7 +36,7 @@ export const img = {
   welcomeCounter: { src: '/img/welcome-counter.jpg', alt: 'A Mahanakorn cook ladling curry at an outdoor live counter' },
   pannaCotta: { src: '/img/panna-cotta.jpg', alt: 'Vegetarian coconut panna cotta served in spoons on banana leaf' },
   grillPlate: { src: '/img/thai-grill-plate.jpg', alt: 'Grilled meat with crushed toasted rice and a fresh herb salad' },
-  cocktailBar: { src: '/img/cocktail-bar.jpg', alt: 'A Smoked Kancha cocktail served on a lit tray at the bar' },
+  cocktailBar: { src: '/img/cocktail-bar.jpg', alt: 'An iced drink with a striped straw, served on a lit tray at the bar' },
   basilRice: { src: '/img/basil-rice.jpg', alt: 'A saucy Thai stir-fry with basil and jasmine rice on banana leaf' },
   omelette: { src: '/img/thai-omelette.jpg', alt: 'A Thai omelette on banana leaf with chilli sauce' },
   corporateDrinks: { src: '/img/corporate-drinks.jpg', alt: 'A cocktail in a coupe glass and iced drinks served at the bar' },
@@ -65,7 +65,7 @@ export const functions: SwitchItem[] = [
   { name: 'Mehendi', image: img.pannaCotta },
   { name: 'Haldi', image: img.papaya },
   { name: 'Sangeet', image: img.grillPlate },
-  { name: 'Cocktails', image: img.cocktailBar },
+  { name: 'Cocktails', image: img.drinksCounter },
   { name: 'Wedding lunch', image: img.basilRice },
   { name: 'Reception', image: img.prawns },
   { name: 'After-party', image: img.padthai },
@@ -79,9 +79,9 @@ export const stations: SwitchItem[] = [
   { name: 'Larb', thai: 'ลาบ', image: img.larb, text: 'Spicy herb salad served on a crispy rice cracker.' },
   { name: 'Krapao', thai: 'กะเพรา', image: img.krapaoPlate, text: 'Thai basil stir-fry with rice, and a fried egg if you like.' },
   { name: 'Thai grill', thai: 'หมูปิ้ง', image: img.thaiGrill, text: 'Grilled skewers with a tangy dipping sauce. Pork and vegan.' },
-  { name: 'Miang kham', thai: 'เมี่ยงคำ', image: img.guest, text: 'One-bite leaf wraps with lime, ginger, peanuts and coconut.' },
+  { name: 'Miang kham', thai: 'เมี่ยงคำ', image: img.miangPlated, text: 'One-bite leaf wraps with lime, ginger, peanuts and coconut.' },
   { name: 'Mango sticky rice', thai: 'ข้าวเหนียวมะม่วง', image: img.fineDining, text: 'Sweet mango with coconut sticky rice. Thailand’s favourite dessert.' },
-  { name: 'Thai tea', thai: 'ชาไทย', image: img.drinksCounter, text: 'Iced Thai tea and Thai coffee.' }
+  { name: 'Thai tea', thai: 'ชาไทย', image: img.cocktailBar, text: 'Iced Thai tea and Thai coffee.' }
 ];
 
 /** Sliding row of counters on the Home page. */
