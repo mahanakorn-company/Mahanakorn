@@ -48,7 +48,7 @@ export default function GetAQuotePage({ searchParams }: { searchParams: Record<s
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'stretch' }}>
         <aside aria-label="Your experience, curated" style={{ flex: '1 1 360px', display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <Media image={img.teamBangkok} clip style={{ minHeight: 520, flex: 1 }}>
+          <Media image={img.corporateCounter} clip style={{ minHeight: 520, flex: 1 }}>
             <div className="tag-in"><PillLabel icon={<Dot />}>Our team in Bangkok</PillLabel></div>
           </Media>
           <div className="panel" style={{ padding: 24, display: 'flex', flexDirection: 'column', gap: 8 }}>
