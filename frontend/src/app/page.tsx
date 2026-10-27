@@ -132,11 +132,11 @@ export default function HomePage() {
           <Split id="team" text="OUR *TEAM*" style={{ fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 1, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' }} />
           <ul className="team" data-stagger>
             {team.map((p) => (
-              <li key={p.lines[0]}>
+              <li key={p.name}>
                 <span className="team-photo"><Image src={p.image.src} alt={p.image.alt} fill sizes="180px" /></span>
                 <span className="cap mut">{p.role}</span>
-                <strong>{p.lines[0]}</strong>
-                {p.lines.slice(1).map((l) => <span key={l} className="mut">{l}</span>)}
+                <strong>{p.name}</strong>
+                <span className="team-desc">{p.desc}</span>
               </li>
             ))}
           </ul>

@@ -157,10 +157,10 @@ export const eventTypes: { id: string; name: string; image: Img; line: string; t
 ];
 
 /** OUR TEAM, exactly as on the client's slide (team.jpg), including its capitals. */
-export const team: { role: string; lines: string[]; image: Img }[] = [
-  { role: 'FOUNDER', lines: ['MEENU - BANKER'], image: { src: '/img/team-meenu.jpg', alt: 'Meenu, founder of Mahanakorn' } },
-  { role: 'CO FOUNDER', lines: ["KAMONPILAI 'GINK' DANWIRIYATRAKUL", 'NUTRITIONIST & FOOD STYLIST'], image: { src: '/img/team-gink.jpg', alt: "Kamonpilai 'Gink' Danwiriyatrakul, co-founder of Mahanakorn" } },
-  { role: 'CO FOUNDER', lines: ['DHIVESH - PASSION IN CULINARY, ENTREPRENEUR, SOCIAL MEDIA'], image: { src: '/img/team-dhivesh.jpg', alt: 'Dhivesh, co-founder of Mahanakorn' } },
-  { role: 'CO FOUNDER', lines: ['PRANAV - DRINKS EXPERT'], image: { src: '/img/team-pranav.jpg', alt: 'Pranav, co-founder of Mahanakorn' } }
+export const team: { role: string; name: string; desc: string; image: Img }[] = [
+  { role: 'FOUNDER', name: 'MEENU', desc: 'BANKER', image: { src: '/img/team-meenu.jpg', alt: 'Meenu, founder of Mahanakorn' } },
+  { role: 'CO FOUNDER', name: 'GINK', desc: 'NUTRITIONIST & FOOD STYLIST', image: { src: '/img/team-gink.jpg', alt: "Kamonpilai 'Gink' Danwiriyatrakul, co-founder of Mahanakorn" } },
+  { role: 'CO FOUNDER', name: 'DHIVESH', desc: 'PASSION IN CULINARY, ENTREPRENEUR, SOCIAL MEDIA', image: { src: '/img/team-dhivesh.jpg', alt: 'Dhivesh, co-founder of Mahanakorn' } },
+  { role: 'CO FOUNDER', name: 'PRANAV', desc: 'DRINKS EXPERT', image: { src: '/img/team-pranav.jpg', alt: 'Pranav, co-founder of Mahanakorn' } }
 ];
 
