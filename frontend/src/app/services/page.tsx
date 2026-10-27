@@ -29,8 +29,8 @@ function TextLink({ href, children }: { href: string; children: ReactNode }) {
 }
 
 /** One service: a large real photograph beside its number, name, existing description and the quote button. */
-function ServiceBlock({ id, n, tagline, title, image, imagePosition, flip, quote, children }: {
-  id: string; n: string; tagline: string; title: string; image: Img; imagePosition?: string; flip?: boolean; quote: string; children: ReactNode;
+function ServiceBlock({ id, title, image, imagePosition, flip, quote, children }: {
+  id: string; title: string; image: Img; imagePosition?: string; flip?: boolean; quote: string; children: ReactNode;
 }) {
   return (
     <section id={id} className={`svc anchor${flip ? ' svc-flip' : ''}`} aria-labelledby={`${id}-title`}>
@@ -39,7 +39,6 @@ function ServiceBlock({ id, n, tagline, title, image, imagePosition, flip, quote
           <Image src={image.src} alt={image.alt} fill sizes="(max-width: 900px) 92vw, 46vw" style={{ objectFit: 'cover', objectPosition: imagePosition || 'center' }} />
         </figure>
         <div className="svc-text" data-stagger>
-          <p className="svc-label"><span className="svc-n">{n}</span><span className="svc-rule" aria-hidden="true" /><span>{tagline}</span></p>
           <Split as="h2" id={`${id}-title`} className="svc-title" text={title} />
           {children}
           <div className="svc-actions">
@@ -86,18 +85,12 @@ export default function ServicesPage() {
       </section>
 
       {/* 01 Vows Beyond Borders (destination weddings) */}
-      <ServiceBlock id="weddings" n="01" tagline="Thai food for your wedding" title="Vows Beyond *Borders*" image={img.weddingLiveCounter} imagePosition="center 30%" quote={`${routes.quote}?event=weddings`}>
-        <p className="svc-lead">Book us for one event or the whole weekend. We work next to your main caterer, and every guest finds something to eat.</p>
-        <dl className="svc-options">
-          <div>
-            <dt className="cap mut">Option 1 · Most popular</dt>
-            <dd><strong>Thai food counters at your wedding</strong><span>Added next to your Indian or main caterer</span></dd>
-          </div>
-          <div>
-            <dt className="cap mut">Option 2</dt>
-            <dd><strong>We cater a whole event</strong><span>Welcome dinner, reception or brunch</span></dd>
-          </div>
-        </dl>
+      <ServiceBlock id="weddings" title="Vows Beyond *Borders*" image={img.weddingLiveCounter} imagePosition="center 30%" quote={`${routes.quote}?event=weddings`}>
+        <div className="svc-intro-copy">
+          <p className="svc-kicker">I Do, Anywhere.</p>
+          <p className="svc-sub">Curated destination weddings, flawlessly executed from Bangkok to beyond.</p>
+        </div>
+        <p className="svc-lead">We curate and execute luxury weddings in any destination, so your celebration feels intimate, effortless, and entirely yours, no matter where in the world you gather.</p>
       </ServiceBlock>
 
       {/* Vows Beyond Borders, in detail: food for each wedding event */}
@@ -111,19 +104,22 @@ export default function ServicesPage() {
       </section>
 
       {/* 02 Private Events */}
-      <ServiceBlock id="parties" n="02" tagline={parties.line} title="Private *Events*" image={img.smoked} flip quote={`${routes.quote}?event=parties`}>
+      <ServiceBlock id="parties" title="Private *Events*" image={img.smoked} flip quote={`${routes.quote}?event=parties`}>
         <p className="svc-lead">{parties.text}</p>
-        <dl className="svc-meta"><dt className="cap mut">What we usually serve</dt><dd>{parties.serve}</dd></dl>
+        <div className="svc-intro-copy">
+          <p className="svc-kicker">Gather. Privately.</p>
+          <p className="svc-sub">Executed from Bangkok to beyond.</p>
+        </div>
       </ServiceBlock>
 
       {/* 03 Corporate Events */}
-      <ServiceBlock id="company" n="03" tagline={company.line} title="Corporate *Events*" image={img.teamServing} imagePosition="center 35%" quote={`${routes.quote}?event=company`}>
+      <ServiceBlock id="company" title="Corporate *Events*" image={img.teamServing} imagePosition="center 35%" quote={`${routes.quote}?event=company`}>
+        <p className="svc-sub">Where Business Meets Celebration.</p>
         <p className="svc-lead">{company.text}</p>
-        <dl className="svc-meta"><dt className="cap mut">What we usually serve</dt><dd>{company.serve}</dd></dl>
       </ServiceBlock>
 
       {/* 04 Fine Dining: the client's Private Dining Experiences points */}
-      <ServiceBlock id="private" n="04" tagline="Private Dining Experiences" title="Fine *Dining*" image={img.dessert} flip quote={`${routes.quote}?event=private`}>
+      <ServiceBlock id="private" title="Fine *Dining*" image={img.dessert} flip quote={`${routes.quote}?event=private`}>
         <dl className="svc-points">
           {profile.privateDining.map((p) => <div key={p.title}><dt>{p.title}</dt><dd>{p.text}</dd></div>)}
         </dl>
