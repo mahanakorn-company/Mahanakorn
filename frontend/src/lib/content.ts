@@ -56,7 +56,6 @@ export type SwitchItem = {
   meta?: string;
   text?: string;
   thai?: string;
-  tags?: string[];
   list?: string[];
 };
 
@@ -75,14 +74,14 @@ export const functions: SwitchItem[] = [
 
 /** Our live food counters (Our Menu page). */
 export const stations: SwitchItem[] = [
-  { name: 'Khao soi', thai: 'ข้าวซอย', image: img.khaosoiCounter, text: 'Curry noodle soup from northern Thailand, topped with crispy noodles and lime.', tags: ['Vegan option', 'Spicy'] },
-  { name: 'Som tum', thai: 'ส้มตำ', image: img.baskets, text: 'Green papaya salad, made fresh for each guest in a clay pot.', tags: ['Vegan option', 'Spicy', 'Contains nuts'] },
-  { name: 'Larb', thai: 'ลาบ', image: img.larb, text: 'Spicy herb salad served on a crispy rice cracker.', tags: ['Vegan option', 'Spicy'] },
-  { name: 'Krapao', thai: 'กะเพรา', image: img.krapaoPlate, text: 'Thai basil stir-fry with rice, and a fried egg if you like.', tags: ['Vegan option', 'Egg-free option'] },
-  { name: 'Thai grill', thai: 'หมูปิ้ง', image: img.thaiGrill, text: 'Grilled skewers with a tangy dipping sauce. Pork and vegan.', tags: ['Vegan option'] },
-  { name: 'Miang kham', thai: 'เมี่ยงคำ', image: img.guest, text: 'One-bite leaf wraps with lime, ginger, peanuts and coconut.', tags: ['Vegan', 'Contains nuts'] },
-  { name: 'Mango sticky rice', thai: 'ข้าวเหนียวมะม่วง', image: img.fineDining, text: 'Sweet mango with coconut sticky rice. Thailand’s favourite dessert.', tags: ['Vegan', 'Egg-free'] },
-  { name: 'Thai tea', thai: 'ชาไทย', image: img.drinksCounter, text: 'Iced Thai tea and Thai coffee.', tags: ['Vegan option'] }
+  { name: 'Khao soi', thai: 'ข้าวซอย', image: img.khaosoiCounter, text: 'Curry noodle soup from northern Thailand, topped with crispy noodles and lime.' },
+  { name: 'Som tum', thai: 'ส้มตำ', image: img.baskets, text: 'Green papaya salad, made fresh for each guest in a clay pot.' },
+  { name: 'Larb', thai: 'ลาบ', image: img.larb, text: 'Spicy herb salad served on a crispy rice cracker.' },
+  { name: 'Krapao', thai: 'กะเพรา', image: img.krapaoPlate, text: 'Thai basil stir-fry with rice, and a fried egg if you like.' },
+  { name: 'Thai grill', thai: 'หมูปิ้ง', image: img.thaiGrill, text: 'Grilled skewers with a tangy dipping sauce. Pork and vegan.' },
+  { name: 'Miang kham', thai: 'เมี่ยงคำ', image: img.guest, text: 'One-bite leaf wraps with lime, ginger, peanuts and coconut.' },
+  { name: 'Mango sticky rice', thai: 'ข้าวเหนียวมะม่วง', image: img.fineDining, text: 'Sweet mango with coconut sticky rice. Thailand’s favourite dessert.' },
+  { name: 'Thai tea', thai: 'ชาไทย', image: img.drinksCounter, text: 'Iced Thai tea and Thai coffee.' }
 ];
 
 /** Sliding row of counters on the Home page. */

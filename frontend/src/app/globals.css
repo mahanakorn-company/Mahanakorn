@@ -498,8 +498,6 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
 .mc-caption-name { font: 600 13px/1.3 var(--f-sans); letter-spacing: 0.08em; text-transform: uppercase; }
 .mc-caption-th { font-family: var(--f-thai); font-size: 18px; color: var(--stone); }
 .mc-text { font-size: 17px; line-height: 1.65; color: #4b4741; }
-.mc-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.mc-tags li { font: 600 10.5px/1 var(--f-sans); letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); }
 .mc-inline { display: none; }
 
 /* Ready-made menus */

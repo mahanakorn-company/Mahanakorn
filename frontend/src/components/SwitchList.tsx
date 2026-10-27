@@ -70,11 +70,6 @@ export default function SwitchList({ items, label, hint, initial = 0, small, pan
             {cur.list.map((x) => <li key={x}>{x}</li>)}
           </ul>
         )}
-        {cur.tags && (
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-            {cur.tags.map((t) => <span key={t} className="tag">{t}</span>)}
-          </div>
-        )}
         {link && <PillLink href={link.href} variant="dk" style={{ alignSelf: 'flex-start', marginTop: 8 }}>{link.label}</PillLink>}
       </div>
     </div>

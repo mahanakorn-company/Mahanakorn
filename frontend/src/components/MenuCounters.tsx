@@ -7,7 +7,7 @@ import type { SwitchItem } from '@/lib/content';
 /**
  * Our Menu: the live food counters.
  * Desktop: a large typographic list; hovering, focusing or tapping a dish shows its real photo, description and
- * tags in the panel beside it (photos crossfade). Phones: the same list opens each dish in place.
+ * text in the panel beside it (photos crossfade). Phones: the same list opens each dish in place.
  * Dishes without a real photo show their Thai name instead of a stand-in image.
  */
 export default function MenuCounters({ items, initial = 0 }: { items: SwitchItem[]; initial?: number }) {
@@ -18,11 +18,6 @@ export default function MenuCounters({ items, initial = 0 }: { items: SwitchItem
   const detail = (it: SwitchItem) => (
     <>
       {it.text && <p className="mc-text">{it.text}</p>}
-      {it.tags && (
-        <ul className="mc-tags" aria-label="Dietary notes">
-          {it.tags.map((t) => <li key={t}>{t}</li>)}
-        </ul>
-      )}
     </>
   );
 
