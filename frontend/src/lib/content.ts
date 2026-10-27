@@ -85,13 +85,13 @@ export const stations: SwitchItem[] = [
 ];
 
 /** Sliding row of counters on the Home page. */
-export const stationStrip: { name: string; thai: string; line: string; image: Img }[] = [
-  { name: 'Khao soi', thai: 'ข้าวซอย', line: 'Curry noodle soup', image: img.khaosoi },
-  { name: 'Som tum', thai: 'ส้มตำ', line: 'Papaya salad, made to order', image: img.somtum },
-  { name: 'Larb', thai: 'ลาบ', line: 'Herb salad on crispy rice', image: img.canapes },
-  { name: 'Krapao', thai: 'กะเพรา', line: 'Thai basil, rice, fried egg', image: img.krapaoEgg },
-  { name: 'Miang kham', thai: 'เมี่ยงคำ', line: 'One-bite leaf wraps', image: img.miang },
-  { name: 'Mango sticky rice', thai: 'ข้าวเหนียวมะม่วง', line: 'Mango and coconut rice', image: img.mango }
+export const stationStrip: { name: string; thai: string; image: Img }[] = [
+  { name: 'Khao soi', thai: 'ข้าวซอย', image: img.khaosoi },
+  { name: 'Som tum', thai: 'ส้มตำ', image: img.somtum },
+  { name: 'Larb', thai: 'ลาบ', image: img.canapes },
+  { name: 'Krapao', thai: 'กะเพรา', image: img.krapaoEgg },
+  { name: 'Miang kham', thai: 'เมี่ยงคำ', image: img.miang },
+  { name: 'Mango sticky rice', thai: 'ข้าวเหนียวมะม่วง', image: img.mango }
 ];
 
 /** Ready-made counter menus (Our Menu page). */

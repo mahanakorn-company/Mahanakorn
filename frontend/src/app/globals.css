@@ -256,11 +256,10 @@ a.row:hover .go, a.row:focus-visible .go { background: #fff; color: var(--ink); 
 .hcard:hover { color: var(--ink); }
 .hcard .media { height: clamp(300px, 34vw, 480px); }
 .hcard-cap { display: grid; grid-template-columns: 32px minmax(0, 1fr); column-gap: 10px; row-gap: 4px; align-items: baseline; }
-.hcard-n { grid-row: span 2; font-size: 12px; font-weight: 600; color: var(--stone); font-variant-numeric: tabular-nums; }
+.hcard-n { font-size: 12px; font-weight: 600; color: var(--stone); font-variant-numeric: tabular-nums; }
 .hcard-name { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; min-width: 0; }
 .hcard-name b { font-weight: 500; font-size: 19px; text-transform: uppercase; letter-spacing: -0.01em; }
 .hcard-name .th { font-size: 14px; white-space: nowrap; }
-.hcard-line { font-size: 14px; color: var(--stone); }
 .hcard-end { justify-content: space-between; background: var(--ink); color: #fff; border-radius: var(--r); padding: 28px; height: clamp(300px, 34vw, 480px); align-self: flex-start; }
 .hcard-end:hover { color: #fff; }
 .hcard-end-title { font-size: clamp(36px, 3.6vw, 52px); line-height: 0.98; font-weight: 500; text-transform: uppercase; letter-spacing: -0.02em; }

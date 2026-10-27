@@ -77,7 +77,7 @@ export default function HomePage() {
         <section data-hscroll aria-labelledby="counters" className="hs panel">
           <div className="hs-head in">
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <Split id="counters" text="Our live *food Stations*" style={{ fontSize: 'clamp(34px, 4.4vw, 64px)', lineHeight: 1, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' }} />
+              <Split id="counters" text="Food *Stations*" style={{ fontSize: 'clamp(34px, 4.4vw, 64px)', lineHeight: 1, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '-.015em' }} />
             </div>
             <div className="hs-meta">
               <span className="hs-count" aria-hidden="true"><b data-hs-index>01</b><span> / {String(stationStrip.length).padStart(2, '0')}</span></span>
@@ -94,7 +94,6 @@ export default function HomePage() {
                     <span className="hcard-cap">
                       <span className="hcard-n">{String(i + 1).padStart(2, '0')}</span>
                       <span className="hcard-name"><b>{s.name}</b><span className="th mut" lang="th">{s.thai}</span></span>
-                      <span className="hcard-line">{s.line}</span>
                     </span>
                   </TransitionLink>
                 </li>
