@@ -42,7 +42,7 @@ export const img = {
   corporateDrinks: { src: '/img/corporate-drinks.jpg', alt: 'A cocktail in a coupe glass and iced drinks served at the bar' },
   khaosoiCounter: { src: '/img/khaosoi-counter.jpg', alt: 'The khao soi counter with crispy noodles, lime and pickled greens ready to serve' },
   krapaoPlate: { src: '/img/krapao-plate.jpg', alt: 'Krapao with a fried egg, jasmine rice and cucumber on a teal plate' },
-  khaosoiSign: { src: '/img/khaosoi-sign.jpg', alt: 'The khao soi pot beside the Mahanakorn sign at a live counter' },
+  khaosoiCups: { src: '/img/khaosoi-cups.jpg', alt: 'Khao soi served in small cups, each topped with a slice of lime' },
   pandanToast: { src: '/img/pandan-toast.jpg', alt: 'Grilled toast with custard and sauces on a white plate' },
   teamBangkok: { src: '/img/team-bangkok.jpg', alt: 'The Mahanakorn team in branded aprons before service' },
   thaiGrill: { src: '/img/thai-grill.jpg', alt: 'Grilled meat with crushed toasted rice and herbs, carried to the table' },
@@ -74,14 +74,14 @@ export const functions: SwitchItem[] = [
 
 /** Our live food counters (Our Menu page). */
 export const stations: SwitchItem[] = [
-  { name: 'Khao soi', thai: 'ข้าวซอย', image: img.khaosoiCounter, text: 'Curry noodle soup from northern Thailand, topped with crispy noodles and lime.' },
-  { name: 'Som tum', thai: 'ส้มตำ', image: img.baskets, text: 'Green papaya salad, made fresh for each guest in a clay pot.' },
-  { name: 'Larb', thai: 'ลาบ', image: img.larb, text: 'Spicy herb salad served on a crispy rice cracker.' },
-  { name: 'Krapao', thai: 'กะเพรา', image: img.krapaoPlate, text: 'Thai basil stir-fry with rice, and a fried egg if you like.' },
-  { name: 'Thai grill', thai: 'หมูปิ้ง', image: img.thaiGrill, text: 'Grilled skewers with a tangy dipping sauce. Pork and vegan.' },
-  { name: 'Miang kham', thai: 'เมี่ยงคำ', image: img.miangPlated, text: 'One-bite leaf wraps with lime, ginger, peanuts and coconut.' },
-  { name: 'Mango sticky rice', thai: 'ข้าวเหนียวมะม่วง', image: img.fineDining, text: 'Sweet mango with coconut sticky rice. Thailand’s favourite dessert.' },
-  { name: 'Thai tea', thai: 'ชาไทย', image: img.cocktailBar, text: 'Iced Thai tea and Thai coffee.' }
+  { name: 'Khao soi', thai: 'ข้าวซอย', image: img.khaosoiCounter },
+  { name: 'Som tum', thai: 'ส้มตำ', image: img.baskets },
+  { name: 'Larb', thai: 'ลาบ', image: img.larb },
+  { name: 'Krapao', thai: 'กะเพรา', image: img.krapaoPlate },
+  { name: 'Thai grill meat', thai: 'หมูปิ้ง', image: img.thaiGrill },
+  { name: 'Miang kham', thai: 'เมี่ยงคำ', image: img.miangPlated },
+  { name: 'Mango sticky rice', thai: 'ข้าวเหนียวมะม่วง', image: img.fineDining },
+  { name: 'Thai tea', thai: 'ชาไทย', image: img.cocktailBar }
 ];
 
 /** Sliding row of counters on the Home page. */

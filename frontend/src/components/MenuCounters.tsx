@@ -15,12 +15,6 @@ export default function MenuCounters({ items, initial = 0 }: { items: SwitchItem
   const uid = useId();
   const cur = items[active];
 
-  const detail = (it: SwitchItem) => (
-    <>
-      {it.text && <p className="mc-text">{it.text}</p>}
-    </>
-  );
-
   const photo = (it: SwitchItem, sizes: string, eager?: boolean) =>
     it.image ? (
       <Image src={it.image.src} alt={it.image.alt} fill sizes={sizes} loading={eager ? 'eager' : undefined} style={{ objectFit: 'cover' }} />
@@ -53,7 +47,6 @@ export default function MenuCounters({ items, initial = 0 }: { items: SwitchItem
               <div className="mc-inline" id={`${uid}-inline-${i}`} aria-hidden={!on}>
                 <div>
                   <div className="mc-photo mc-photo-inline">{photo(it, '92vw')}</div>
-                  {detail(it)}
                 </div>
               </div>
             </li>
@@ -75,7 +68,6 @@ export default function MenuCounters({ items, initial = 0 }: { items: SwitchItem
           <span className="mc-caption-name">{cur.name}</span>
           <span className="mc-caption-th" lang="th">{cur.thai}</span>
         </div>
-        {detail(cur)}
       </div>
     </div>
   );

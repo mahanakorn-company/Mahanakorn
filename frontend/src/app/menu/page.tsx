@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 // A real photo for each ready-made menu (same order as stationSets).
-const setPhotos = [img.khaosoiSign, img.riceSalad, img.pandanToast];
+const setPhotos = [img.khaosoiCups, img.riceSalad, img.pandanToast];
 
 /*
   Page flow: hero → choose your counters (interactive dish list) → ready-made menus → get a quote
@@ -56,10 +56,8 @@ export default function MenuPage() {
         <div className="in">
           <div className="menu-intro">
             <div className="menu-intro-head">
-              <p className="svc-label"><span>Not sure what to pick?</span></p>
-              <Split as="h2" id="sets-title" className="svc-title" text="Ready-made *menus*" />
+              <Split as="h2" id="sets-title" className="svc-title" text="*Menus*" />
             </div>
-            <p data-reveal className="svc-lead">Start with one of these and change anything you like.</p>
           </div>
           <div className="menu-sets">
             {stationSets.map((set, s) => (

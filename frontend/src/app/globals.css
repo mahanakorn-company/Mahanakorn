@@ -487,7 +487,6 @@ html.motion [data-hero] { clip-path: inset(7% 7% 7% 7% round 22px); }
 .mc-caption { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-top: 4px; }
 .mc-caption-name { font: 600 13px/1.3 var(--f-sans); letter-spacing: 0.08em; text-transform: uppercase; }
 .mc-caption-th { font-family: var(--f-thai); font-size: 18px; color: var(--stone); }
-.mc-text { font-size: 17px; line-height: 1.65; color: #4b4741; }
 .mc-inline { display: none; }
 
 /* Ready-made menus */
