@@ -56,7 +56,7 @@ export default function MenuPage() {
         <div className="in">
           <div className="menu-intro">
             <div className="menu-intro-head">
-              <Split as="h2" id="sets-title" className="svc-title" text="*Menus*" />
+              <Split as="h2" id="sets-title" className="svc-title" text="*Curations*" />
             </div>
           </div>
           <div className="menu-sets">
