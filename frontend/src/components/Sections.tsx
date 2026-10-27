@@ -3,10 +3,7 @@ import type { ReactNode } from 'react';
 import Split from './Split';
 import TransitionLink from './TransitionLink';
 import { PillLink } from './Pill';
-import { Thumb } from './Media';
-import { ArrowRight } from './Icons';
 import { cta, routes, site, whatsappLink } from '@/lib/site';
-import type { FunctionRow } from '@/lib/content';
 
 /** Big serif page title with a sub-line and three meta columns (inner pages). */
 export function PageTitle({ title, sub, crumbs, meta, children }: { title: string; sub?: string; crumbs?: ReactNode; meta?: { label: string; value: string; note?: string }[]; children?: ReactNode }) {
@@ -30,31 +27,6 @@ export function PageTitle({ title, sub, crumbs, meta, children }: { title: strin
         {children}
       </div>
     </section>
-  );
-}
-
-/** Wedding events grouped by day; hovering opens extra photos. */
-export function WeekendRows({ days, href = `${routes.services}#weddings` }: { days: { day: string; items: FunctionRow[] }[]; href?: string }) {
-  return (
-    <div className="rows">
-      {days.map((d) => (
-        <div key={d.day} style={{ display: 'contents' }}>
-          <span className="cap mut grp">{d.day}</span>
-          {d.items.map((r) => (
-            <TransitionLink key={d.day + r.name} className="row" href={href}>
-              <span>{r.n}</span>
-              <span>{r.name}</span>
-              <span className="fmt">{r.fmt}</span>
-              <span className="thumbs" aria-hidden="true">
-                <span className="more"><Thumb image={r.thumbs[1]} /><Thumb image={r.thumbs[2]} /></span>
-                <Thumb image={r.thumbs[0]} />
-              </span>
-              <span className="go" aria-hidden="true"><ArrowRight /></span>
-            </TransitionLink>
-          ))}
-        </div>
-      ))}
-    </div>
   );
 }
 

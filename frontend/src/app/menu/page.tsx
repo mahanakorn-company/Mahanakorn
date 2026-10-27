@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 // A real photo for each ready-made menu (same order as stationSets).
-const setPhotos = [img.stationNight, img.riceSalad, img.padthai];
+const setPhotos = [img.khaosoiSign, img.riceSalad, img.pandanToast];
 
 /*
   Page flow: hero → choose your counters (interactive dish list) → ready-made menus → on the day → get a quote

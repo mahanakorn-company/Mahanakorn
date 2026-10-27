@@ -27,31 +27,27 @@ export const img = {
   smoked: { src: '/img/smoked.jpg', alt: 'A glass smoke cloche lifted from a drink at a guest table' },
   menuHero: { src: '/img/menu-hero.jpg', alt: 'Larb on crispy rice crackers, laid out on banana leaf on a wooden tray' },
   signGuest: { src: '/img/sign-guest.jpg', alt: 'A guest holding the Mahanakorn sign beside the food counters in Bali' },
-  fineDining: { src: '/img/fine-dining-mango.jpg', alt: 'Mango sticky rice with green sticky rice, gold leaf, coconut ice cream and an edible flower on a white plate' }
+  fineDining: { src: '/img/fine-dining-mango.jpg', alt: 'Mango sticky rice with green sticky rice, gold leaf, coconut ice cream and an edible flower on a white plate' },
+  // Client photos, second batch (October 2026). Every photo is used in one place only.
+  privateGuests: { src: '/img/private-guests.jpg', alt: 'Friends sharing a meal and reading the menu at an outdoor table' },
+  fineDiningCurry: { src: '/img/fine-dining-curry.jpg', alt: 'A Thai curry with prawn in a ribbed white bowl, carried to the table' },
+  guestsMenu: { src: '/img/guests-menu.jpg', alt: 'Two guests reading the menu at the bar' },
+  weddingCounters: { src: '/img/wedding-counters.jpg', alt: 'Mahanakorn food counters with baskets of fresh ingredients and the brand sign' },
+  welcomeCounter: { src: '/img/welcome-counter.jpg', alt: 'A Mahanakorn cook ladling curry at an outdoor live counter' },
+  pannaCotta: { src: '/img/panna-cotta.jpg', alt: 'Vegetarian coconut panna cotta served in spoons on banana leaf' },
+  grillPlate: { src: '/img/thai-grill-plate.jpg', alt: 'Grilled meat with crushed toasted rice and a fresh herb salad' },
+  vegTarts: { src: '/img/veg-tarts.jpg', alt: 'Vegetarian tartlets on a tiered wooden stand' },
+  basilRice: { src: '/img/basil-rice.jpg', alt: 'A saucy Thai stir-fry with basil and jasmine rice on banana leaf' },
+  omelette: { src: '/img/thai-omelette.jpg', alt: 'A Thai omelette on banana leaf with chilli sauce' },
+  teamServing: { src: '/img/team-serving.jpg', alt: 'Mahanakorn staff in branded aprons serving guests at an event' },
+  khaosoiCounter: { src: '/img/khaosoi-counter.jpg', alt: 'The khao soi counter with crispy noodles, lime and pickled greens ready to serve' },
+  krapaoPlate: { src: '/img/krapao-plate.jpg', alt: 'Krapao with a fried egg, jasmine rice and cucumber on a teal plate' },
+  khaosoiSign: { src: '/img/khaosoi-sign.jpg', alt: 'The khao soi pot beside the Mahanakorn sign at a live counter' },
+  pandanToast: { src: '/img/pandan-toast.jpg', alt: 'Grilled toast with custard and sauces on a white plate' },
+  teamBangkok: { src: '/img/team-bangkok.jpg', alt: 'The Mahanakorn team in branded aprons before service' },
+  thaiGrill: { src: '/img/thai-grill.jpg', alt: 'Grilled meat with crushed toasted rice and herbs, carried to the table' },
+  drinksCounter: { src: '/img/drinks-counter.jpg', alt: 'Drinks being made to order at the bar counter' }
 } satisfies Record<string, Img>;
-
-export type FunctionRow = { n: string; name: string; fmt: string; thumbs: [Img, Img, Img] };
-/** The wedding weekend, day by day, with what we serve at each event. */
-export const weekend: { day: string; items: FunctionRow[] }[] = [
-  { day: 'Day 1', items: [{ n: '01', name: 'Welcome dinner', fmt: 'Live food counters', thumbs: [img.marketSign, img.stationNight, img.chilli] }] },
-  {
-    day: 'Day 2',
-    items: [
-      { n: '02', name: 'Mehendi', fmt: 'Light, fresh snacks', thumbs: [img.miang, img.papaya, img.mango] },
-      { n: '03', name: 'Haldi', fmt: 'Fruit, salads and coconut', thumbs: [img.papaya, img.riceSalad, img.mango] },
-      { n: '04', name: 'Sangeet', fmt: 'Hot noodles and grill', thumbs: [img.khaosoi, img.stationNight, img.chilli] }
-    ]
-  },
-  {
-    day: 'Day 3',
-    items: [
-      { n: '05', name: 'Wedding lunch', fmt: 'Sharing plates at the table', thumbs: [img.riceSalad, img.somtum, img.larb] },
-      { n: '06', name: 'Reception', fmt: 'Sit-down Thai dinner', thumbs: [img.prawns, img.dessert, img.canapes] },
-      { n: '07', name: 'After-party', fmt: 'Late-night food', thumbs: [img.padthai, img.krapaoCard, img.stationNight] }
-    ]
-  },
-  { day: 'Day 4', items: [{ n: '08', name: 'Farewell brunch', fmt: 'Thai breakfast and coffee', thumbs: [img.dessert, img.mango, img.riceSalad] }] }
-];
 
 export type SwitchItem = {
   name: string;
@@ -64,39 +60,29 @@ export type SwitchItem = {
   list?: string[];
 };
 
-/** Types of food we offer (Home page). */
-export const menus: SwitchItem[] = [
-  { name: 'Live counters', image: img.stationNight, list: ['Khao soi noodles', 'Papaya salad, made to order', 'Herb salad on crispy rice', 'Grilled skewers (also vegan)', 'Mango sticky rice'] },
-  { name: 'Sit-down dinner', image: img.prawns, list: ['Grilled river prawns', 'Prawns wrapped in golden noodles', 'Chicken in panang curry', 'Jackfruit coconut curry (vegan)', 'Blue sticky rice dessert'] },
-  { name: 'Small bites', image: img.canapes, list: ['Herb salad on crispy rice', 'One-bite leaf wraps', 'Grilled skewers', 'Golden noodle rolls'] },
-  { name: 'Late night', image: img.padthai, list: ['Pad thai', 'Fried rice', 'Toast with pandan custard'] },
-  { name: 'Desserts', image: img.mango, list: ['Mango sticky rice', 'Coconut ice cream', 'Caramelised banana'] },
-  { name: 'Vegetarian', image: img.krapaoCard, list: ['A vegan version at every counter', 'Egg-free desserts', 'Jain food on request (to confirm)'] }
-];
-
 /** Wedding events (Services page, weddings section). */
 export const functions: SwitchItem[] = [
-  { name: 'Welcome dinner', image: img.marketSign, meta: 'Day 1 · Live food counters', text: 'Four to six live counters, so families can meet and mingle as they arrive.' },
-  { name: 'Mehendi', image: img.miang, meta: 'Day 2 · Light, fresh snacks', text: 'Small bites that are easy to eat with henna on your hands: leaf wraps, papaya salad, coconut ice cream.' },
+  { name: 'Welcome dinner', image: img.welcomeCounter, meta: 'Day 1 · Live food counters', text: 'Four to six live counters, so families can meet and mingle as they arrive.' },
+  { name: 'Mehendi', image: img.pannaCotta, meta: 'Day 2 · Light, fresh snacks', text: 'Small bites that are easy to eat with henna on your hands: leaf wraps, papaya salad, coconut ice cream.' },
   { name: 'Haldi', image: img.papaya, meta: 'Day 2 · Fruit, salads and coconut', text: 'Light, cooling food for a hot morning outdoors.' },
-  { name: 'Sangeet', image: img.khaosoi, meta: 'Day 2 · Hot noodles and grill', text: 'Khao soi noodles, grilled skewers (pork and vegan) and satay, served late into the night.' },
-  { name: 'Cocktails', image: img.canapes, meta: 'Day 2 · Small bites', text: 'Bite-sized Thai snacks carried around by our team.' },
-  { name: 'Wedding lunch', image: img.riceSalad, meta: 'Day 3 · Sharing plates', text: 'Thai dishes served to every table for everyone to share.' },
+  { name: 'Sangeet', image: img.grillPlate, meta: 'Day 2 · Hot noodles and grill', text: 'Khao soi noodles, grilled skewers (pork and vegan) and satay, served late into the night.' },
+  { name: 'Cocktails', image: img.vegTarts, meta: 'Day 2 · Small bites', text: 'Bite-sized Thai snacks carried around by our team.' },
+  { name: 'Wedding lunch', image: img.basilRice, meta: 'Day 3 · Sharing plates', text: 'Thai dishes served to every table for everyone to share.' },
   { name: 'Reception', image: img.prawns, meta: 'Day 3 · Sit-down dinner', text: 'A served Thai dinner, or a Thai food corner next to your main buffet.' },
   { name: 'After-party', image: img.padthai, meta: 'Day 3 · Late-night food', text: 'Pad thai, fried rice and sweet toast at 1 a.m.' },
-  { name: 'Farewell brunch', image: img.dessert, meta: 'Day 4 · Thai breakfast', text: 'Rice porridge, Thai doughnuts with pandan custard, and strong Thai coffee.' }
+  { name: 'Farewell brunch', image: img.omelette, meta: 'Day 4 · Thai breakfast', text: 'Rice porridge, Thai doughnuts with pandan custard, and strong Thai coffee.' }
 ];
 
 /** Our live food counters (Our Menu page). */
 export const stations: SwitchItem[] = [
-  { name: 'Khao soi', thai: 'ข้าวซอย', image: img.khaosoi, text: 'Curry noodle soup from northern Thailand, topped with crispy noodles and lime.', tags: ['Vegan option', 'Spicy'] },
-  { name: 'Som tum', thai: 'ส้มตำ', image: img.somtum, text: 'Green papaya salad, made fresh for each guest in a clay pot.', tags: ['Vegan option', 'Spicy', 'Contains nuts'] },
+  { name: 'Khao soi', thai: 'ข้าวซอย', image: img.khaosoiCounter, text: 'Curry noodle soup from northern Thailand, topped with crispy noodles and lime.', tags: ['Vegan option', 'Spicy'] },
+  { name: 'Som tum', thai: 'ส้มตำ', image: img.baskets, text: 'Green papaya salad, made fresh for each guest in a clay pot.', tags: ['Vegan option', 'Spicy', 'Contains nuts'] },
   { name: 'Larb', thai: 'ลาบ', image: img.larb, text: 'Spicy herb salad served on a crispy rice cracker.', tags: ['Vegan option', 'Spicy'] },
-  { name: 'Krapao', thai: 'กะเพรา', image: img.krapaoEgg, text: 'Thai basil stir-fry with rice, and a fried egg if you like.', tags: ['Vegan option', 'Egg-free option'] },
-  { name: 'Thai grill', thai: 'หมูปิ้ง', text: 'Grilled skewers with a tangy dipping sauce. Pork and vegan.', tags: ['Vegan option'] },
-  { name: 'Miang kham', thai: 'เมี่ยงคำ', image: img.miang, text: 'One-bite leaf wraps with lime, ginger, peanuts and coconut.', tags: ['Vegan', 'Contains nuts'] },
-  { name: 'Mango sticky rice', thai: 'ข้าวเหนียวมะม่วง', image: img.mango, text: 'Sweet mango with coconut sticky rice. Thailand’s favourite dessert.', tags: ['Vegan', 'Egg-free'] },
-  { name: 'Thai tea', thai: 'ชาไทย', text: 'Iced Thai tea and Thai coffee.', tags: ['Vegan option'] }
+  { name: 'Krapao', thai: 'กะเพรา', image: img.krapaoPlate, text: 'Thai basil stir-fry with rice, and a fried egg if you like.', tags: ['Vegan option', 'Egg-free option'] },
+  { name: 'Thai grill', thai: 'หมูปิ้ง', image: img.thaiGrill, text: 'Grilled skewers with a tangy dipping sauce. Pork and vegan.', tags: ['Vegan option'] },
+  { name: 'Miang kham', thai: 'เมี่ยงคำ', image: img.guest, text: 'One-bite leaf wraps with lime, ginger, peanuts and coconut.', tags: ['Vegan', 'Contains nuts'] },
+  { name: 'Mango sticky rice', thai: 'ข้าวเหนียวมะม่วง', image: img.fineDining, text: 'Sweet mango with coconut sticky rice. Thailand’s favourite dessert.', tags: ['Vegan', 'Egg-free'] },
+  { name: 'Thai tea', thai: 'ชาไทย', image: img.drinksCounter, text: 'Iced Thai tea and Thai coffee.', tags: ['Vegan option'] }
 ];
 
 /** Sliding row of counters on the Home page. */
@@ -166,9 +152,9 @@ export const profile = {
 /** The four services we offer (Home and Services pages). `id` is the anchor on the Services page. */
 export const eventTypes: { id: string; name: string; image: Img; line: string; text: string; serve: string }[] = [
   { id: 'weddings', name: 'Destination Weddings', image: img.signGuest, line: 'Destination and Indian weddings', text: 'Every event of the wedding weekend, from the welcome dinner to the farewell brunch.', serve: 'Live food counters, sit-down dinners, late-night food' },
-  { id: 'parties', name: 'Private Events', image: img.canapes, line: 'Customized Menus', text: 'Birthdays, anniversaries, engagement parties and house parties.', serve: 'Live food counters and small bites' },
+  { id: 'parties', name: 'Private Events', image: img.privateGuests, line: 'Customized Menus', text: 'Birthdays, anniversaries, engagement parties and house parties.', serve: 'Live food counters and small bites' },
   { id: 'company', name: 'Corporate Events', image: img.corporateCounter, line: 'Large Scale Capacity', text: 'Office parties, team dinners, product launches and client evenings.', serve: 'Live food counters, a sit-down dinner, or small bites with drinks' },
-  { id: 'private', name: 'Fine Dining', image: img.fineDining, line: 'Personalized Culinary Services', text: profile.privateDining[0].text, serve: 'Sit-down Thai dinner or sharing plates' }
+  { id: 'private', name: 'Fine Dining', image: img.fineDiningCurry, line: 'Personalized Culinary Services', text: profile.privateDining[0].text, serve: 'Sit-down Thai dinner or sharing plates' }
 ];
 
 /** OUR TEAM, exactly as on the client's slide (team.jpg), including its capitals. */

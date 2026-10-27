@@ -97,7 +97,7 @@ export default function ServicesPage() {
       </section>
 
       {/* 01 Destination Weddings */}
-      <ServiceBlock id="weddings" n="01" tagline="Thai food for your wedding" title="Destination *Weddings*" image={img.signGuest} imagePosition="center 30%" quote={`${routes.quote}?event=weddings`}>
+      <ServiceBlock id="weddings" n="01" tagline="Thai food for your wedding" title="Destination *Weddings*" image={img.weddingCounters} imagePosition="center" quote={`${routes.quote}?event=weddings`}>
         <p className="svc-lead">Book us for one event or the whole weekend. We work next to your main caterer, and every guest finds something to eat.</p>
         <dl className="svc-options">
           <div>
@@ -128,7 +128,7 @@ export default function ServicesPage() {
       </ServiceBlock>
 
       {/* 03 Corporate Events */}
-      <ServiceBlock id="company" n="03" tagline={company.line} title="Corporate *Events*" image={img.chef} imagePosition="center 40%" quote={`${routes.quote}?event=company`}>
+      <ServiceBlock id="company" n="03" tagline={company.line} title="Corporate *Events*" image={img.teamServing} imagePosition="center 35%" quote={`${routes.quote}?event=company`}>
         <p className="svc-lead">{company.text}</p>
         <dl className="svc-meta"><dt className="cap mut">What we usually serve</dt><dd>{company.serve}</dd></dl>
       </ServiceBlock>

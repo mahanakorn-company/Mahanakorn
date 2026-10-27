@@ -117,7 +117,7 @@ export default function HomePage() {
         <div className="in grid-auto" style={{ ['--gap' as string]: '48px', alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
             <h2 id="why" className="br">Mission Statement</h2>
-            <Media image={img.guest} className="side-photo" sizes="(max-width: 700px) 90vw, 440px" />
+            <Media image={img.guestsMenu} className="side-photo" sizes="(max-width: 700px) 90vw, 440px" />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
             <dl className="points points-lg" data-stagger>
