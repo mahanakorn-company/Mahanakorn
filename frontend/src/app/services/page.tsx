@@ -125,7 +125,7 @@ export default function ServicesPage() {
         </dl>
       </ServiceBlock>
 
-      <ClosingCta label={cta.quote} title="Tell us *about*|your event" />
+      <ClosingCta label="" title="Curate your *celebration*" />
     </>
   );
 }
