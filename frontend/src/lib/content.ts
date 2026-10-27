@@ -32,7 +32,7 @@ export const img = {
   privateGuests: { src: '/img/private-guests.jpg', alt: 'Friends sharing a meal and reading the menu at an outdoor table' },
   fineDiningCurry: { src: '/img/fine-dining-curry.jpg', alt: 'A Thai curry with prawn in a ribbed white bowl, carried to the table' },
   guestsMenu: { src: '/img/guests-menu.jpg', alt: 'Two guests reading the menu at the bar' },
-  weddingCounters: { src: '/img/wedding-counters.jpg', alt: 'Mahanakorn food counters with baskets of fresh ingredients and the brand sign' },
+  weddingLiveCounter: { src: '/img/wedding-live-counter.jpg', alt: 'A guest choosing food at the Mahanakorn live counters in a wedding tent, with chefs serving' },
   welcomeCounter: { src: '/img/welcome-counter.jpg', alt: 'A Mahanakorn cook ladling curry at an outdoor live counter' },
   pannaCotta: { src: '/img/panna-cotta.jpg', alt: 'Vegetarian coconut panna cotta served in spoons on banana leaf' },
   grillPlate: { src: '/img/thai-grill-plate.jpg', alt: 'Grilled meat with crushed toasted rice and a fresh herb salad' },
@@ -150,7 +150,7 @@ export const profile = {
 
 /** The four services we offer (Home and Services pages). `id` is the anchor on the Services page. */
 export const eventTypes: { id: string; name: string; image: Img; line: string; text: string; serve: string }[] = [
-  { id: 'weddings', name: 'Destination Weddings', image: img.pineappleCurry, line: 'Destination and Indian weddings', text: 'Every event of the wedding weekend, from the welcome dinner to the farewell brunch.', serve: 'Live food counters, sit-down dinners, late-night food' },
+  { id: 'weddings', name: 'Vows Beyond Borders', image: img.pineappleCurry, line: 'Destination and Indian weddings', text: 'Every event of the wedding weekend, from the welcome dinner to the farewell brunch.', serve: 'Live food counters, sit-down dinners, late-night food' },
   { id: 'parties', name: 'Private Events', image: img.privateGuests, line: 'Customized Menus', text: 'Birthdays, anniversaries, engagement parties and house parties.', serve: 'Live food counters and small bites' },
   { id: 'company', name: 'Corporate Events', image: img.teamBangkok, line: 'Large Scale Capacity', text: 'Office parties, team dinners, product launches and client evenings.', serve: 'Live food counters, a sit-down dinner, or small bites with drinks' },
   { id: 'private', name: 'Fine Dining', image: img.fineDiningCurry, line: 'Personalized Culinary Services', text: profile.privateDining[0].text, serve: 'Sit-down Thai dinner or sharing plates' }

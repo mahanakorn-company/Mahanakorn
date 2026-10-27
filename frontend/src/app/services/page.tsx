@@ -52,7 +52,7 @@ function ServiceBlock({ id, n, tagline, title, image, imagePosition, flip, quote
 }
 
 /*
-  Page flow: intro (title, photo, one line, quote) → Catering Services → 01 Destination Weddings (wedding events)
+  Page flow: intro (title, photo, one line, quote) → Catering Services → 01 Vows Beyond Borders (destination weddings)
   → 02 Private Events → 03 Corporate Events → 04 Fine Dining → get a quote
 */
 export default function ServicesPage() {
@@ -61,24 +61,14 @@ export default function ServicesPage() {
 
   return (
     <>
-      <PageTitle
-        title="Our services"
-        sub="(Diverse Catering Services)"
-        meta={[
-          { label: 'Services', value: 'Destination Weddings · Corporate Events · Private Events · Fine Dining' }
-        ]}
-      />
+      <PageTitle title="Diverse Catering Services" />
 
-      {/* Intro: one strong photograph, the existing line and the quote button */}
+      {/* Intro: one strong photograph */}
       <section className="svc-hero" aria-label="Diverse Catering Services">
         <div className="in">
           <figure className="svc-hero-photo">
             <Image src={img.marketSign.src} alt={img.marketSign.alt} fill priority sizes="(max-width: 1240px) 96vw, 1180px" style={{ objectFit: 'cover', objectPosition: 'center 55%' }} />
           </figure>
-          <div className="svc-hero-foot">
-            <p className="svc-hero-line" data-reveal>{profile.pillars[2].text}</p>
-            <PillLink href={routes.quote} variant="dk">{cta.quote}</PillLink>
-          </div>
         </div>
       </section>
 
@@ -86,7 +76,6 @@ export default function ServicesPage() {
       <section id="catering" className="sec anchor" aria-labelledby="catering-title">
         <div className="in svc-intro">
           <div className="svc-intro-head">
-            <p className="svc-label"><span>{profile.pillars[2].title}</span></p>
             <Split as="h2" id="catering-title" className="svc-title" text="Catering *Services*" />
             <TextLink href={routes.menu}>See our menu</TextLink>
           </div>
@@ -96,8 +85,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 01 Destination Weddings */}
-      <ServiceBlock id="weddings" n="01" tagline="Thai food for your wedding" title="Destination *Weddings*" image={img.weddingCounters} imagePosition="center" quote={`${routes.quote}?event=weddings`}>
+      {/* 01 Vows Beyond Borders (destination weddings) */}
+      <ServiceBlock id="weddings" n="01" tagline="Thai food for your wedding" title="Vows Beyond *Borders*" image={img.weddingLiveCounter} imagePosition="center 30%" quote={`${routes.quote}?event=weddings`}>
         <p className="svc-lead">Book us for one event or the whole weekend. We work next to your main caterer, and every guest finds something to eat.</p>
         <dl className="svc-options">
           <div>
@@ -111,7 +100,7 @@ export default function ServicesPage() {
         </dl>
       </ServiceBlock>
 
-      {/* Destination Weddings, in detail: food for each wedding event */}
+      {/* Vows Beyond Borders, in detail: food for each wedding event */}
       <section className="svc-detail" aria-label="Food for each wedding event">
         <div className="in">
           <div className="panel svc-detail-panel">

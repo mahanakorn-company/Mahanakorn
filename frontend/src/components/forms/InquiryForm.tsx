@@ -10,7 +10,7 @@ import { PillLink } from '../Pill';
 import { ArrowLeft, ArrowRight, Restart } from '../Icons';
 
 const ROLES = [['host', 'My celebration'], ['private', 'Private events'], ['company', 'Corporate events'], ['other', 'Other']] as const;
-export const EVENT_TYPES = [['wedding', 'Destination wedding'], ['party', 'Private event'], ['corporate', 'Corporate event'], ['private-dinner', 'Fine dining'], ['other', 'Something else']] as const;
+export const EVENT_TYPES = [['wedding', 'Vows Beyond Borders (weddings)'], ['party', 'Private event'], ['corporate', 'Corporate event'], ['private-dinner', 'Fine dining'], ['other', 'Something else']] as const;
 const DESTINATIONS = [['bangkok', 'Bangkok'], ['phuket', 'Phuket'], ['koh-samui', 'Koh Samui'], ['krabi', 'Krabi'], ['hua-hin', 'Hua Hin'], ['bali', 'Bali'], ['jakarta', 'Jakarta'], ['india', 'India'], ['other', 'Other or undecided']] as const;
 const GUESTS = [['under-50', 'Under 50'], ['50-100', '50–100'], ['100-200', '100–200'], ['200-350', '200–350'], ['350-plus', '350+']] as const;
 const FUNCTIONS = [['welcome-dinner', 'Welcome dinner'], ['mehendi', 'Mehendi'], ['haldi', 'Haldi'], ['sangeet', 'Sangeet'], ['wedding-lunch', 'Wedding lunch'], ['reception', 'Reception'], ['after-party', 'After-party'], ['brunch', 'Brunch']] as const;

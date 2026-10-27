@@ -29,7 +29,7 @@ export default function HomePage() {
             <span className="cap" data-intro-fade style={{ color: '#F4F1EC' }}>Mahanakorn · Thai catering from Bangkok</span>
             <Split as="h1" id="hero-title" className="plain" text="Thai catering for *every event*" intro />
             <p data-intro-fade style={{ fontSize: 17, maxWidth: 540, lineHeight: 1.5, color: '#F4F1EC' }}>
-              Destination Weddings, Corporate Events, Private Events, Fine Dining
+              Vows Beyond Borders, Corporate Events, Private Events, Fine Dining
             </p>
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10 }} data-intro-fade>

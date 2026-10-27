@@ -61,7 +61,7 @@ export function FooterNav() {
         </div>
         <nav className="col" aria-label="Services">
           <span className="cap mut">Services</span>
-          <TransitionLink href={`${routes.services}#weddings`}>Destination Weddings</TransitionLink>
+          <TransitionLink href={`${routes.services}#weddings`}>Vows Beyond Borders</TransitionLink>
           <TransitionLink href={`${routes.services}#parties`}>Private Events</TransitionLink>
           <TransitionLink href={`${routes.services}#company`}>Corporate Events</TransitionLink>
           <TransitionLink href={`${routes.services}#private`}>Fine Dining</TransitionLink>
