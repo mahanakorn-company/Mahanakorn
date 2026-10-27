@@ -26,7 +26,7 @@ export const img = {
   papaya: { src: '/img/papaya.jpg', alt: 'Shredded green papaya and carrot in a rattan basket' },
   smoked: { src: '/img/smoked.jpg', alt: 'A glass smoke cloche lifted from a drink at a guest table' },
   menuHero: { src: '/img/menu-hero.jpg', alt: 'Larb on crispy rice crackers, laid out on banana leaf on a wooden tray' },
-  signGuest: { src: '/img/sign-guest.jpg', alt: 'A guest holding the Mahanakorn sign beside the food counters in Bali' },
+  pineappleCurry: { src: '/img/pineapple-curry.jpg', alt: 'Vegetarian pineapple curry served in pineapple halves on banana leaf, with the Mahanakorn card' },
   fineDining: { src: '/img/fine-dining-mango.jpg', alt: 'Mango sticky rice with green sticky rice, gold leaf, coconut ice cream and an edible flower on a white plate' },
   // Client photos, second batch (October 2026). Every photo is used in one place only.
   privateGuests: { src: '/img/private-guests.jpg', alt: 'Friends sharing a meal and reading the menu at an outdoor table' },
@@ -150,7 +150,7 @@ export const profile = {
 
 /** The four services we offer (Home and Services pages). `id` is the anchor on the Services page. */
 export const eventTypes: { id: string; name: string; image: Img; line: string; text: string; serve: string }[] = [
-  { id: 'weddings', name: 'Destination Weddings', image: img.signGuest, line: 'Destination and Indian weddings', text: 'Every event of the wedding weekend, from the welcome dinner to the farewell brunch.', serve: 'Live food counters, sit-down dinners, late-night food' },
+  { id: 'weddings', name: 'Destination Weddings', image: img.pineappleCurry, line: 'Destination and Indian weddings', text: 'Every event of the wedding weekend, from the welcome dinner to the farewell brunch.', serve: 'Live food counters, sit-down dinners, late-night food' },
   { id: 'parties', name: 'Private Events', image: img.privateGuests, line: 'Customized Menus', text: 'Birthdays, anniversaries, engagement parties and house parties.', serve: 'Live food counters and small bites' },
   { id: 'company', name: 'Corporate Events', image: img.teamBangkok, line: 'Large Scale Capacity', text: 'Office parties, team dinners, product launches and client evenings.', serve: 'Live food counters, a sit-down dinner, or small bites with drinks' },
   { id: 'private', name: 'Fine Dining', image: img.fineDiningCurry, line: 'Personalized Culinary Services', text: profile.privateDining[0].text, serve: 'Sit-down Thai dinner or sharing plates' }
@@ -158,8 +158,9 @@ export const eventTypes: { id: string; name: string; image: Img; line: string; t
 
 /** OUR TEAM, exactly as on the client's slide (team.jpg), including its capitals. */
 export const team: { role: string; lines: string[]; image: Img }[] = [
-  { role: 'FOUNDER', lines: ['MEENU - BANKER'], image: { src: '/img/team-founder.jpg', alt: 'Meenu, founder of Mahanakorn' } },
+  { role: 'FOUNDER', lines: ['MEENU - BANKER'], image: { src: '/img/team-meenu.jpg', alt: 'Meenu, founder of Mahanakorn' } },
   { role: 'CO FOUNDER', lines: ["KAMONPILAI 'GINK' DANWIRIYATRAKUL", 'NUTRITIONIST & FOOD STYLIST'], image: { src: '/img/team-gink.jpg', alt: "Kamonpilai 'Gink' Danwiriyatrakul, co-founder of Mahanakorn" } },
-  { role: 'CO FOUNDER', lines: ['DHIVESH - PASSION IN CULINARY, ENTREPRENEUR, SOCIAL MEDIA'], image: { src: '/img/team-dhivesh.jpg', alt: 'Dhivesh, co-founder of Mahanakorn' } }
+  { role: 'CO FOUNDER', lines: ['DHIVESH - PASSION IN CULINARY, ENTREPRENEUR, SOCIAL MEDIA'], image: { src: '/img/team-dhivesh.jpg', alt: 'Dhivesh, co-founder of Mahanakorn' } },
+  { role: 'CO FOUNDER', lines: ['PRANAV - DRINKS EXPERT'], image: { src: '/img/team-pranav.jpg', alt: 'Pranav, co-founder of Mahanakorn' } }
 ];
 
