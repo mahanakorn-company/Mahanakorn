@@ -45,7 +45,7 @@ export const img = {
   khaosoiCups: { src: '/img/khaosoi-cups.jpg', alt: 'Khao soi served in small cups, each topped with a slice of lime' },
   pandanToast: { src: '/img/pandan-toast.jpg', alt: 'Grilled toast with custard and sauces on a white plate' },
   teamBangkok: { src: '/img/team-bangkok.jpg', alt: 'The Mahanakorn team in branded aprons before service' },
-  thaiGrill: { src: '/img/thai-grill.jpg', alt: 'Grilled meat with crushed toasted rice and herbs, carried to the table' },
+  thaiGrill: { src: '/img/thai-grill-skewers.jpg', alt: 'Grilled meat skewers with coriander and a dipping sauce, carried to the table' },
   drinksCounter: { src: '/img/drinks-counter.jpg', alt: 'Drinks being made to order at the bar counter' }
 } satisfies Record<string, Img>;
 
