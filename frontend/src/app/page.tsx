@@ -65,7 +65,7 @@ export default function HomePage() {
           </div>
           <EventsCarousel
             items={eventTypes.map((e) => ({ id: e.id, name: e.name, image: e.image, href: `${routes.services}#${e.id}` }))}
-            more={{ href: routes.quote, label: 'Something else?', title: 'Tell us your idea' }}
+            more={{ href: routes.quote, label: 'Something else?', title: "Let's curate something exceptional" }}
           />
         </div>
       </section>

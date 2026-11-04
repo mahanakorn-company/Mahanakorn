@@ -22,6 +22,7 @@ export const routes = {
   home: '/',
   services: '/services',
   menu: '/menu',
+  fullMenu: '/menu/full',
   quote: '/get-a-quote',
   privacy: '/privacy'
 } as const;
@@ -42,7 +43,7 @@ export const mobileNav = [
 ];
 
 /** Pages whose first section is a dark full-bleed photo (header starts in its light-on-dark style). */
-export const heroPages: string[] = [routes.home, routes.menu];
+export const heroPages: string[] = [routes.home];
 
 /** WhatsApp link with a pre-filled first message; null when no number is configured. */
 export function whatsappLink(message = "Hi Mahanakorn, we're planning an event and would love to talk about Thai food.") {

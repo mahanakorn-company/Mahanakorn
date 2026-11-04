@@ -1,62 +1,28 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Split from '@/components/Split';
-import HeroPause from '@/components/HeroPause';
-import MenuCounters from '@/components/MenuCounters';
 import { PillLink } from '@/components/Pill';
 import { ClosingCta } from '@/components/Sections';
-import { img, stationSets, stations } from '@/lib/content';
-import { cta, routes } from '@/lib/site';
+import { img, stationSets } from '@/lib/content';
+import { routes } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Our Menu · Live Thai food counters',
-  description: 'Khao soi, papaya salad, larb, krapao, Thai grill, miang kham and mango sticky rice, cooked live at your wedding, with a vegan version of almost every dish.',
+  title: 'Our Menu · Curations',
+  description: 'Curated Thai catering menus by Mahanakorn: Bangkok night market, fresh daylight celebrations, and late-night street food counters.',
   alternates: { canonical: routes.menu }
 };
 
 // A real photo for each ready-made menu (same order as stationSets).
 const setPhotos = [img.khaosoiCups, img.riceSalad, img.pandanToast];
 
-/*
-  Page flow: hero → choose your counters (interactive dish list) → ready-made menus → get a quote
-*/
 export default function MenuPage() {
   return (
     <>
-      <section className="media hero" data-hero aria-labelledby="hero-title" style={{ height: 'clamp(600px, 86svh, 900px)' }}>
-        <div className="hero-move">
-          <Image className="img" src={img.menuHero.src} alt="" fill priority sizes="100vw" style={{ objectPosition: 'center 55%' }} />
-        </div>
-        <div className="shade" style={{ background: 'linear-gradient(180deg, rgba(10,10,10,.3) 0%, rgba(10,10,10,.18) 40%, rgba(10,10,10,.68) 100%)' }} />
-        <div className="hero-foot">
-          {/* Photo only: the heading is kept for screen readers and search, not shown. */}
-          <div><h1 id="hero-title" className="sr-only">Our Menu</h1></div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10 }} data-intro-fade>
-            <HeroPause />
-            <PillLink href={routes.quote}>{cta.quote}</PillLink>
-          </div>
-        </div>
-      </section>
-
-      {/* 1. Choose your counters */}
-      <section className="sec" aria-labelledby="counters">
+      <section id="sets" className="sec anchor menu-sets-sec" aria-labelledby="sets-title" style={{ paddingTop: 'clamp(116px, 12vw, 170px)' }}>
         <div className="in">
-          <div className="menu-intro">
+          <div className="menu-intro" style={{ marginBottom: 'clamp(36px, 4vw, 64px)' }}>
             <div className="menu-intro-head">
-              <p className="svc-label"><span>Choose your counters</span></p>
-              <Split as="h2" id="counters" className="svc-title" text="Pick the dishes *you love*" />
-            </div>
-          </div>
-          <MenuCounters items={stations} />
-        </div>
-      </section>
-
-      {/* 2. Ready-made menus */}
-      <section id="sets" className="sec anchor menu-sets-sec" aria-labelledby="sets-title">
-        <div className="in">
-          <div className="menu-intro">
-            <div className="menu-intro-head">
-              <Split as="h2" id="sets-title" className="svc-title" text="*Curations*" />
+              <Split as="h1" id="sets-title" className="svc-title" text="*Curations*" intro />
             </div>
           </div>
           <div className="menu-sets">
@@ -76,6 +42,12 @@ export default function MenuPage() {
                 </ol>
               </article>
             ))}
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 'clamp(44px, 5.5vw, 68px)' }} data-reveal>
+            <PillLink href={routes.fullMenu} variant="dk" style={{ minWidth: 220, justifyContent: 'center' }}>
+              View full menu
+            </PillLink>
           </div>
         </div>
       </section>
