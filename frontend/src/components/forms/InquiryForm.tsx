@@ -87,7 +87,12 @@ export default function InquiryForm({ preset }: { preset?: InquiryPreset }) {
       need: data.need || undefined
     });
     setBusy(false);
-    if (res.ok) { setErrors({}); setStep('done'); return; }
+    if (res.ok) {
+      setErrors({}); setStep('done');
+      const link = whatsappLink(`Hi Mahanakorn, I'm ${data.name.trim()}. I just sent an enquiry on your website.${data.message.trim() ? ` ${data.message.trim()}` : ''}`);
+      if (link) window.location.href = link;
+      return;
+    }
     const fields = (res.fields || {}) as Errors;
     setServerError(res.error);
     fail(fields);
