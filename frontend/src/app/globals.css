@@ -322,12 +322,34 @@ legend { padding: 0; margin-bottom: 10px; }
 
 /* footer */
 .foot { background: #fff; color: var(--ink); border-radius: var(--r); padding: 36px; display: flex; flex-direction: column; gap: 40px; }
-.foot a { text-decoration: none; }
-/* The footer is a white card inside dark sections, so it must not inherit `.dark a:hover { color: #fff }`. */
-.foot a:hover, .foot a:focus-visible { color: var(--tamarind); text-decoration: underline; text-underline-offset: 3px; }
+.foot a,
+.dark .foot a { color: var(--ink); text-decoration: none; }
+/* The footer is a white card inside dark sections; ensure hover states never inherit .dark a:hover { color: #fff } */
+.foot a:hover,
+.foot a:focus-visible,
+.dark .foot a:hover,
+.dark .foot a:focus-visible,
+.dark .foot a:not(.pill):hover,
+.dark .foot a:not(.pill):focus-visible {
+  color: var(--tamarind) !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .foot .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 28px; }
 .foot .col { display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
 .foot-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--stone); }
+.foot .foot-row a,
+.dark .foot .foot-row a { color: var(--stone); }
+.foot .foot-row a:hover,
+.foot .foot-row a:focus-visible,
+.dark .foot .foot-row a:hover,
+.dark .foot .foot-row a:focus-visible,
+.dark .foot .foot-row a:not(.pill):hover,
+.dark .foot .foot-row a:not(.pill):focus-visible {
+  color: var(--tamarind) !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 @media (max-width: 640px) { .foot { padding: 28px 22px 96px; } }
 
 /* motion helpers */
