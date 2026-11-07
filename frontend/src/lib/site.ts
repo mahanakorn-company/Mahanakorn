@@ -22,7 +22,7 @@ export const routes = {
   home: '/',
   services: '/services',
   menu: '/menu',
-  fullMenu: '/menu/full',
+  fullMenu: '/menu',
   quote: '/get-a-quote',
   privacy: '/privacy'
 } as const;

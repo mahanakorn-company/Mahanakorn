@@ -10,7 +10,8 @@ const nextConfig = {
   // Old page addresses from the first version keep working.
   async redirects() {
     return [
-      { source: '/full-menu', destination: '/menu/full', permanent: true },
+      { source: '/menu/full', destination: '/menu', permanent: true },
+      { source: '/full-menu', destination: '/menu', permanent: true },
       { source: '/stations', destination: '/menu', permanent: true },
       { source: '/weddings', destination: '/services#weddings', permanent: true },
       { source: '/indian-weddings', destination: '/services#weddings', permanent: true },

@@ -3,7 +3,6 @@
 import { useMemo, useState } from 'react';
 import Split from '@/components/Split';
 import { PillLink } from '@/components/Pill';
-import { ArrowRight } from '@/components/Icons';
 import {
   horsDoeuvres,
   mainCourses,
@@ -15,7 +14,7 @@ import { cta, routes } from '@/lib/site';
 type CategoryKey = 'all' | 'hors' | 'mains' | 'desserts';
 type DietKey = 'all' | 'V' | 'NV';
 
-export default function FullMenuClient() {
+export default function MenuClient() {
   const [activeCategory, setActiveCategory] = useState<CategoryKey>('all');
   const [diet, setDiet] = useState<DietKey>('all');
   const [query, setQuery] = useState('');
@@ -38,47 +37,59 @@ export default function FullMenuClient() {
   const filteredMains = useMemo(() => filterDishes(mainCourses), [diet, q]);
   const filteredDesserts = useMemo(() => filterDishes(desserts), [diet, q]);
 
+  const totalFilteredCount =
+    filteredHors.length + filteredMains.length + filteredDesserts.length;
+
   const showHors = (activeCategory === 'all' || activeCategory === 'hors') && filteredHors.length > 0;
   const showMains = (activeCategory === 'all' || activeCategory === 'mains') && filteredMains.length > 0;
   const showDesserts = (activeCategory === 'all' || activeCategory === 'desserts') && filteredDesserts.length > 0;
 
-  const totalResults =
-    (showHors ? filteredHors.length : 0) +
-    (showMains ? filteredMains.length : 0) +
-    (showDesserts ? filteredDesserts.length : 0);
-
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-      {/* Sticky Filter & Search Bar */}
+    <div className="full-menu-wrap">
+      {/* Category Tabs, Dietary Filter & Search */}
       <div className="fm-bar">
         <div className="fm-tabs" role="tablist" aria-label="Menu Sections">
           <button
             type="button"
+            role="tab"
+            aria-selected={activeCategory === 'all'}
             className={`fm-tab${activeCategory === 'all' ? ' on' : ''}`}
             onClick={() => setActiveCategory('all')}
           >
-            All Courses
+            All Dishes
+            <span className="fm-tab-count">
+              {horsDoeuvres.length + mainCourses.length + desserts.length}
+            </span>
           </button>
           <button
             type="button"
+            role="tab"
+            aria-selected={activeCategory === 'hors'}
             className={`fm-tab${activeCategory === 'hors' ? ' on' : ''}`}
             onClick={() => setActiveCategory('hors')}
           >
-            Hors d’oeuvres ({horsDoeuvres.length})
+            Hors d’oeuvres
+            <span className="fm-tab-count">{horsDoeuvres.length}</span>
           </button>
           <button
             type="button"
+            role="tab"
+            aria-selected={activeCategory === 'mains'}
             className={`fm-tab${activeCategory === 'mains' ? ' on' : ''}`}
             onClick={() => setActiveCategory('mains')}
           >
-            Mains ({mainCourses.length})
+            Main Course
+            <span className="fm-tab-count">{mainCourses.length}</span>
           </button>
           <button
             type="button"
+            role="tab"
+            aria-selected={activeCategory === 'desserts'}
             className={`fm-tab${activeCategory === 'desserts' ? ' on' : ''}`}
             onClick={() => setActiveCategory('desserts')}
           >
-            Desserts ({desserts.length})
+            Desserts
+            <span className="fm-tab-count">{desserts.length}</span>
           </button>
         </div>
 
@@ -95,71 +106,75 @@ export default function FullMenuClient() {
               type="button"
               className={`fm-diet-btn${diet === 'V' ? ' on' : ''}`}
               onClick={() => setDiet('V')}
-              title="Show Vegetarian only"
             >
-              Veg (V)
+              <span className="fm-diet-dot v" />
+              Veg
             </button>
             <button
               type="button"
               className={`fm-diet-btn${diet === 'NV' ? ' on' : ''}`}
               onClick={() => setDiet('NV')}
-              title="Show Non-Vegetarian only"
             >
-              Non-Veg (NV)
+              <span className="fm-diet-dot nv" />
+              Non-Veg
             </button>
           </div>
 
           <div className="fm-search-wrap">
             <svg
               className="fm-search-icon"
-              width="14"
-              height="14"
+              aria-hidden="true"
+              width="16"
+              height="16"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              strokeWidth="2.5"
+              strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              aria-hidden="true"
             >
               <circle cx="11" cy="11" r="8" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
             <input
               type="search"
-              className="fm-search"
-              placeholder="Search dishes..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              aria-label="Search dishes and ingredients"
+              placeholder="Search dishes..."
+              aria-label="Search dishes"
+              className="fm-search"
             />
+            {query && (
+              <button
+                type="button"
+                onClick={() => setQuery('')}
+                className="fm-search-clear"
+                aria-label="Clear search"
+              >
+                ×
+              </button>
+            )}
           </div>
         </div>
       </div>
 
-      {totalResults === 0 && (
-        <div
-          className="panel"
-          style={{
-            padding: '48px 24px',
-            textAlign: 'center',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: 12
-          }}
-        >
-          <p style={{ fontSize: 18, fontWeight: 500 }}>No dishes match your search.</p>
-          <p className="mut" style={{ fontSize: 14 }}>Try clearing the search or changing dietary preferences.</p>
+      {/* Empty State when filters produce no result */}
+      {totalFilteredCount === 0 && (
+        <div className="fm-empty" data-reveal>
+          <p className="fm-empty-title">No dishes found</p>
+          <p className="fm-empty-sub">
+            {query
+              ? `No dishes match "${query}". Try searching another ingredient or clearing your filters.`
+              : 'No dishes match the selected dietary filter.'}
+          </p>
           <button
             type="button"
-            className="pill dk sm"
-            style={{ marginTop: 8 }}
             onClick={() => {
-              setQuery('');
               setDiet('all');
+              setQuery('');
               setActiveCategory('all');
             }}
+            className="fm-empty-btn"
           >
             Reset Filters
           </button>
@@ -204,11 +219,11 @@ export default function FullMenuClient() {
         <section id="main-course" className="sec-sm anchor" aria-labelledby="mains-title">
           <div className="menu-intro" style={{ marginBottom: 28 }}>
             <div className="menu-intro-head">
-              <p className="svc-label"><span>02 / Live wok & curries</span></p>
+              <p className="svc-label"><span>02 / Curries, wok & noodles</span></p>
               <Split as="h2" id="mains-title" className="svc-title" text="*Main Course*" />
             </div>
             <p className="lead-copy">
-              Aromatic coconut curries, smoky holy basil wok-tossed dishes, and artisanal noodles prepared live before your guests.
+              Aromatic coconut curries, fiery holy basil wok-tossed dishes, and artisanal noodles prepared fresh with regional Thai herbs.
             </p>
           </div>
 
@@ -237,11 +252,11 @@ export default function FullMenuClient() {
         <section id="desserts" className="sec-sm anchor" aria-labelledby="desserts-title">
           <div className="menu-intro" style={{ marginBottom: 28 }}>
             <div className="menu-intro-head">
-              <p className="svc-label"><span>03 / Traditional sweets & ice creams</span></p>
+              <p className="svc-label"><span>03 / Traditional sweets & desserts</span></p>
               <Split as="h2" id="desserts-title" className="svc-title" text="*Desserts*" />
             </div>
             <p className="lead-copy">
-              From sweet coconut sticky rice and live cast-iron Kanom Krok to artisanal Thai tea pastries and tropical ice cream flights.
+              From classic sweet mango sticky rice and warm coconut-rice pancake cakes to artisanal Thai tea pastries and tropical ice cream flights.
             </p>
           </div>
 
@@ -265,36 +280,17 @@ export default function FullMenuClient() {
         </section>
       )}
 
-      {/* Direct Quote consultation callout */}
-      <div
-        className="panel"
-        style={{
-          marginTop: 'clamp(32px, 4vw, 56px)',
-          padding: 'clamp(28px, 4vw, 44px)',
-          display: 'flex',
-          flexWrap: 'wrap',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: 20
-        }}
-      >
-        <div style={{ maxWidth: 580 }}>
-          <span className="cap mut">Custom Menus & Dietary Alignment</span>
-          <h3 style={{ font: '500 clamp(22px, 2.5vw, 32px)/1.2 var(--f-sans)', letterSpacing: '-0.02em', margin: '8px 0' }}>
-            Looking for a bespoke combination?
-          </h3>
-          <p style={{ fontSize: 15, color: 'var(--stone)', lineHeight: 1.6 }}>
-            Every event is personalized. We can adapt dishes for vegan, Jain, gluten-free, or specific guest preferences without compromising authentic Thai flavor.
+      {/* Quote Banner */}
+      <div className="fm-quote-banner" data-reveal>
+        <div className="fm-quote-copy">
+          <h3 className="fm-quote-title">Looking for a custom combination?</h3>
+          <p className="fm-quote-text">
+            Tell us your guest count, dietary preferences, and event style. We will curate a tailored tasting selection for your celebration.
           </p>
         </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
-          <PillLink href={routes.quote} variant="dk">
-            {cta.quote}
-          </PillLink>
-          <PillLink href={routes.menu} variant="ln">
-            Back to Curations
-          </PillLink>
-        </div>
+        <PillLink href={routes.quote} variant="dk">
+          {cta.quote}
+        </PillLink>
       </div>
     </div>
   );
