@@ -12,7 +12,7 @@ export const site = {
     'MAHANAKORN delivers the greatest tasting authentic Thai food with passion and excellence. Thai catering for destination weddings, private events, corporate events and fine dining.',
   url: (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, ''),
   whatsappNumber: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '66858101298').replace(/\D/g, ''),
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || '',
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'meenu.mkhiani@gmail.com',
   instagram: 'https://www.instagram.com/mahanakorn.ww/'
 };
 
