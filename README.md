@@ -1,26 +1,15 @@
 # Mahanakorn Thai Catering: website
 
-The production version of the approved **v2 "Editorial"** design: a Next.js website with scroll animations, and a separate Node.js API that receives event inquiries (weddings, parties, company events and more) and planner-pack requests.
+The production version of the approved **v2 "Editorial"** design: a Next.js website with scroll animations, and an enquiry form that opens WhatsApp with the visitor's details ready to send (there is no backend).
 
 ```
 mahanakorn-website/
-├── frontend/   Next.js 14 (App Router, TypeScript), GSAP + ScrollTrigger, Lenis smooth scroll
-└── backend/    Node.js + Express API: validation, spam protection, rate limiting, lead storage, email alerts
+└── frontend/   Next.js 14 (App Router, TypeScript), GSAP + ScrollTrigger, Lenis smooth scroll
 ```
 
 ## Run it locally
 
-You need Node.js 18.18 or newer. Use two terminals.
-
-**1. API**
-
-```bash
-cd mahanakorn-website/backend
-npm install
-npm run dev
-```
-
-**2. Website**
+You need Node.js 18.18 or newer.
 
 ```bash
 cd mahanakorn-website/frontend
@@ -30,19 +19,15 @@ npm run dev
 
 Then open http://localhost:3000.
 
-On this Mac, port 4000 is already used by another program, so the local `.env` files run the API on **4001** (`backend/.env` sets `PORT=4001`, `frontend/.env.local` sets `NEXT_PUBLIC_API_URL=http://localhost:4001`). Both files are git-ignored. On other machines, copy `.env.example` in each folder and adjust.
-
 ### Production build
 
 ```bash
 cd frontend && npm run build && npm start      # website on :3000
-cd backend && npm start                         # API on $PORT
 ```
 
 ### Checks
 
 ```bash
-cd backend && npm test          # 10 API tests (node:test + supertest)
 cd frontend && npm run typecheck
 cd frontend && npm run build    # also type-checks
 ```
@@ -54,22 +39,10 @@ cd frontend && npm run build    # also type-checks
 | Variable | What it does |
 |---|---|
 | `NEXT_PUBLIC_SITE_URL` | Public site URL, used for canonical links, the sitemap and social previews |
-| `NEXT_PUBLIC_API_URL` | URL of the backend API |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | WhatsApp Business number, digits with country code. **Leave empty and every WhatsApp button is hidden** (no dead links). |
 | `NEXT_PUBLIC_CONTACT_EMAIL` | Shown in the footer and privacy page |
 
 `NEXT_PUBLIC_*` values are built into the site, so rebuild after changing them.
-
-**backend/.env** (see `.env.example`)
-
-| Variable | What it does |
-|---|---|
-| `PORT` | API port (default 4000) |
-| `FRONTEND_ORIGIN` | Website origin(s), comma-separated. Other origins are refused (CORS). |
-| `DATA_DIR` | Where leads are saved (`inquiries.jsonl`, `planner-pack.jsonl`) |
-| `ADMIN_TOKEN` | Enables `GET /api/leads` with `Authorization: Bearer <token>` |
-| `SMTP_*`, `MAIL_FROM`, `MAIL_TO` | Optional email alert for every new lead. Without them, leads are logged to the console. |
-| `TRUST_PROXY` | Set to `1` behind a proxy/load balancer so rate limiting sees real IPs |
 
 ## API
 
