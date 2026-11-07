@@ -6,11 +6,11 @@ import { PillLabel } from '@/components/Pill';
 import { Dot } from '@/components/Icons';
 import { FooterNav } from '@/components/Sections';
 import { img, steps } from '@/lib/content';
-import { routes } from '@/lib/site';
+import { routes, site, whatsappLink } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Get a quote',
-  description: 'Tell us your type of event, date, place and number of guests. We reply on WhatsApp with a Thai menu idea and a price.',
+  description: 'Tell us about your event. We reply on WhatsApp with a Thai menu idea and a price.',
   alternates: { canonical: routes.quote }
 };
 
@@ -58,6 +58,14 @@ export default function GetAQuotePage({ searchParams }: { searchParams: Record<s
                 <li key={s.title} className="stp"><span>{String(i + 1).padStart(2, '0')}</span><span><b style={{ fontWeight: 700 }}>{s.title}.</b> <span style={{ fontWeight: 500 }}>{s.text}</span></span></li>
               ))}
             </ol>
+          </div>
+          <div className="panel" style={{ padding: 24, display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <span className="cap" style={{ paddingBottom: 6, fontWeight: 600 }}>Contact us directly</span>
+            <ul className="rows" style={{ gap: 8, fontWeight: 500 }}>
+              <li>WhatsApp / phone: <a href={whatsappLink() ?? undefined} target="_blank" rel="noopener noreferrer"><b style={{ fontWeight: 700 }}>+66 85 810 1298</b></a></li>
+              {site.email && <li>Email: <a href={`mailto:${site.email}`}><b style={{ fontWeight: 700 }}>{site.email}</b></a></li>}
+              <li>Instagram: <a href={site.instagram} target="_blank" rel="noopener noreferrer"><b style={{ fontWeight: 700 }}>@mahanakorn.ww</b></a></li>
+            </ul>
           </div>
         </aside>
         <InquiryForm preset={preset} />

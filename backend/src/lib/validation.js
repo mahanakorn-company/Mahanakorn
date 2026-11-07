@@ -37,9 +37,9 @@ export const inquirySchema = z
       .optional()
       .or(z.literal('')),
     dateFlexible: z.boolean().optional().default(false),
-    destination: z.enum(DESTINATIONS, { errorMap: () => ({ message: 'Please choose where the event is.' }) }),
+    destination: z.enum(DESTINATIONS, { errorMap: () => ({ message: 'Please choose where the event is.' }) }).optional(),
     venue: text(120).optional().default(''),
-    guests: z.enum(GUEST_BANDS, { errorMap: () => ({ message: 'Please choose an approximate guest count.' }) }),
+    guests: z.enum(GUEST_BANDS, { errorMap: () => ({ message: 'Please choose an approximate guest count.' }) }).optional(),
     functions: z.array(z.enum(FUNCTIONS)).max(FUNCTIONS.length).optional().default([]),
     need: z.enum(NEEDS).optional(),
     diet: z.array(z.enum(DIETS)).max(DIETS.length).optional().default([]),
@@ -48,9 +48,6 @@ export const inquirySchema = z
     company: honeypot
   })
   .superRefine((v, ctx) => {
-    if (!v.dateFlexible && !v.date) {
-      ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['date'], message: 'Please choose a month, or tick "Not fixed yet".' });
-    }
     if (v.date) {
       const [y, m] = v.date.split('-').map(Number);
       const now = new Date();

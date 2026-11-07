@@ -42,14 +42,14 @@ export function createApp({ store, notify, origins, adminToken = '', trustProxy 
       if (!parsed.success) return res.status(422).json({ ok: false, error: 'Please check the highlighted fields.', fields: fieldErrors(parsed.error) });
       const { company: _hp, ...data } = parsed.data;
       const lead = await store.add('inquiries', { ...data, source: 'website', userAgent: req.get('user-agent') || '' });
-      await notify(`New ${data.eventType} inquiry: ${data.name} (${data.destination}, ${data.guests})`, [
+      await notify(`New ${data.eventType} inquiry: ${data.name} ${[data.destination, data.guests].filter(Boolean).length ? `(${[data.destination, data.guests].filter(Boolean).join(', ')})` : ''}`, [
         `Event: ${data.eventType}`,
         `Name: ${data.name} (${data.role})`,
         `Email: ${data.email}`,
         `WhatsApp: ${data.whatsapp}`,
-        `Date: ${data.dateFlexible ? 'Not fixed yet' : data.date}`,
-        `Where: ${data.destination}${data.venue ? ' · ' + data.venue : ''}`,
-        `Guests: ${data.guests}`,
+        data.date || data.dateFlexible ? `Date: ${data.dateFlexible ? 'Not fixed yet' : data.date}` : '',
+        data.destination || data.venue ? `Where: ${[data.destination, data.venue].filter(Boolean).join(' · ')}` : '',
+        data.guests ? `Guests: ${data.guests}` : '',
         data.functions.length ? `Wedding events: ${data.functions.join(', ')}` : '',
         data.need ? `Need: ${data.need}` : '',
         data.diet.length ? `Diet: ${data.diet.join(', ')}` : '',
