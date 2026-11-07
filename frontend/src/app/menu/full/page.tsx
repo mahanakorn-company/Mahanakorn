@@ -7,7 +7,7 @@ import { routes } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Full Menu · Complete Thai Catering Selection',
   description:
-    'Explore our complete 2026 catering menu: passed hors d’oeuvres, signature curries and noodles, live village stations, and traditional Thai desserts.',
+    'Explore our complete 2026 catering menu: passed hors d’oeuvres, signature curries and noodles, and traditional Thai desserts.',
   alternates: { canonical: routes.fullMenu }
 };
 
@@ -16,7 +16,7 @@ export default function FullMenuPage() {
     <>
       <PageTitle
         title="Full *Menu*"
-        sub="All dishes, live counters and curated culinary experiences."
+        sub="Every hors d’oeuvre, main course and dessert on our menu."
         crumbs={
           <>
             <TransitionLink href={routes.home}>Home</TransitionLink>

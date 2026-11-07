@@ -8,14 +8,11 @@ import {
   horsDoeuvres,
   mainCourses,
   desserts,
-  stationConcepts,
-  themeMenus,
-  villageAtmosphere,
   type DishItem
 } from '@/lib/fullMenuData';
 import { cta, routes } from '@/lib/site';
 
-type CategoryKey = 'all' | 'hors' | 'mains' | 'desserts' | 'stations' | 'themes';
+type CategoryKey = 'all' | 'hors' | 'mains' | 'desserts';
 type DietKey = 'all' | 'V' | 'NV';
 
 export default function FullMenuClient() {
@@ -41,49 +38,14 @@ export default function FullMenuClient() {
   const filteredMains = useMemo(() => filterDishes(mainCourses), [diet, q]);
   const filteredDesserts = useMemo(() => filterDishes(desserts), [diet, q]);
 
-  const filteredStations = useMemo(() => {
-    if (!q) return stationConcepts;
-    return stationConcepts.filter((st) => {
-      return (
-        st.name.toLowerCase().includes(q) ||
-        (st.thai && st.thai.toLowerCase().includes(q)) ||
-        st.tagline.toLowerCase().includes(q) ||
-        st.items.some((it) => it.toLowerCase().includes(q)) ||
-        (st.subsections &&
-          st.subsections.some((sub) =>
-            sub.items.some((it) => it.toLowerCase().includes(q))
-          ))
-      );
-    });
-  }, [q]);
-
-  const filteredThemes = useMemo(() => {
-    if (!q) return themeMenus;
-    return themeMenus.filter((tm) => {
-      return (
-        tm.name.toLowerCase().includes(q) ||
-        (tm.thai && tm.thai.toLowerCase().includes(q)) ||
-        tm.vibe.toLowerCase().includes(q) ||
-        tm.occasions.toLowerCase().includes(q) ||
-        tm.appetizers.some((it) => it.toLowerCase().includes(q)) ||
-        tm.mains.some((it) => it.toLowerCase().includes(q)) ||
-        tm.desserts.some((it) => it.toLowerCase().includes(q))
-      );
-    });
-  }, [q]);
-
   const showHors = (activeCategory === 'all' || activeCategory === 'hors') && filteredHors.length > 0;
   const showMains = (activeCategory === 'all' || activeCategory === 'mains') && filteredMains.length > 0;
   const showDesserts = (activeCategory === 'all' || activeCategory === 'desserts') && filteredDesserts.length > 0;
-  const showStations = (activeCategory === 'all' || activeCategory === 'stations') && diet === 'all' && filteredStations.length > 0;
-  const showThemes = (activeCategory === 'all' || activeCategory === 'themes') && diet === 'all' && filteredThemes.length > 0;
 
   const totalResults =
     (showHors ? filteredHors.length : 0) +
     (showMains ? filteredMains.length : 0) +
-    (showDesserts ? filteredDesserts.length : 0) +
-    (showStations ? filteredStations.length : 0) +
-    (showThemes ? filteredThemes.length : 0);
+    (showDesserts ? filteredDesserts.length : 0);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
@@ -117,20 +79,6 @@ export default function FullMenuClient() {
             onClick={() => setActiveCategory('desserts')}
           >
             Desserts ({desserts.length})
-          </button>
-          <button
-            type="button"
-            className={`fm-tab${activeCategory === 'stations' ? ' on' : ''}`}
-            onClick={() => setActiveCategory('stations')}
-          >
-            Live Stations ({stationConcepts.length})
-          </button>
-          <button
-            type="button"
-            className={`fm-tab${activeCategory === 'themes' ? ' on' : ''}`}
-            onClick={() => setActiveCategory('themes')}
-          >
-            Themed Menus ({themeMenus.length})
           </button>
         </div>
 
@@ -311,165 +259,6 @@ export default function FullMenuClient() {
                 <span className={`fm-badge ${item.diet.toLowerCase()}`}>
                   {item.diet === 'V' ? 'Veg' : 'Non-Veg'}
                 </span>
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* 4. Live Station Concepts Section */}
-      {showStations && (
-        <section id="live-stations" className="sec-sm anchor" aria-labelledby="stations-title">
-          <div className="menu-intro" style={{ marginBottom: 28 }}>
-            <div className="menu-intro-head">
-              <p className="svc-label"><span>04 / Interactive counters</span></p>
-              <Split as="h2" id="stations-title" className="svc-title" text="*Live Station Concepts*" />
-            </div>
-            <p className="lead-copy">
-              Each counter operates as an interactive culinary stage, manned by Bangkok chefs cooking to order with authentic equipment.
-            </p>
-          </div>
-
-          {/* Thai Village Atmosphere Banner */}
-          <div
-            className="panel"
-            style={{
-              padding: 'clamp(28px, 4vw, 44px)',
-              marginBottom: 32,
-              background: '#f8f4ec',
-              border: '1px solid #ebd9c8',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 20
-            }}
-          >
-            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', justifyContent: 'space-between', gap: 12 }}>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 12 }}>
-                <span className="th" style={{ fontSize: 20, color: 'var(--tamarind)' }}>หมู่บ้านไทย</span>
-                <h3 style={{ font: '600 clamp(20px, 2.2vw, 26px)/1.2 var(--f-sans)', textTransform: 'uppercase', letterSpacing: '-0.01em' }}>
-                  {villageAtmosphere.concept}
-                </h3>
-              </div>
-              <span className="cap" style={{ color: 'var(--tamarind)', letterSpacing: '0.08em' }}>Atmosphere & Experience</span>
-            </div>
-
-            <p style={{ fontSize: 16, lineHeight: 1.65, maxWidth: 960, color: 'var(--ink)' }}>
-              {villageAtmosphere.description}
-            </p>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 16, paddingTop: 8 }}>
-              {villageAtmosphere.details.map((det) => (
-                <div key={det.label} style={{ borderTop: '1px solid #e2cfbd', paddingTop: 12 }}>
-                  <span className="cap mut" style={{ display: 'block', marginBottom: 4 }}>{det.label}</span>
-                  <p style={{ fontSize: 13.5, lineHeight: 1.55, color: 'var(--stone)' }}>{det.value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="fm-cards-grid">
-            {filteredStations.map((st) => (
-              <article key={st.id} className="fm-card">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', borderBottom: '1px solid var(--line)', paddingBottom: 12 }}>
-                  <span className="mc-n">{st.number}</span>
-                  {st.thai && <span className="fm-item-thai" lang="th">{st.thai}</span>}
-                </div>
-                <div>
-                  <h3 style={{ font: '600 20px/1.2 var(--f-sans)', textTransform: 'uppercase', letterSpacing: '-0.01em', marginBottom: 6 }}>
-                    {st.name}
-                  </h3>
-                  <p style={{ fontSize: 14, color: 'var(--stone)', lineHeight: 1.5 }}>{st.tagline}</p>
-                </div>
-
-                {st.setupNote && (
-                  <p style={{ fontSize: 13, color: 'var(--tamarind)', fontStyle: 'italic', lineHeight: 1.45 }}>
-                    ✦ {st.setupNote}
-                  </p>
-                )}
-
-                {st.items.length > 0 && (
-                  <ul style={{ borderTop: '1px solid var(--line)', paddingTop: 12, display: 'flex', flexDirection: 'column', gap: 6 }}>
-                    {st.items.map((it) => (
-                      <li key={it} style={{ fontSize: 14.5, color: 'var(--ink)', display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <span style={{ color: 'var(--tamarind)', fontSize: 11 }}>•</span> {it}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-                {st.subsections && (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 12, borderTop: '1px solid var(--line)', paddingTop: 12 }}>
-                    {st.subsections.map((sub) => (
-                      <div key={sub.title} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                        <span className="cap mut" style={{ fontSize: 10.5 }}>{sub.title}</span>
-                        <p style={{ fontSize: 13.5, color: 'var(--ink)', lineHeight: 1.5 }}>
-                          {sub.items.join(' · ')}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* 5. Themed Curations Section */}
-      {showThemes && (
-        <section id="themed-menus" className="sec-sm anchor" aria-labelledby="themes-title">
-          <div className="menu-intro" style={{ marginBottom: 28 }}>
-            <div className="menu-intro-head">
-              <p className="svc-label"><span>05 / Curated by celebration style</span></p>
-              <Split as="h2" id="themes-title" className="svc-title" text="*Themed Curations*" />
-            </div>
-            <p className="lead-copy">
-              Complete culinary narratives designed for specific event atmospheres — from vibrant Bangkok street stalls to refined royal feasts.
-            </p>
-          </div>
-
-          <div className="fm-cards-grid">
-            {filteredThemes.map((theme) => (
-              <article key={theme.id} className="fm-card">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', borderBottom: '1px solid var(--line)', paddingBottom: 12 }}>
-                  <span className="mc-n">{theme.number}</span>
-                  {theme.thai && <span className="fm-item-thai" lang="th">{theme.thai}</span>}
-                </div>
-
-                <div>
-                  <h3 style={{ font: '600 22px/1.2 var(--f-sans)', textTransform: 'uppercase', letterSpacing: '-0.01em', marginBottom: 6 }}>
-                    {theme.name}
-                  </h3>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 8 }}>
-                    <span className="pill sm ln" style={{ fontSize: 10, minHeight: 28, padding: '0 10px' }}>
-                      {theme.vibe}
-                    </span>
-                    <span className="cap mut" style={{ alignSelf: 'center', fontSize: 11 }}>
-                      {theme.occasions}
-                    </span>
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 14, borderTop: '1px solid var(--line)', paddingTop: 14 }}>
-                  <div>
-                    <span className="cap mut" style={{ fontSize: 10.5, display: 'block', marginBottom: 4 }}>Appetizers / Bites</span>
-                    <p style={{ fontSize: 14, color: 'var(--ink)', lineHeight: 1.55 }}>
-                      {theme.appetizers.join(' · ')}
-                    </p>
-                  </div>
-                  <div>
-                    <span className="cap mut" style={{ fontSize: 10.5, display: 'block', marginBottom: 4 }}>Main / Live Stations</span>
-                    <p style={{ fontSize: 14, color: 'var(--ink)', lineHeight: 1.55 }}>
-                      {theme.mains.join(' · ')}
-                    </p>
-                  </div>
-                  <div>
-                    <span className="cap mut" style={{ fontSize: 10.5, display: 'block', marginBottom: 4 }}>Desserts</span>
-                    <p style={{ fontSize: 14, color: 'var(--ink)', lineHeight: 1.55 }}>
-                      {theme.desserts.join(' · ')}
-                    </p>
-                  </div>
-                </div>
               </article>
             ))}
           </div>

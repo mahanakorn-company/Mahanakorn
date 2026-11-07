@@ -10,7 +10,7 @@ import { routes } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Get a quote',
-  description: 'Tell us your type of event, date, place and number of guests. We reply on WhatsApp with a Thai menu idea and a price.',
+  description: 'Tell us about your event. We reply on WhatsApp with a Thai menu idea and a price.',
   alternates: { canonical: routes.quote }
 };
 
