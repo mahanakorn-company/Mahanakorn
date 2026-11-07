@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { gsap } from 'gsap';
-import { submitInquiry } from '@/lib/api';
 import { emailOk, nameOk, phoneOk } from '@/lib/validate';
 import { prefersReducedMotion, scrollToElement } from '@/lib/motion';
 import { routes, whatsappLink } from '@/lib/site';
@@ -35,9 +34,7 @@ function check(d: Data): Errors {
 
 export default function InquiryForm({ preset }: { preset?: InquiryPreset }) {
   const [step, setStep] = useState<Step>(1);
-  const [busy, setBusy] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
-  const [serverError, setServerError] = useState('');
   const [data, setData] = useState<Data>({
     name: '', email: '', whatsapp: '', role: 'host', eventType: preset?.eventType ?? '', date: '', dateFlexible: false, destination: '', venue: '', guests: '',
     functions: preset?.functions ?? [], need: preset?.need ?? '', diet: preset?.diet ?? [], message: preset?.message ?? '', company: ''
@@ -72,30 +69,22 @@ export default function InquiryForm({ preset }: { preset?: InquiryPreset }) {
     requestAnimationFrame(() => summaryRef.current?.focus());
   }
 
-  async function send(e: FormEvent) {
+  function send(e: FormEvent) {
     e.preventDefault();
     const errs = check(data);
     if (Object.keys(errs).length) return fail(errs);
-    setBusy(true);
-    setServerError('');
-    const res = await submitInquiry({
-      ...data,
-      date: data.dateFlexible ? '' : data.date,
-      destination: data.destination || undefined,
-      guests: data.guests || undefined,
-      functions: data.eventType === 'wedding' ? data.functions : [],
-      need: data.need || undefined
-    });
-    setBusy(false);
-    if (res.ok) {
-      setErrors({}); setStep('done');
-      const link = whatsappLink(`Hi Mahanakorn, I'm ${data.name.trim()}. I just sent an enquiry on your website.${data.message.trim() ? ` ${data.message.trim()}` : ''}`);
-      if (link) window.location.href = link;
-      return;
-    }
-    const fields = (res.fields || {}) as Errors;
-    setServerError(res.error);
-    fail(fields);
+    const role = ROLES.find(([v]) => v === data.role)?.[1] ?? data.role;
+    const text = [
+      `Hi Mahanakorn, I'm ${data.name.trim()} (${role}).`,
+      data.message.trim(),
+      `Email: ${data.email.trim()}`,
+      `WhatsApp: ${data.whatsapp.trim()}`
+    ].filter(Boolean).join('\n');
+    const link = whatsappLink(text);
+    if (!link) return fail({ _: 'WhatsApp is not set up yet. Please try again later.' });
+    setErrors({});
+    setStep('done');
+    window.location.href = link;
   }
 
   const err = (k: keyof Data) => errors[k];
@@ -104,12 +93,12 @@ export default function InquiryForm({ preset }: { preset?: InquiryPreset }) {
 
   return (
     <div ref={boxRef} className="panel" style={{ flex: '1.4 1 520px', minWidth: 0, padding: 'clamp(28px,4vw,56px)', display: 'flex', flexDirection: 'column', gap: 32 }}>
-      {(errorList.length > 0 || serverError) && step !== 'done' && (
+      {errorList.length > 0 && step !== 'done' && (
         <div ref={summaryRef} tabIndex={-1} className="form-alert" role="alert">
-          <strong>{serverError || 'Please check these fields:'}</strong>
+          <strong>Please check these fields:</strong>
           {errorList.length > 0 && (
             <ul style={{ marginTop: 6, paddingLeft: 18, listStyle: 'disc' }}>
-              {errorList.map(([k]) => <li key={k}><a href={`#q-${k}`}>{LABELS[k] ?? k}</a></li>)}
+              {errorList.map(([k]) => <li key={k}><a href={`#q-${k}`}>{(k as string) === '_' ? errors._ : LABELS[k] ?? k}</a></li>)}
             </ul>
           )}
         </div>
@@ -152,16 +141,16 @@ export default function InquiryForm({ preset }: { preset?: InquiryPreset }) {
             <label htmlFor="q-message">Anything else? (optional)</label>
             <textarea className="ul" id="q-message" name="message" rows={3} maxLength={2000} placeholder="Type of event, date, place, number of guests, favourite dishes" value={data.message} onChange={(e) => set('message', e.target.value)} />
           </div>
-          <button type="submit" className="pill dk" style={{ alignSelf: 'flex-start' }} disabled={busy} aria-busy={busy}>{busy ? 'Sending…' : 'Send my details'} <span className="ic"><ArrowRight /></span></button>
-          <p className="br" style={{ lineHeight: 1.5 }}>By sending, you agree to our <a href={routes.privacy}>privacy policy</a>. We only use your details to reply to you.</p>
+          <button type="submit" className="pill dk" style={{ alignSelf: 'flex-start' }} >Send on WhatsApp <span className="ic"><ArrowRight /></span></button>
+          <p className="br" style={{ lineHeight: 1.5 }}>Your details open in WhatsApp for you to send. See our <a href={routes.privacy}>privacy policy</a>.</p>
         </form>
       )}
 
       {step === 'done' && (
         <div data-pane="done" role="status" style={{ display: 'flex', flexDirection: 'column', gap: 18, padding: '12px 0' }}>
           <span className="th" style={{ color: 'var(--tamarind)', fontSize: 20 }}>ขอบคุณ · thank you</span>
-          <h2 ref={headingRef} tabIndex={-1} style={{ fontSize: 'clamp(36px,4.4vw,62px)', fontWeight: 500, lineHeight: 1, textTransform: 'uppercase', letterSpacing: '-.02em', outline: 'none' }}>We&apos;ve <span className="s">got it</span></h2>
-          <p className="mut" style={{ lineHeight: 1.6, fontSize: 16, maxWidth: 460 }}>Thanks, {data.name.split(' ')[0]}. We&apos;ll message you on WhatsApp at {data.whatsapp} with a menu idea and a price.</p>
+          <h2 ref={headingRef} tabIndex={-1} style={{ fontSize: 'clamp(36px,4.4vw,62px)', fontWeight: 500, lineHeight: 1, textTransform: 'uppercase', letterSpacing: '-.02em', outline: 'none' }}>Nearly <span className="s">there</span></h2>
+          <p className="mut" style={{ lineHeight: 1.6, fontSize: 16, maxWidth: 460 }}>Thanks, {data.name.split(' ')[0]}. Your details should now be open in WhatsApp. Press send there and we&apos;ll reply with a menu idea and a price.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
             <PillLink href={routes.services} variant="dk">See our services</PillLink>
             <PillLink href={routes.menu} variant="ln">See our menu</PillLink>
