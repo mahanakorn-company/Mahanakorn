@@ -84,12 +84,10 @@ test('returns field errors for an invalid inquiry', async () => {
   assert.ok(res.body.fields.destination);
 });
 
-test('requires a date unless the date is flexible', async () => {
-  const missing = await request(app).post('/api/inquiries').send({ ...validInquiry(), date: '' });
-  assert.equal(missing.status, 422);
-  assert.ok(missing.body.fields.date);
-  const flexible = await request(app).post('/api/inquiries').send({ ...validInquiry(), date: '', dateFlexible: true });
-  assert.equal(flexible.status, 201);
+test('date, destination and guests are optional', async () => {
+  const { date, destination, guests, ...rest } = validInquiry();
+  const res = await request(app).post('/api/inquiries').send(rest);
+  assert.equal(res.status, 201);
 });
 
 test('rejects a date in the past', async () => {
